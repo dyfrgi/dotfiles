@@ -9,6 +9,9 @@ export LC_TIME="en_DK.UTF-8"
 typeset -U path
 path=(~/bin /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin)
 
+# Add a custom directory for completion scripts
+fpath=(~/.zsh/Completion $fpath)
+
 export EDITOR=vim
 export VISUAL=vim
 
