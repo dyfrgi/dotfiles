@@ -1,0 +1,5 @@
+[user]
+	name = Michael Leuchtenburg
+	email = michael@slashhome.org
+[merge]
+	tool = vimdiff
