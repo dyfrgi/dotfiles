@@ -1,0 +1,105 @@
+" Remove all autocommands
+autocmd!
+
+set nocompatible        " Use vim defaults instead of vi compatibility
+set backspace=indent,eol,start  " more flexible backspace
+
+set autoindent          " turn on autoindenting
+set ruler               " show cursor position
+set number              " show line numbers
+set showmatch           " show matching brackets, parens, etc.
+
+syntax on               " turn on syntax hilighting
+
+" Turn on filetype recognition
+filetype on
+if has("autocmd")
+    filetype plugin on
+endif
+
+" Make some messages shorter
+set shortmess=filnxToOI
+
+" Disable menus, toolbar; enable tab bar stuff
+" Also disable left scrollbar due to flickery redraw when using tabs
+set guioptions=agirte
+
+" set GUI font to Bitstream Vera Sans Mono 9
+set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
+
+" Always show tab-line
+set showtabline=2
+
+" Suffixes that get lower priority when doing tab completion for filenames.
+" These are files we are not likely to want to edit or read.
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+
+set grepprg=grep\ -nH\ $* " requested setting by latexsuite
+let g:Tex_ViewRule_pdf = 'evince'
+let g:Tex_DefaultTargetFormat = 'pdf'
+
+" Make tabs as spaces, tabs are 4 spaces, 4 spaces is a tab, still 4 spaces
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" Search incrementally, ignoring case, unless there are caps
+set incsearch
+set ignorecase
+set smartcase
+
+" The term is UTF-8, as should be files
+set termencoding=utf-8
+set encoding=utf-8
+
+" (Maybe) asynchronous sync() for swap files
+set swapsync=sync
+
+""" Keyboard mappings
+" Allow turning off highlighting
+" Note: overrides move down 1
+nmap <silent> <C-N> :silent noh<CR>
+
+" Taglist
+" Plugin currently not installed; also, conflicts.
+" FIXME: Remove or install plugin again
+" nmap <silent> <F8> :Tlist<CR>
+" imap <silent> <F10> <C-O>:Tlist<CR>
+
+" Turning paste mode on and off: F10 on, F11 off
+map <F10> :set paste<CR>
+map <F11> :set nopaste<CR>
+imap <F10> <C-O>:set paste<CR>
+imap <F11> <nop>
+set pastetoggle=<F11>
+
+" Read in cscope files if they exist
+" FIXME: should make this run on loading C, C++ files
+" and pick up from the same dir
+if has("cscope")
+  set csto=0
+  set cst
+  set nocsverb
+  set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
+  set cspc=3
+  " add any database in current directory
+  if filereadable("cscope.out")
+    cs add cscope.out
+  " else add database pointed to by environment
+  elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+  endif
+
+  nmap <C-\> :cs find c <C-R>=expand("<cword>")<CR><CR> 
+
+  set csverb
+endif
+
+" Set up various filetypes
+augroup dyfrgi
+augroup end
+
+" Set up colors
+let xterm16_colormap = 'soft'
+colorscheme xterm16
