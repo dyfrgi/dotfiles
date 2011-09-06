@@ -40,9 +40,9 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 
 " Make tabs as spaces, tabs are 4 spaces, 4 spaces is a tab, still 4 spaces
 set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 
 " Search incrementally, ignoring case, unless there are caps
 set incsearch
