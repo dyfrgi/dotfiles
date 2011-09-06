@@ -15,7 +15,7 @@ fpath=(~/.zsh/Completion $fpath)
 export EDITOR=vim
 export VISUAL=vim
 
-export PAGER=less
+export PAGER="less -R"
 export LESS="-iM"
 
 export MPD_HOST=fnord:@goose
