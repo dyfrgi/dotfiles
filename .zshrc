@@ -40,6 +40,8 @@ alias mmv='noglob zmv -W'
 alias alsamixer='alsamixer -V all'
 alias mtr='mtr --curses'
 
+[[ -s "/home/dyfrgi/.rvm/scripts/rvm" ]] && source "/home/dyfrgi/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
 # Show the size of the arguments, sorted by size
 function ss {
     du -s ${*:-*} | sort -n
