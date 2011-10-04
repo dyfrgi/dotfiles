@@ -1,0 +1,44 @@
+#!/usr/bin/zsh
+
+autoload -U zmv
+
+# Like xargs, but instead of reading lines of arguments from standard input,
+# it takes them from the command line. This is possible/useful because,
+# especially with recursive glob operators, zsh often can construct a command
+# line for a shell function that is longer than can be accepted by an external
+# command. This is what's often referred to as the "shitty Linux exec limit" ;)
+# The limitation is on the number of characters or arguments.
+# 
+# slarti@pohl % echo {1..30000}
+# zsh: argument list too long: /bin/echo
+# zsh: exit 127   /bin/echo {1..30000}
+autoload -U zargs
+
+HOSTV=`uname -s`
+
+case $HOSTV in 
+    SunOS)
+        alias ls="ls -F"
+        ;;
+    *BSD*)
+        alias ls="ls -G"
+        ;;
+    *)
+        alias ls="ls --color=auto"
+        ;;
+esac
+
+alias dh="dirs -v"
+alias ll="ls -l"
+alias la="ls -a"
+alias lla="ls -la"
+alias rs="rsync -essh -rtpvz"
+alias mmv='noglob zmv -W'
+alias alsamixer='alsamixer -V all'
+alias mtr='mtr --curses'
+
+# Show the size of the arguments, sorted by size
+function ss {
+    du -s ${*:-*} | sort -n
+}
+

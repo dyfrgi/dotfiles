@@ -1,0 +1,22 @@
+# ~/.zshrc
+# Michael Leuchtenburg
+# Some parts taken from http://dev.gentoo.org/~slarti/conf/zshrc.html
+
+[[ -s "/home/dyfrgi/.rvm/scripts/rvm" ]] && source "/home/dyfrgi/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
+autoload -U zcalc
+
+# Makes it easy to type URLs as command line arguments. As you type, the
+# input character is analyzed and, if it mayn eed quoting, the current
+# word is checked for a URI scheme. If one is found and the current word
+# is not already quoted, a blackslash is inserted before the input
+# caracter.
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+function ssenv() {
+   path=(/home/dyfrgi/work/hampshire/code/build/bin $path)
+   export CC=sslittle-na-sstrix-gcc
+   export BUILD_CC=gcc
+   export AR=sslittle-na-sstrix-ar
+   export RANLIB=sslittle-na-sstrix-ranlib
+}

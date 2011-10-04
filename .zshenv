@@ -25,4 +25,9 @@ export VNC_VIA_CMD="/usr/bin/ssh -o 'ControlPath=/dev/nonexistant' -o 'ControlMa
 # make -j3 by default, for make-kpkg (others?)
 export CONCURRENCY_LEVEL=3
 
+HISTFILE=~/.zsh_history
+HISTSIZE=5000
+SAVEHIST=5000
+DIRSTACKSIZE=8
+
 ulimit -c 50000

@@ -1,0 +1,52 @@
+#!/usr/bin/zsh
+
+autoload -U colors
+colors
+
+red="%{$fg[red]%}"
+blue="%{$fg[blue]%}"
+bblue="%{$fg_bold[blue]%}"
+green="%{$fg[green]%}"
+magenta="%{$fg[magenta]%}"
+cyan="%{$fg[cyan]%}"
+default="%{$reset_color%}"
+
+PROMPT="%B${blue}[%b$cyan%(!.ROOT.%n)$green@$cyan%m$green:$cyan%~%B$blue]%b%(0#.$red#$default.$default%%) "
+PROMPT="${blue}[$cyan%(!.ROOT.%n)$green@$cyan%m$green:$cyan%~$blue]%(0#.$red#$default.$default%%) "
+RPROMPT="%(?..[$red%?$default])[$cyan%*$default]"
+
+function title () {
+    local CMD=$1
+    local ARGS=$2
+
+    case $TERM in
+	xterm*) ;&
+	rxvt*)
+        print -nP "\e]2;"
+        print -nP "${CMD:+ $CMD $ARGS : }"
+        print -nP "%n@%m:%~"
+        print -nP "\a"
+    ;;
+	screen)
+        print -nP "\e\"${CMD:-%~}\e\\"
+        print -nP "\e_"
+        print -nP "#$WINDOW : ${CMD:+ $CMD : }%n@%m:%~"
+        print -nP "\e\\"
+    ;;
+	*)
+	    TITLEBAR=''
+    ;;
+    esac
+}
+
+function preexec() {
+    local -a cmd
+    cmd=(${(z)1})
+
+    title $cmd[1] "$cmd[2,-1]"
+}
+
+function precmd() {
+    title
+}
+
