@@ -61,12 +61,6 @@ set swapsync=sync
 " Note: overrides move down 1
 nmap <silent> <C-N> :silent noh<CR>
 
-" Taglist
-" Plugin currently not installed; also, conflicts.
-" FIXME: Remove or install plugin again
-" nmap <silent> <F8> :Tlist<CR>
-" imap <silent> <F10> <C-O>:Tlist<CR>
-
 " Turning paste mode on and off: F10 on, F11 off
 map <F10> :set paste<CR>
 map <F11> :set nopaste<CR>
