@@ -21,5 +21,7 @@ fi
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
 
+export XAUTHORITY=/home/dyfrgi/.Xauthority
+
 # start the window manager
 exec xmonad
