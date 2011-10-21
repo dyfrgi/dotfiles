@@ -1,21 +1,23 @@
-" Remove all autocommands
-autocmd!
-
 set nocompatible        " Use vim defaults instead of vi compatibility
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" get vim-ruby from git since vim 7.3's is broken
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
+
+syntax on               " turn on syntax hilighting
+filetype plugin indent on " for Vundle
+
 set backspace=indent,eol,start  " more flexible backspace
 
 set autoindent          " turn on autoindenting
 set ruler               " show cursor position
 set number              " show line numbers
 set showmatch           " show matching brackets, parens, etc.
-
-syntax on               " turn on syntax hilighting
-
-" Turn on filetype recognition
-filetype on
-if has("autocmd")
-    filetype plugin on
-endif
 
 " Make some messages shorter
 set shortmess=filnxToOI
