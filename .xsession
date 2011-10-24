@@ -17,6 +17,9 @@ if [ -x /usr/bin/wicd-client ] ; then
     wicd-client &
 fi
 
+# Notification daemon
+/usr/lib/notification-daemon/notification-daemon & # backgrounds itself, but background just in case this changes, etc.
+
 # Set up scroll emulation
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
