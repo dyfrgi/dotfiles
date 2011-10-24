@@ -22,6 +22,9 @@ nm-applet &
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
 
+# Set default cursor
+xsetroot -cursor_name left_ptr
+
 export XAUTHORITY=/home/dyfrgi/.Xauthority
 
 # start the window manager
