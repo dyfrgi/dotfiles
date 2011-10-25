@@ -17,6 +17,8 @@ nm-applet &
 
 # Notification daemon
 /usr/lib/notification-daemon/notification-daemon & # backgrounds itself, but background just in case this changes, etc.
+# PolicyKit Authentication Agent (needed for network-manager)
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 # Set up scroll emulation
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
