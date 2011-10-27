@@ -8,6 +8,7 @@ Bundle 'gmarik/vundle'
 " get vim-ruby from git since vim 7.3's is broken
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-fugitive'
 
 syntax on               " turn on syntax hilighting
 filetype plugin indent on " for Vundle
