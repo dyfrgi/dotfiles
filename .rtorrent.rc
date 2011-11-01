@@ -1,0 +1,4 @@
+port_range=50000-50010
+dht_port=50011
+encryption=try_outgoing,enable_retry
+session_save=true
