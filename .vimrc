@@ -1,14 +1,7 @@
 set nocompatible        " Use vim defaults instead of vi compatibility
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
-" Let Vundle manage Vundle
-Bundle 'gmarik/vundle'
-
-" get vim-ruby from git since vim 7.3's is broken
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-fugitive'
+call pathogen#infect()
+call pathogen#helptags()
 
 syntax on               " turn on syntax hilighting
 filetype plugin indent on " for Vundle
@@ -19,6 +12,10 @@ set autoindent          " turn on autoindenting
 set ruler               " show cursor position
 set number              " show line numbers
 set showmatch           " show matching brackets, parens, etc.
+
+" Don't load netrw
+let g:loaded_netrw = 1 
+let g:loaded_netrwPlugin = 1 
 
 " Make some messages shorter
 set shortmess=filnxToOI
@@ -65,10 +62,6 @@ set swapsync=sync
 nmap <silent> <C-N> :silent noh<CR>
 
 " Turning paste mode on and off: F10 on, F11 off
-map <F10> :set paste<CR>
-map <F11> :set nopaste<CR>
-imap <F10> <C-O>:set paste<CR>
-imap <F11> <nop>
 set pastetoggle=<F11>
 
 " Read in cscope files if they exist
