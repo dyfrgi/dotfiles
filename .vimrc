@@ -56,6 +56,10 @@ set encoding=utf-8
 " (Maybe) asynchronous sync() for swap files
 set swapsync=sync
 
+" NERD Tree binding
+nmap <F10> :NERDTreeToggle<CR>
+imap <F10> <C-O>:NERDTreeToggle<CR>
+
 """ Keyboard mappings
 " Allow turning off highlighting
 " Note: overrides move down 1
