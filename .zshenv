@@ -14,6 +14,7 @@ fpath=(~/.zsh/Completion $fpath)
 
 export EDITOR=vim
 export VISUAL=vim
+export MAILER=icedove
 
 export PAGER="less -R"
 export LESS="-iM"
