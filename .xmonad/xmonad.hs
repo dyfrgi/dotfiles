@@ -145,7 +145,7 @@ myKeymap =
       ++
       [("M-" ++ m ++ [k], windows $ f i)
         | (i, k) <- zip myWorkspaces "1234567890",
-          (f, m) <- [(W.view, ""), (W.shift, "S-")]]
+          (f, m) <- [(W.greedyView, ""), (W.shift, "S-")]]
       -- Move between screens
       ++
       [("M-" ++ m ++ [key], screenWorkspace sc >>= flip whenJust (windows . f))
