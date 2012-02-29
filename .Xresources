@@ -14,5 +14,5 @@ XTerm*locale: UTF-8
 XTerm*utf8: 1
 XTerm*eightBitInput: false
 XTerm*termName: xterm-256color
-XTerm*saveLines: 1024
+XTerm*saveLines: 4096
 XTerm*bellIsUrgent: true
