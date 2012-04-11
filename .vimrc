@@ -13,10 +13,6 @@ set ruler               " show cursor position
 set number              " show line numbers
 set showmatch           " show matching brackets, parens, etc.
 
-" Don't load netrw
-let g:loaded_netrw = 1 
-let g:loaded_netrwPlugin = 1 
-
 " Make some messages shorter
 set shortmess=filnxToOI
 
