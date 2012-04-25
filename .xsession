@@ -27,7 +27,9 @@ xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
 # Set default cursor
 xsetroot -cursor_name left_ptr
 
-export XAUTHORITY=/home/dyfrgi/.Xauthority
+if [ -f ~/.Xauthority ]; then
+  export XAUTHORITY=/home/dyfrgi/.Xauthority
+fi
 
 # start the window manager
 exec xmonad
