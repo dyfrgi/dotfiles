@@ -13,7 +13,8 @@ ssh-add ~/.ssh/id_dsa
 trayer --heighttype pixel --height 20 --widthtype pixel --width 128 --align right --transparent true --tint 0x222222 --edge top --SetDockType true --SetPartialStrut true &
 
 # Network manager
-nm-applet &
+#nm-applet &
+wicd-client &
 
 # Notification daemon
 /usr/lib/notification-daemon/notification-daemon & # backgrounds itself, but background just in case this changes, etc.
