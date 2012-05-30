@@ -16,3 +16,7 @@ XTerm*eightBitInput: false
 XTerm*termName: xterm-256color
 XTerm*saveLines: 4096
 XTerm*bellIsUrgent: true
+
+Rxvt*background: Black
+Rxvt*foreground: gray90
+Rxvt*scrollstyle: plain

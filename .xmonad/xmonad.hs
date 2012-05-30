@@ -40,7 +40,7 @@ myConfig h = defaultConfig {
     , modMask = mod4Mask
     , workspaces = myWorkspaces
     , borderWidth = 2
-    , terminal = "xterm"
+    , terminal = "rxvt"
     , normalBorderColor = "#666677"
     , focusedBorderColor = "#dd9b22"
     , keys = \c -> mkKeymap c $ myKeymap
@@ -129,7 +129,7 @@ myKeymap =
         ("M-q", restart "xmonad" True),
         
         -- Start a terminal
-        ("M-<Return>", spawn "xterm"),
+        ("M-<Return>", spawn "rxvt"),
 
         -- Push the focused window back into tiling
         ("M-w t", withFocused $ windows . W.sink),
