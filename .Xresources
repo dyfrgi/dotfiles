@@ -17,6 +17,14 @@ XTerm*termName: xterm-256color
 XTerm*saveLines: 4096
 XTerm*bellIsUrgent: true
 
-Rxvt*background: Black
-Rxvt*foreground: gray90
-Rxvt*scrollstyle: plain
+URxvt.reverseVideo: true
+URxvt.scrollBar: false
+URxvt.saveLines: 10000
+URxvt.fading: 10
+URxvt.visualBell: false
+URxvt.font: xft:terminus:pixelsize=12,xft:unifont
+URxvt.urlLauncher: google-chrome
+URxvt.underlineURLs: true
+!URxvt.perl-lib: /home/davean/.urxvt-perl/
+!URxvt.perl-ext-common: url-select
+URxvt.urgentOnBell: true
