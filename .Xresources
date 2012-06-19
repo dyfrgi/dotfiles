@@ -27,4 +27,6 @@ URxvt.urlLauncher: google-chrome
 URxvt.underlineURLs: true
 !URxvt.perl-lib: /home/davean/.urxvt-perl/
 !URxvt.perl-ext-common: url-select
+URxvt.perl-ext-common: bell-command
+URxvt.bell-command: aplay -q ~/etc/sounds/beep1.wav
 URxvt.urgentOnBell: true
