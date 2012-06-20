@@ -8,7 +8,8 @@ import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.ThreeColumns
-import XMonad.Layout.Named
+import XMonad.Layout.Renamed
+import XMonad.Layout.Grid
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Tabbed
 import XMonad.Layout.WorkspaceDir
@@ -55,10 +56,13 @@ myLayout =
     smartBorders $                  -- no borders on full-screen
     onWorkspace "chat" myThree $    -- use 3-column layout on chat desktop
 
-    myTall ||| myFullTabbed             -- tall and fullscreen tabbed layouts
+    myGrid
+    ||| myTall 
+    ||| myFullTabbed             -- tall and fullscreen tabbed layouts
     where
         myThree = ThreeCol 1 0.03 0.50
-        myTall = Tall 1 0.03 0.6
+        myGrid = renamed [Replace "Grid"] $ GridRatio (3/3)
+        myTall = Tall 1 0.05 0.5
         myFullTabbed = simpleTabbed
 
 myXPConfig = greenXPConfig {
