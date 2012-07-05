@@ -61,7 +61,7 @@ myLayout =
     ||| myFullTabbed             -- tall and fullscreen tabbed layouts
     where
         myThree = ThreeCol 1 0.03 0.50
-        myGrid = renamed [Replace "Grid"] $ GridRatio (3/3)
+        myGrid = renamed [Replace "Grid"] $ GridRatio (19 / 21)
         myTall = Tall 1 0.05 0.5
         myFullTabbed = simpleTabbed
 
@@ -133,7 +133,7 @@ myKeymap =
         ("M-q", restart "xmonad" True),
         
         -- Start a terminal
-        ("M-<Return>", spawn "rxvt"),
+        ("M-<Return>", safeSpawn "urxvt" []),
 
         -- Push the focused window back into tiling
         ("M-w t", withFocused $ windows . W.sink),
