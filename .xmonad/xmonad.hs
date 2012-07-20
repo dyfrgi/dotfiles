@@ -88,8 +88,9 @@ promptedShift = workspacePrompt myXPConfig $ windows . W.shift
 
 myKeymap =
       [ 
-        ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 3+ unmute"),
-        ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 3- unmute"),
+        ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 3%+ unmute"),
+        ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 3%- unmute"),
+        ("<XF86AudioMute>", spawn "amixer -q set Master toggle"),
         -- Run dmenu to launch programs
         ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\""),
         -- Close the focused window
