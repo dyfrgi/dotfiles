@@ -18,3 +18,6 @@
 	path = .vim/bundle/vim-indent-guides
 	url = https://github.com/mutewinter/vim-indent-guides.git
   ignore = untracked
+[submodule ".rbenv"]
+	path = .rbenv
+	url = git://github.com/sstephenson/rbenv.git

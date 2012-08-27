@@ -7,7 +7,7 @@ export LC_TIME="en_DK.UTF-8"
 
 # Paths contain unique items; no duplicates
 typeset -U path
-path=(~/bin /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc)
+path=(~/.rbenv/bin ~/bin /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc)
 
 # Add a custom directory for completion scripts
 fpath=(~/.zsh/Completion $fpath)
