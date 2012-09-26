@@ -61,7 +61,7 @@ imap <F10> <C-O>:NERDTreeToggle<CR>
 " Note: overrides move down 1
 nmap <silent> <C-N> :silent noh<CR>
 
-" Turning paste mode on and off: F10 on, F11 off
+" Turning paste mode on and off
 set pastetoggle=<F11>
 
 " Read in cscope files if they exist
@@ -85,10 +85,6 @@ if has("cscope")
 
   set csverb
 endif
-
-" Set up various filetypes
-augroup dyfrgi
-augroup end
 
 " Set up colors
 let xterm16_colormap = 'soft'
