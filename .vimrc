@@ -21,7 +21,7 @@ set shortmess=filnxToOI
 set guioptions=agirte
 
 " set GUI font to Bitstream Vera Sans Mono 9
-set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
+set guifont=DejaVu\ Sans\ Mono\ 8
 
 " Always show tab-line
 set showtabline=2
