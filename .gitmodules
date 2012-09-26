@@ -21,3 +21,6 @@
 [submodule ".rbenv"]
 	path = .rbenv
 	url = git://github.com/sstephenson/rbenv.git
+[submodule "/home/dyfrgi/.vim/bundle/nerdtree"]
+	path = /home/dyfrgi/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
