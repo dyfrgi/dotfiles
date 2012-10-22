@@ -87,5 +87,5 @@ if has("cscope")
 endif
 
 " Set up colors
-let xterm16_colormap = 'soft'
-colorscheme xterm16
+set background=dark
+colorscheme solarized
