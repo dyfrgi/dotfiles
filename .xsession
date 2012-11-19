@@ -29,7 +29,7 @@ xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
 xsetroot -cursor_name left_ptr
 
 if [ -f ~/.Xauthority ]; then
-  export XAUTHORITY=/home/dyfrgi/.Xauthority
+  export XAUTHORITY=$HOME.Xauthority
 fi
 
 # start the window manager
