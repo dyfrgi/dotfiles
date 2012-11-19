@@ -30,12 +30,15 @@ main = do
             $ withUrgencyHook NoUrgencyHook
             $ myConfig dout
 
+myManageHook = composeAll . concat $ 
+                [ [ isFullscreen --> doFullFloat ]
+                , [ className =? "HipChat" <&&> isInProperty "_NET_WM_STATE" "_NET_WM_STATE_SKIP_TASKBAR" --> doFloat ]
+                , [ manageDocks ]
+                ]
+
+
 myConfig h = defaultConfig {
-    manageHook = mconcat
-        [
-        isFullscreen --> doFullFloat 
-        , manageDocks
-        ]
+    manageHook = myManageHook
     , layoutHook = myLayout
     , logHook = myDynamicLog h
     , modMask = mod4Mask
