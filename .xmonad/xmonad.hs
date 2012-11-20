@@ -32,7 +32,7 @@ main = do
 
 myManageHook = composeAll . concat $ 
                 [ [ isFullscreen --> doFullFloat ]
-                , [ className =? "HipChat" <&&> isInProperty "_NET_WM_STATE" "_NET_WM_STATE_SKIP_TASKBAR" --> doFloat ]
+                , [ className =? "HipChat" <&&> isInProperty "_NET_WM_STATE" "_NET_WM_STATE_SKIP_TASKBAR" --> doIgnore ]
                 , [ manageDocks ]
                 ]
 
