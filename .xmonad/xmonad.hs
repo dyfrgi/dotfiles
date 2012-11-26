@@ -147,7 +147,9 @@ myKeymap =
         ("M-w m", sendMessage $ ToggleStrut U),
         ("M-w r", sendMessage $ ToggleStrut R),
 
-        ("M-w s", spawn "import -window root ~/screenshots/shot.png")
+        ("M-w s", spawn "import -window root ~/screenshots/shot.png"),
+
+        ("M-<Pause>", spawn "gnome-screensaver-command -l")
       ]
       -- Move between workspaces, move windows between workspaces
       ++
