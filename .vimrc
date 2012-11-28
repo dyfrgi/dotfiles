@@ -52,17 +52,20 @@ set encoding=utf-8
 " (Maybe) asynchronous sync() for swap files
 set swapsync=sync
 
+map <silent> <F8> :if exists(":BufExplorer")<Bar>exe "BufExplorer"<Bar>else<Bar>buffers<Bar>endif<CR>
+
 " NERD Tree binding
 nmap <F10> :NERDTreeToggle<CR>
 imap <F10> <C-O>:NERDTreeToggle<CR>
+
+" Turning paste mode on and off
+set pastetoggle=<F11>
 
 """ Keyboard mappings
 " Allow turning off highlighting
 " Note: overrides move down 1
 nmap <silent> <C-N> :silent noh<CR>
 
-" Turning paste mode on and off
-set pastetoggle=<F11>
 
 " Read in cscope files if they exist
 " FIXME: should make this run on loading C, C++ files
@@ -92,3 +95,5 @@ colorscheme solarized
 
 set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
+
+let mapleader="-"
