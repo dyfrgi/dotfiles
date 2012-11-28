@@ -27,3 +27,6 @@
 [submodule ".rbenv-plugins/rbenv-bundler"]
 	path = .rbenv-plugins/rbenv-bundler
 	url = https://github.com/carsomyr/rbenv-bundler.git
+[submodule ".vim/bundle/vim-bundler"]
+	path = .vim/bundle/vim-bundler
+	url = https://github.com/tpope/vim-bundler.git
