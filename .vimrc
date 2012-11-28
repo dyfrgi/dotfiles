@@ -89,3 +89,6 @@ endif
 " Set up colors
 set background=dark
 colorscheme solarized
+
+set laststatus=2
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
