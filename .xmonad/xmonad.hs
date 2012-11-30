@@ -1,17 +1,20 @@
 import XMonad
 import qualified XMonad.StackSet as W
 import XMonad.Actions.SpawnOn
+import XMonad.Actions.CycleWS
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.UrgencyHook
-import XMonad.Layout.NoBorders
-import XMonad.Layout.ResizableTile
-import XMonad.Layout.ThreeColumns
-import XMonad.Layout.Renamed
 import XMonad.Layout.Grid
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.NoBorders
 import XMonad.Layout.PerWorkspace
+import XMonad.Layout.Reflect
+import XMonad.Layout.Renamed
+import XMonad.Layout.ResizableTile
 import XMonad.Layout.Tabbed
+import XMonad.Layout.ThreeColumns
 import XMonad.Layout.WorkspaceDir
 import XMonad.Prompt
 import XMonad.Prompt.Workspace
@@ -30,12 +33,15 @@ main = do
             $ withUrgencyHook NoUrgencyHook
             $ myConfig dout
 
+myManageHook = composeAll . concat $ 
+                [ [ isFullscreen --> doFullFloat ]
+                , [ className =? "HipChat" <&&> isInProperty "_NET_WM_STATE" "_NET_WM_STATE_SKIP_TASKBAR" --> doIgnore ]
+                , [ manageDocks ]
+                ]
+
+
 myConfig h = defaultConfig {
-    manageHook = mconcat
-        [
-        isFullscreen --> doFullFloat 
-        , manageDocks
-        ]
+    manageHook = myManageHook
     , layoutHook = myLayout
     , logHook = myDynamicLog h
     , modMask = mod4Mask
@@ -55,6 +61,8 @@ myLayout =
     workspaceDir "~" $              -- start all workspaces in ~
     smartBorders $                  -- no borders on full-screen
     onWorkspace "chat" myThree $    -- use 3-column layout on chat desktop
+    mkToggle (single REFLECTX) $
+    mkToggle (single REFLECTY) $
 
     myGrid
     ||| myTall 
@@ -87,64 +95,76 @@ promptedGoto = workspacePrompt myXPConfig $ windows . W.greedyView
 promptedShift = workspacePrompt myXPConfig $ windows . W.shift
 
 myKeymap =
-      [ 
-        ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 3%+ unmute"),
-        ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 3%- unmute"),
-        ("<XF86AudioMute>", spawn "amixer -q set Master toggle"),
+      [ ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 3%+ unmute")
+      , ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 3%- unmute")
+      , ("<XF86AudioMute>", spawn "amixer -q set Master toggle")
         -- Run dmenu to launch programs
-        ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\""),
+      , ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
         -- Close the focused window
-        ("M-S-c", kill),
+      , ("M-S-c", kill)
         -- Switch to the next layout
-        ("M-<Space>", sendMessage NextLayout),
-        ("M-S-<Space>", setLayout $ Layout myLayout),
+      , ("M-<Space>", sendMessage NextLayout)
+      , ("M-S-<Space>", setLayout $ Layout myLayout)
 
         -- Focus the next window
-        ("M-n", windows W.focusDown),
+      , ("M-n", windows W.focusDown)
         -- Focus the previous window
-        ("M-t", windows W.focusUp),
+      , ("M-t", windows W.focusUp)
 
         -- Swap the focused window with the next window
-        ("M-S-n", windows W.swapDown),
+      , ("M-S-n", windows W.swapDown)
         -- Swap the focused window with the previous window
-        ("M-S-t", windows W.swapUp),
+      , ("M-S-t", windows W.swapUp)
 
         -- Shrink the master window
-        ("M-c", sendMessage Shrink),
+      , ("M-c", sendMessage Shrink)
         -- Expand the master window
-        ("M-r", sendMessage Expand),
+      , ("M-r", sendMessage Expand)
 
         -- Increment the number of windows in the master area
-        ("M-l", sendMessage (IncMasterN 1)),
+      , ("M-l", sendMessage (IncMasterN 1))
         -- Decrement the number of windows in the master area
-        ("M-/", sendMessage (IncMasterN (-1))),
+      , ("M-/", sendMessage (IncMasterN (-1)))
 
         -- Focus urgent window
-        ("M-a", focusUrgent),
+      , ("M-a", focusUrgent)
 
         -- Swap the focused window and the master window
-        ("M-m", windows W.swapMaster),
+      , ("M-m", windows W.swapMaster)
 
-        ("M-g", promptedGoto),
-        ("M-S-g", promptedShift),
+      , ("M-g", promptedGoto)
+      , ("M-S-g", promptedShift)
         
         -- Quit
-        ("M-S-q", io (exitWith ExitSuccess)),
+      , ("M-S-q", io (exitWith ExitSuccess))
         -- Restart xmonad
-        ("M-q", restart "xmonad" True),
+      , ("M-q", restart "xmonad" True)
         
         -- Start a terminal
-        ("M-<Return>", safeSpawn "urxvt" []),
+      , ("M-<Return>", safeSpawn "urxvt" [])
 
         -- Push the focused window back into tiling
-        ("M-w t", withFocused $ windows . W.sink),
+      , ("M-w t", withFocused $ windows . W.sink)
         -- Change the working dir of the current workspace
-        ("M-w c", changeDir defaultXPConfig),
+      , ("M-w c", changeDir defaultXPConfig)
         -- Turn off avoiding the toolbar
-        ("M-w m", sendMessage $ ToggleStrut U),
-        ("M-w r", sendMessage $ ToggleStrut R),
+      , ("M-w m", sendMessage $ ToggleStrut U)
+      , ("M-w r", sendMessage $ ToggleStrut R)
 
-        ("M-w s", spawn "import -window root ~/screenshots/shot.png")
+        -- Toggle left/right top/bottom reflection of layouts
+      , ("M-w x", sendMessage $ Toggle REFLECTX)
+      , ("M-w y", sendMessage $ Toggle REFLECTY)
+
+      , ("M-w s", spawn "import -window root ~/screenshots/shot.png")
+
+      , ("M-<Pause>", spawn "gnome-screensaver-command -l")
+
+        -- Workspace cycling
+      , ("M-s", nextWS)
+      , ("M-h", prevWS)
+      , ("M-S-s", shiftToNext)
+      , ("M-S-h", shiftToPrev)
+      , ("M-z", toggleWS)
       ]
       -- Move between workspaces, move windows between workspaces
       ++
