@@ -11,7 +11,7 @@ setopt inc_append_history
 setopt no_check_jobs
 setopt no_hup
 setopt nobeep
-setopt nomatch
+unsetopt nomatch
 setopt pushd_ignore_dups
 setopt pushd_minus
 setopt pushd_silent
