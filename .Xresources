@@ -17,6 +17,12 @@ XTerm*termName: xterm-256color
 XTerm*saveLines: 4096
 XTerm*bellIsUrgent: true
 
+! Do not scroll down when something comes on the screen
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+! But do scroll to the bottom if I press a key (other than input to rxvt itself)
+URxvt.scrollTtyKeypress: true
+
 URxvt.reverseVideo: false
 URxvt.scrollBar: false
 URxvt.saveLines: 10000
