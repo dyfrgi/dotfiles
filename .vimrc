@@ -89,6 +89,8 @@ if has("cscope")
   set csverb
 endif
 
+autocmd VimResized * :wincmd =
+
 " Set up colors
 set background=dark
 colorscheme solarized
