@@ -42,4 +42,3 @@ alias hipchat="GNOME_DESKTOP_SESSION_ID=Default /opt/HipChat/bin/HipChat"
 function ss {
     du -s ${*:-*} | sort -n
 }
-
