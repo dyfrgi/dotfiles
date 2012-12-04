@@ -12,6 +12,7 @@ set autoindent          " turn on autoindenting
 set ruler               " show cursor position
 set number              " show line numbers
 set showmatch           " show matching brackets, parens, etc.
+set hlsearch            " hilight last searched
 
 " Make some messages shorter
 set shortmess=filnxToOI
