@@ -10,9 +10,11 @@ set backspace=indent,eol,start  " more flexible backspace
 
 set autoindent          " turn on autoindenting
 set ruler               " show cursor position
-set number              " show line numbers
+" set number              " show line numbers
 set showmatch           " show matching brackets, parens, etc.
 set hlsearch            " hilight last searched
+
+set foldmethod=marker   " allow folding with {{{,}}}
 
 " Make some messages shorter
 set shortmess=filnxToOI
@@ -100,3 +102,5 @@ set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
 
 let mapleader="-"
+
+let g:ctrlp_max_files = 30000
