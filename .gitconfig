@@ -2,7 +2,9 @@
 	name = Michael Leuchtenburg
 	email = michael@slashhome.org
 [merge]
-	tool = vimdiff
+	tool = vim
+[mergetool.vim]
+	cmd = vim \"+Gdiff\" $MERGED
 
 [alias]
   gl = log --pretty=format:'%C(yellow)%h%C(reset) | %an | %ar | %C(cyan)%s%C(reset)%d' --topo-order --graph --decorate
