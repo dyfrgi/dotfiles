@@ -1,1 +1,2 @@
+source ~/.rbenv/completions/rbenv.zsh
 eval "$(rbenv init -)"
