@@ -159,7 +159,7 @@ myKeymap =
 
       , ("M-w s", spawn "import -window root ~/screenshots/shot.png")
 
-      , ("M-<Pause>", spawn "gnome-screensaver-command -l")
+      , ("M-<Pause>", spawn "xscreensaver-command -lock")
 
         -- Workspace cycling
       , ("M-s", nextWS)
