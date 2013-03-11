@@ -67,7 +67,7 @@ set pastetoggle=<F11>
 """ Keyboard mappings
 " Allow turning off highlighting
 " Note: overrides move down 1
-nmap <silent> <C-N> :silent noh<CR>
+nmap <silent> <C-N> :silent nohlsearch<CR>
 
 
 " Read in cscope files if they exist
