@@ -1,2 +1,2 @@
-source ~/.rbenv/completions/rbenv.zsh
-eval "$(rbenv init -)"
+[ -e ~/.rbenv/bin/rbenv ] && eval "$(rbenv init --no-rehash -)"
+(rbenv rehash &) 2> /dev/null
