@@ -36,7 +36,6 @@ alias rs="rsync -essh -rtpvz"
 alias mmv='noglob zmv -W'
 alias alsamixer='alsamixer -V all'
 alias mtr='mtr --curses'
-alias hipchat="GNOME_DESKTOP_SESSION_ID=Default /opt/HipChat/bin/HipChat"
 
 # Show the size of the arguments, sorted by size
 function ss {
