@@ -15,3 +15,5 @@
 
 [include]
   path=~/.git.private
+[core]
+	excludesfile = ~/.gitignore_global
