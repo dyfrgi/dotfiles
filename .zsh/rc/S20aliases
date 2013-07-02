@@ -28,14 +28,16 @@ case $HOSTV in
         ;;
 esac
 
+alias aliases='vim ~/.zsh/rc/S20aliases'
+alias alsamixer='alsamixer -V all'
+alias be='bundle exec'
 alias dh="dirs -v"
-alias ll="ls -l"
 alias la="ls -a"
 alias lla="ls -la"
-alias rs="rsync -essh -rtpvz"
+alias ll="ls -l"
 alias mmv='noglob zmv -W'
-alias alsamixer='alsamixer -V all'
 alias mtr='mtr --curses'
+alias rs="rsync -essh -rtpvz"
 
 # Show the size of the arguments, sorted by size
 function ss {
