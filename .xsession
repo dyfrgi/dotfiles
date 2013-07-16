@@ -32,5 +32,9 @@ if [ -f ~/.Xauthority ]; then
   export XAUTHORITY=$HOME/.Xauthority
 fi
 
+# Set the repeat rate for the keyboard
+# xset r rate [delay [repeats/second]]
+xset r rate 200 60
+
 # start the window manager
 exec xmonad
