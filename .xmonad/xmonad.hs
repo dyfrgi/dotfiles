@@ -3,6 +3,7 @@ import qualified XMonad.StackSet as W
 import XMonad.Actions.SpawnOn
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.UrgencyHook
@@ -28,20 +29,22 @@ import Control.Monad
 
 main = do
         dout <- spawnPipe "dzen2 -ta l -w 1312 -e 'onstart=lower'"
-        --tout <- spawnPipe "trayer --tint 0x000000 --SetDockType true --SetPartialStrut true --widthtype pixel --width 128 --edge top --align right"
         xmonad
             $ withUrgencyHook NoUrgencyHook
+            $ ewmh
             $ myConfig dout
 
-myManageHook = composeAll . concat $ 
-                [ [ isFullscreen --> doFullFloat ]
-                , [ className =? "HipChat" <&&> isInProperty "_NET_WM_STATE" "_NET_WM_STATE_SKIP_TASKBAR" --> doIgnore ]
-                , [ manageDocks ]
+--                [ className =? "HipChat" <&&> isInProperty "_NET_WM_STATE" "_NET_WM_STATE_SKIP_TASKBAR" --> doIgnore
+myManageHook = composeAll
+                [ manageDocks
+                , isFullscreen --> doFullFloat
+--                , className =? "mplayer2" --> doFloat
                 ]
 
 
 myConfig h = defaultConfig {
     manageHook = myManageHook
+    , handleEventHook = fullscreenEventHook
     , layoutHook = myLayout
     , logHook = myDynamicLog h
     , modMask = mod4Mask
