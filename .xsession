@@ -34,7 +34,7 @@ fi
 
 # Set the repeat rate for the keyboard
 # xset r rate [delay [repeats/second]]
-xset r rate 200 60
+xset r rate 250 50
 
 # start the window manager
 exec xmonad
