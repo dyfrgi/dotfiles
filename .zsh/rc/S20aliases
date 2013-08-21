@@ -38,6 +38,7 @@ alias ll="ls -l"
 alias mmv='noglob zmv -W'
 alias mtr='mtr --curses'
 alias rs="rsync -essh -rtpvz"
+alias hgrep="history 1 | grep"
 
 # Show the size of the arguments, sorted by size
 function ss {
