@@ -40,6 +40,8 @@ alias mtr='mtr --curses'
 alias rs="rsync -essh -rtpvz"
 alias hgrep="history 1 | grep"
 alias gcam="git commit -a -m"
+alias gcm="git commit -m"
+alias gc="git commit"
 
 # Show the size of the arguments, sorted by size
 function ss {
