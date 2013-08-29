@@ -1,5 +1,0 @@
-# from http://getintothis.com/blog/2012/04/02/git-grep-and-blame-bash-function/
-
-ggb() {
-    git grep -n $1 | while IFS=: read i j k; do git --no-pager blame -L $j,$j $i; done
-}
