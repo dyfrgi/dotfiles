@@ -36,3 +36,9 @@
 [submodule ".rbenv-plugins/ruby-build"]
 	path = .rbenv-plugins/ruby-build
 	url = git://github.com/sstephenson/ruby-build.git
+[submodule ".rbenv-plugins/rbenv-default-gems"]
+	path = .rbenv-plugins/rbenv-default-gems
+	url = https://github.com/sstephenson/rbenv-default-gems.git
+[submodule ".rbenv-plugins/gem-ctags"]
+	path = .rbenv-plugins/gem-ctags
+	url = https://github.com/tpope/gem-ctags.git
