@@ -17,3 +17,5 @@
   path=~/.git.private
 [core]
 	excludesfile = ~/.gitignore_global
+[push]
+	default = upstream
