@@ -39,11 +39,13 @@ alias mmv='noglob zmv -W'
 alias mtr='mtr --curses'
 alias rs="rsync -essh -rtpvz"
 alias hgrep="history 1 | grep"
-alias gcam="git commit -a -m"
-alias gcm="git commit -m"
 alias gc="git commit"
+alias gca="git commit -a"
+alias gcm="git commit -m"
+alias gcam="git commit -a -m"
 alias gd="git diff"
 alias gdc="git diff --cached"
+alias gg="git grep"
 
 # Show the size of the arguments, sorted by size
 function ss {
