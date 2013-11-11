@@ -1,7 +1,19 @@
 set nocompatible        " Use vim defaults instead of vi compatibility
+filetype off
 
-call pathogen#infect()
-call pathogen#helptags()
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-bundler'
+Bundle 'kien/ctrlp.vim'
 
 syntax on               " turn on syntax hilighting
 filetype plugin indent on " for Vundle
