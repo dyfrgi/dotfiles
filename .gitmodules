@@ -42,3 +42,6 @@
 [submodule ".rbenv-plugins/gem-ctags"]
 	path = .rbenv-plugins/gem-ctags
 	url = https://github.com/tpope/gem-ctags.git
+[submodule ".vim/bundle/vundle"]
+	path = .vim/bundle/vundle
+	url = https://github.com/gmarik/vundle
