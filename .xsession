@@ -4,8 +4,14 @@
 xrdb -merge .Xresources
 
 # NOTE: May need to explicitly set SSH_ASKPASS
-# Load up my SSH key
-ssh-add ~/.ssh/id_dsa
+# Load up my SSH keys
+ssh_add_if_exists () {
+  [[ -f $1 ]] && ssh-add $1
+}
+ssh_keys=(~/.ssh/id_dsa ~/.ec2_backupify/backupify.pem ~/.ec2_backupifydev/backupifydev.pem ~/.ec2_pegasus/pegasus.pem)
+for key in $ssh_keys do
+  ssh_add_if_exists $key
+done
 
 # Set up an icon tray
 #trayion &
