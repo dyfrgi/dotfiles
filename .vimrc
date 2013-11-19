@@ -115,4 +115,5 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
 
 let mapleader="-"
 
-let g:ctrlp_max_files = 30000
+let g:ctrlp_max_files = 30000     " show more files in very large directories
+let g:ctrlp_switch_buffer = ''    " don't jump to already open buffers
