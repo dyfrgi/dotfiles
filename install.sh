@@ -17,3 +17,15 @@ done
 
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 vim -u ~/.vimrc.bundles +BundleInstall +qa
+
+# install rbenv
+git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+
+# install rbenv plugins
+mkdir ~/.rbenv-plugins
+git clone https://github.com/carsomyr/rbenv-bundler.git ~/.rbenv-plugins/rbenv-bundler
+git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv-plugins/ruby-build.git
+git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv-plugins/rbenv-default-gems
+git clone https://github.com/tpope/gem-ctags.git ~/.rbenv-plugins/gem-ctags
+
+ln -s ~/.rbenv-plugins ~/.rbenv/plugins
