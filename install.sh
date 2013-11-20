@@ -25,7 +25,9 @@ git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
 mkdir ~/.rbenv-plugins
 git clone https://github.com/carsomyr/rbenv-bundler.git ~/.rbenv-plugins/rbenv-bundler
 git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv-plugins/ruby-build.git
-git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv-plugins/rbenv-default-gems
 git clone https://github.com/tpope/gem-ctags.git ~/.rbenv-plugins/gem-ctags
+
+git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv-plugins/rbenv-default-gems
+echo "bundler\ngem-ctags" > ~/.rbenv/default-gems
 
 ln -s ~/.rbenv-plugins ~/.rbenv/plugins
