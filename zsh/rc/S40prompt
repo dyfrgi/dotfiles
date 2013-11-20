@@ -18,18 +18,21 @@ default="%{$reset_color%}"
 FMT_BRANCH="${green}%b%u%c${default}" # e.g. master¹²
 FMT_ACTION="(${blue}%a${default}%)"   # e.g. (rebase-i)
 FMT_PATH="%R${}/%S"              # e.g. ~/repo/subdir
+lb="${blue}["
+rb="${blue}]"
 
 # check-for-changes can be kind of expensive, may want to disable for big repos
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr   '¹'  # display ¹ if there are unstaged changes
 zstyle ':vcs_info:*' stagedstr     '²'  # display ² if there are staged changes
-zstyle ':vcs_info:*' actionformats "${FMT_BRANCH}${FMT_ACTION}" "${FMT_PATH}"
-zstyle ':vcs_info:*' formats       "${FMT_BRANCH}"              "${FMT_PATH}"
+zstyle ':vcs_info:*' actionformats "$lb${FMT_BRANCH}${FMT_ACTION}$rb"
+zstyle ':vcs_info:*' formats       "$lb${FMT_BRANCH}$rb"
 zstyle ':vcs_info:*' nvcsformats   ""                             "%~"
 zstyle ':vcs_info:*' enable git svn
 
-# PROMPT in single quotes so that it evaluates ${vcs_info_msg_0_} on display, not on set
-PROMPT='${blue}[$cyan%(!.ROOT.%n)$green@$cyan%m$green:$cyan%~$blue]${blue}[${vcs_info_msg_0_}${blue}]%(0#.$red#$default.$default%%) '
+# PROMPT will have variables substituted on display, not on set due to prompt_subst
+VCS_PROMPT='${vcs_info_msg_0_}'
+PROMPT="${blue}[$cyan%(!.ROOT.%n)$green@$cyan%m$green:$cyan%~$blue]$VCS_PROMPT%(0#.$red#$default.$default%%) "
 RPROMPT="%(?..[$red%?$default])[$cyan%*$default]"
 
 function title () {
