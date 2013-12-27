@@ -61,7 +61,7 @@ myConfig h = defaultConfig {
 
 myLayout = 
     avoidStrutsOn [U] $             -- don't map windows over docks, etc.
-    workspaceDir "~" $              -- start all workspaces in ~
+    workspaceDir "/home/dyfrgi" $              -- start all workspaces in ~
     smartBorders $                  -- no borders on full-screen
 --    onWorkspace "chat" myThree $    -- use 3-column layout on chat desktop
     mkToggle (single REFLECTX) $
