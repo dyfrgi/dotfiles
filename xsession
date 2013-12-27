@@ -9,7 +9,7 @@ ssh_add_if_exists () {
   [[ -f $1 ]] && ssh-add $1
 }
 ssh_keys=(~/.ssh/id_dsa ~/.ec2_backupify/backupify.pem ~/.ec2_backupifydev/backupifydev.pem ~/.ec2_pegasus/pegasus.pem)
-for key in $ssh_keys do
+for key in $ssh_keys; do
   ssh_add_if_exists $key
 done
 
