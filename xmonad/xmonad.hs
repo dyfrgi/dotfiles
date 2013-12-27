@@ -63,7 +63,7 @@ myLayout =
     avoidStrutsOn [U] $             -- don't map windows over docks, etc.
     workspaceDir "~" $              -- start all workspaces in ~
     smartBorders $                  -- no borders on full-screen
-    onWorkspace "chat" myThree $    -- use 3-column layout on chat desktop
+--    onWorkspace "chat" myThree $    -- use 3-column layout on chat desktop
     mkToggle (single REFLECTX) $
     mkToggle (single REFLECTY) $
 
@@ -104,7 +104,7 @@ myKeymap =
       , ("M-<F12>", spawn "amixer -q set Master 3%+ unmute")
       , ("<XF86AudioMute>", spawn "amixer -q set Master toggle")
         -- Run dmenu to launch programs
-      , ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+      , ("M-p", spawn "dmenu_run")
         -- Close the focused window
       , ("M-S-c", kill)
         -- Switch to the next layout
