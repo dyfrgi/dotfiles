@@ -28,7 +28,7 @@ case $HOSTV in
         ;;
 esac
 
-alias aliases='vim ~/.zsh/rc/S20aliases'
+alias aliases='vim ~/.zsh/rc/S20aliases && source ~/.zsh/rc/S20aliases'
 alias alsamixer='alsamixer -V all'
 alias be='bundle exec'
 alias dh="dirs -v"
@@ -46,6 +46,7 @@ alias gcam="git commit -a -m"
 alias gd="git diff"
 alias gdc="git diff --cached"
 alias gg="git grep"
+alias irc="ssh -t sjc.foonetic.net tmux attach"
 
 # Show the size of the arguments, sorted by size
 function ss {

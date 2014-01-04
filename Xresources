@@ -37,7 +37,6 @@ URxvt.urlLauncher: sensible-browser
 URxvt.matcher.button: 1
 URxvt.bell-command: aplay -q ~/.etc/sounds/beep1.wav
 URxvt.urgentOnBell: true
-URxvt.termName: rxvt-unicode
 
 ! Solarized color scheme for the X Window System
 !
