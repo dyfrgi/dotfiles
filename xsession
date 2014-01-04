@@ -42,5 +42,8 @@ fi
 # xset r rate [delay [repeats/second]]
 xset r rate 250 50
 
+# 1:1 mouse movement
+xset m 1/1
+
 # start the window manager
 exec xmonad
