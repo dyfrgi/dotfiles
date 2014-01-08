@@ -35,39 +35,31 @@ VCS_PROMPT='${vcs_info_msg_0_}'
 PROMPT="${blue}[$cyan%(!.ROOT.%n)$green@$cyan%m$green:$cyan%~$blue]$VCS_PROMPT%(0#.$red#$default.$default%%) "
 RPROMPT="%(?..[$red%?$default])[$cyan%*$default]"
 
-function title () {
-    local CMD=$1
-    local ARGS=$2
+function title {
+    local SHORT=$1
+    local LONG=$2
 
     case $TERM in
-	xterm*) ;&
-	rxvt*)
-        print -nP "\e]2;"
-        print -nP "${CMD:+ $CMD $ARGS : }"
-        print -nP "%n@%m:%~"
-        print -nP "\a"
-    ;;
-	screen)
-        print -nP "\e\"${CMD:-%~}\e\\"
-        print -nP "\e_"
-        print -nP "#$WINDOW : ${CMD:+ $CMD : }%n@%m:%~"
-        print -nP "\e\\"
-    ;;
-	*)
-	    TITLEBAR=''
-    ;;
+      xterm*) ;&
+      rxvt*)
+        print -nP "\e]2;$LONG:q\a"  # set windowo title
+        print -nP "\e]1;$SHORT:q\a" # set icon name
+      ;;
+      screen*)
+        print -nP "\ek$SHORT:q\e\\"
+      ;;
     esac
 }
 
 function preexec() {
-    local -a cmd
-    cmd=(${(z)1})
-
-    title $cmd[1] "$cmd[2,-1]"
+    local CMD=${1[(wr)^(*=*|sudo|ssh|rake|-*)]} #cmd name only, or if this is sudo or ssh, the next cmd
+    local LINE="${2:gs/$/\\$}"  # cmd with args, escaping $
+    LINE="${LINE:gs/%/%%}"  # escape % also
+    title $CMD $LINE
 }
 
 function precmd() {
-    title
+    title "%m:%~" "%m:%~"
     vcs_info
 }
 
