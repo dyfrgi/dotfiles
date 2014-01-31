@@ -47,6 +47,7 @@ alias gd="git diff"
 alias gdc="git diff --cached"
 alias gg="git grep"
 alias irc="ssh -t sjc.foonetic.net tmux attach -d"
+alias beep="printf '\a'"
 
 # Show the size of the arguments, sorted by size
 function ss {
