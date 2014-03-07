@@ -12,5 +12,5 @@ First, install homeshick:
     # open a new shell
 
 Next, clone this repo and link:
-    homeshick clone dyfrgi/dotfiles
+    homeshick clone git@github.com:dyfrgi/dotfiles.git
     homeshick link
