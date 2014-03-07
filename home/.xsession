@@ -13,11 +13,6 @@ for key in $ssh_keys; do
   ssh_add_if_exists $key
 done
 
-# Set up an icon tray
-#trayion &
-# trayer, tint is tuned to match default dzen2 background in appearance
-trayer --heighttype pixel --height 20 --widthtype pixel --width 128 --align right --transparent true --tint 0x222222 --edge top --SetDockType true --SetPartialStrut true &
-
 # Network manager
 #nm-applet &
 # PolicyKit Authentication Agent (needed for network-manager)

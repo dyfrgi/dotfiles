@@ -22,17 +22,19 @@ import XMonad.Prompt.Workspace
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
 import XMonad.Util.Loggers
+import DBus.Client
+import System.Taffybar.XMonadLog
 import System.Exit
 import System.IO
 import Data.Monoid
 import Control.Monad
 
 main = do
-        dout <- spawnPipe "dzen2 -ta l -w 1312 -e 'onstart=lower'"
+        dbusclient <- connectSession
         xmonad
             $ withUrgencyHook NoUrgencyHook
             $ ewmh
-            $ myConfig dout
+            $ myConfig dbusclient
 
 --                [ className =? "HipChat" <&&> isInProperty "_NET_WM_STATE" "_NET_WM_STATE_SKIP_TASKBAR" --> doIgnore
 myManageHook = composeAll
@@ -42,11 +44,11 @@ myManageHook = composeAll
                 ]
 
 
-myConfig h = defaultConfig {
+myConfig dbusclient = defaultConfig {
     manageHook = myManageHook
     , handleEventHook = fullscreenEventHook
     , layoutHook = myLayout
-    , logHook = myDynamicLog h
+    , logHook = myDynamicLog dbusclient
     , modMask = mod4Mask
     , workspaces = myWorkspaces
     , borderWidth = 2
@@ -55,8 +57,8 @@ myConfig h = defaultConfig {
     , focusedBorderColor = "#dd9b22"
     , keys = \c -> mkKeymap c $ myKeymap
     , startupHook = do
-        return () -- supposedly to avoid inf. loops with checkKeymap
-        checkKeymap (myConfig h) myKeymap
+        return () -- extra laziness to avoid infinite loops
+        checkKeymap (myConfig dbusclient) myKeymap
 }
 
 myLayout = 
@@ -182,16 +184,26 @@ myKeymap =
         | (key, sc) <- zip "',." [0..]
         , (f, m) <- [(W.view, ""), (W.shift, "S-")]]
 
-myDynamicLog h = dynamicLogWithPP $ dzenPP
-    { ppExtras  = map padL
-                  [ date "%c"
-                  , loadAvg
-                  , battery ]
-    , ppOrder   = \(ws:l:t:exs) -> [ws,t,l]++exs
-    , ppOutput  = hPutStrLn h
-    , ppHidden  = dzenColor "black"     "#a8a3f7" . pad
-    , ppCurrent = dzenColor "yellow"    "#a8a3f7" . pad
-    , ppSep     = ""
-    , ppWsSep   = ""
-    , ppTitle   = dzenColor "white"     "#383387" . shorten 70 . dzenEscape . pad
-    }
+myPP :: PP
+myPP = taffybarDefaultPP
+  { ppHiddenNoWindows = const ""
+  , ppCurrent = taffybarColor "yellow"  "#a8a3f7" . pad
+  , ppHidden  = taffybarColor "black"   "#a8a3f7" . pad
+  , ppUrgent  = taffybarColor "red"     "yellow"  . pad
+  , ppWsSep   = ""
+  }
+myDynamicLog dbusclient = dbusLogWithPP dbusclient myPP
+
+--myDynamicLog h = dynamicLogWithPP $ dzenPP
+--    { ppExtras  = map padL
+--                  [ date "%c"
+--                  , loadAvg
+--                  , battery ]
+--    , ppOrder   = \(ws:l:t:exs) -> [ws,t,l]++exs
+--    , ppOutput  = hPutStrLn h
+--    , ppHidden  = dzenColor "black"     "#a8a3f7" . pad
+--    , ppCurrent = dzenColor "yellow"    "#a8a3f7" . pad
+--    , ppSep     = ""
+--    , ppWsSep   = ""
+--    , ppTitle   = dzenColor "white"     "#383387" . shorten 70 . dzenEscape . pad
+--    }
