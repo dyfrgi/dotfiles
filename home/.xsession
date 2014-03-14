@@ -8,19 +8,20 @@ xrdb -merge .Xresources
 ssh_add_if_exists () {
   [[ -f $1 ]] && ssh-add $1
 }
-ssh_keys=(~/.ssh/id_dsa ~/.ec2_backupify/backupify.pem ~/.ec2_backupifydev/backupifydev.pem ~/.ec2_pegasus/pegasus.pem)
+ssh_keys=(~/.ssh/id_rsa ~/.ssh/id_dsa ~/.ec2_backupify/backupify.pem ~/.ec2_backupifydev/backupifydev.pem ~/.ec2_pegasus/pegasus.pem)
 for key in $ssh_keys; do
   ssh_add_if_exists $key
 done
 
-# Network manager
-#nm-applet &
 # PolicyKit Authentication Agent (needed for network-manager)
-# /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
-wicd-client &
+# NOTE: May be replaceable with /usr/lib/policykit-1/polkitd; investigate
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+# Network manager
+nm-applet &
+#wicd-client &
 
-# Notification daemon
-/usr/lib/notification-daemon/notification-daemon & # backgrounds itself, but background just in case this changes, etc.
+# Notification popups
+/usr/lib/notify-osd/notify-osd & # backgrounds itself, but background just in case this changes, etc.
 
 # Set up scroll emulation
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
