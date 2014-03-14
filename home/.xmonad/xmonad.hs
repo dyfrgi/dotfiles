@@ -2,6 +2,7 @@ import XMonad
 import qualified XMonad.StackSet as W
 import XMonad.Actions.SpawnOn
 import XMonad.Actions.CycleWS
+import XMonad.Actions.PhysicalScreens
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
@@ -63,7 +64,7 @@ myConfig dbusclient = defaultConfig {
 
 myLayout = 
     avoidStrutsOn [U] $             -- don't map windows over docks, etc.
-    workspaceDir "/home/dyfrgi" $              -- start all workspaces in ~
+    workspaceDir "~" $              -- start all workspaces in ~
     smartBorders $                  -- no borders on full-screen
 --    onWorkspace "chat" myThree $    -- use 3-column layout on chat desktop
     mkToggle (single REFLECTX) $
@@ -180,9 +181,9 @@ myKeymap =
           (f, m) <- [(W.greedyView, ""), (W.shift, "S-")]]
       -- Move between screens
       ++
-      [("M-" ++ m ++ [key], screenWorkspace sc >>= flip whenJust (windows . f))
+      [("M-" ++ m ++ [key], f sc)
         | (key, sc) <- zip "',." [0..]
-        , (f, m) <- [(W.view, ""), (W.shift, "S-")]]
+        , (f, m) <- [(viewScreen, ""), (sendToScreen, "S-")]]
 
 myPP :: PP
 myPP = taffybarDefaultPP
