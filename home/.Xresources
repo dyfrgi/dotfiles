@@ -28,15 +28,18 @@ URxvt.scrollBar: false
 URxvt.saveLines: 10000
 URxvt.fading: 10
 URxvt.visualBell: false
-URxvt.font: xft:terminus:pixelsize=12,xft:unifont
+URxvt.font: xft:terminus:pixelsize=13,xft:unifont
 URxvt.underlineURLs: true
 !URxvt.perl-lib: /home/davean/.urxvt-perl/
 !URxvt.perl-ext-common: url-select
-URxvt.perl-ext-common: default,bell-command,matcher
+URxvt.perl-ext-common: default,bell-command,matcher,font-size
 URxvt.urlLauncher: sensible-browser
 URxvt.matcher.button: 1
 URxvt.bell-command: aplay -q ~/.etc/sounds/beep1.wav
 URxvt.urgentOnBell: true
+URxvt.keysym.C-Up:    perl:font-size:increase
+URxvt.keysym.C-Down:  perl:font-size:decrease
+
 
 ! Solarized color scheme for the X Window System
 !

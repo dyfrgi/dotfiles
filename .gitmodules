@@ -1,3 +1,6 @@
 [submodule "home/.vim/bundle/vundle"]
 	path = vundle
 	url = https://github.com/gmarik/vundle
+[submodule "urxvt-font-size"]
+	path = urxvt-font-size
+	url = https://github.com/majutsushi/urxvt-font-size
