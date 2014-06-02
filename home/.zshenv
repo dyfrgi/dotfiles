@@ -12,6 +12,9 @@ path=(~/.cabal/bin ~/bin /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /u
 # Add a custom directory for completion scripts
 fpath=(~/.zsh/Completion $fpath)
 
+export CC="ccache gcc"
+export CXX="ccache g++"
+
 export EDITOR=vim
 export VISUAL=vim
 export MAILER=icedove
@@ -22,6 +25,8 @@ export LESS="-iM"
 export MPD_HOST=fnord:@goose
 export MPD_PORT=6600
 export VNC_VIA_CMD="/usr/bin/ssh -o 'ControlPath=/dev/nonexistant' -o 'ControlMaster=no' -f -L %L:%H:%R %G sleep 20"
+
+export SVNROOT="svn+ssh://svn/repos/"
 
 # make -j3 by default, for make-kpkg (others?)
 export CONCURRENCY_LEVEL=3
