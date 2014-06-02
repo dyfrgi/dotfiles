@@ -24,8 +24,8 @@ set shortmess=filnxToOI
 " Also disable left scrollbar due to flickery redraw when using tabs
 set guioptions=agirte
 
-" set GUI font to Bitstream Vera Sans Mono 9
-set guifont=DejaVu\ Sans\ Mono\ 8
+" set font for gvim
+set guifont=DejaVu\ Sans\ Mono\ 6
 
 " Always show tab-line
 set showtabline=2
@@ -40,9 +40,9 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 
 " Make tabs as spaces, tabs are 4 spaces, 4 spaces is a tab, still 4 spaces
 set expandtab
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 " Search incrementally, ignoring case, unless there are caps
 set incsearch
@@ -106,3 +106,4 @@ let mapleader="-"
 
 let g:ctrlp_max_files = 200000     " show more files in very large directories
 let g:ctrlp_switch_buffer = ''    " don't jump to already open buffers
+let g:ctrlp_root_markers = ['tags']
