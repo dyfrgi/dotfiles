@@ -53,4 +53,5 @@ main = do
   defaultTaffybar defaultTaffybarConfig { startWidgets = [ log, note ]
                                         , endWidgets = [ tray, wea, clock, net, mem, cpu ]
                                         , barHeight = 20
+                                        , monitorNumber = 1
                                         }
