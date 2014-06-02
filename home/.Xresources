@@ -23,6 +23,9 @@ URxvt.scrollWithBuffer: true
 ! But do scroll to the bottom if I press a key (other than input to rxvt itself)
 URxvt.scrollTtyKeypress: true
 
+! Do not use messed up colors for bold
+URxvt.intensityStyles: false
+
 URxvt.reverseVideo: false
 URxvt.scrollBar: false
 URxvt.saveLines: 10000
@@ -35,6 +38,7 @@ URxvt.underlineURLs: true
 URxvt.perl-ext-common: default,bell-command,matcher,font-size
 URxvt.urlLauncher: sensible-browser
 URxvt.matcher.button: 1
+URxvt.keysym.M-u: perl:matcher:list
 URxvt.bell-command: aplay -q ~/.etc/sounds/beep1.wav
 URxvt.urgentOnBell: true
 URxvt.keysym.C-Up:    perl:font-size:increase
@@ -110,3 +114,22 @@ URxvt.keysym.C-Down:  perl:font-size:decrease
 *color13:                 S_violet
 *color14:                 S_base1
 *color15:                 S_base3
+
+XTerm*vt100.background:              S_base03
+XTerm*vt100.foreground:              S_base0
+XTerm*vt100.color0:                  S_base02
+XTerm*vt100.color1:                  S_red
+XTerm*vt100.color2:                  S_green
+XTerm*vt100.color3:                  S_yellow
+XTerm*vt100.color4:                  S_blue
+XTerm*vt100.color5:                  S_magenta
+XTerm*vt100.color6:                  S_cyan
+XTerm*vt100.color7:                  S_base2
+XTerm*vt100.color9:                  S_orange
+XTerm*vt100.color8:                  S_base03
+XTerm*vt100.color10:                 S_base01
+XTerm*vt100.color11:                 S_base00
+XTerm*vt100.color12:                 S_base0
+XTerm*vt100.color13:                 S_violet
+XTerm*vt100.color14:                 S_base1
+XTerm*vt100.color15:                 S_base3
