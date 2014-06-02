@@ -14,5 +14,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-bundler'
 Bundle 'kien/ctrlp.vim'
+Bundle 'octol/vim-cpp-enhanced-highlight'
+Bundle 'rking/ag.vim'
 
 filetype on
