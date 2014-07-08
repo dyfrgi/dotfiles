@@ -25,6 +25,8 @@ NeoBundle 'bronson/vim-trailing-whitespace'     " highlight trailing whitespace
 
 NeoBundle 'mhinz/vim-signify'                   " Use sign column to show VCS changes
 
+NeoBundle 'Shougo/unite.vim'                    " Unite search and display plugin
+
 call neobundle#end()
 
 " Required:
