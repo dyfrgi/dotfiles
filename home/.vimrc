@@ -1,8 +1,6 @@
 set nocompatible        " Use vim defaults instead of vi compatibility
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
+source ~/.vim/plugins.vim
 
 syntax on               " turn on syntax hilighting
 filetype plugin indent on
