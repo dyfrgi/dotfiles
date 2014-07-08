@@ -29,13 +29,15 @@ import System.Exit
 import System.IO
 import Data.Monoid
 import Control.Monad
+import System.Directory (getHomeDirectory)
 
 main = do
+        homedir <- getHomeDirectory
         dbusclient <- connectSession
         xmonad
             $ withUrgencyHook NoUrgencyHook
             $ ewmh
-            $ myConfig dbusclient
+            $ myConfig dbusclient homedir
 
 --                [ className =? "HipChat" <&&> isInProperty "_NET_WM_STATE" "_NET_WM_STATE_SKIP_TASKBAR" --> doIgnore
 myManageHook = composeAll
@@ -45,10 +47,10 @@ myManageHook = composeAll
                 ]
 
 
-myConfig dbusclient = defaultConfig {
+myConfig dbusclient homedir = defaultConfig {
     manageHook = myManageHook
     , handleEventHook = fullscreenEventHook
-    , layoutHook = myLayout
+    , layoutHook = myLayout homedir
     , logHook = myDynamicLog dbusclient
     , modMask = mod4Mask
     , workspaces = myWorkspaces
@@ -56,15 +58,15 @@ myConfig dbusclient = defaultConfig {
     , terminal = "rxvt"
     , normalBorderColor = "#666677"
     , focusedBorderColor = "#dd9b22"
-    , keys = \c -> mkKeymap c $ myKeymap
+    , keys = \c -> mkKeymap c $ myKeymap homedir
     , startupHook = do
         return () -- extra laziness to avoid infinite loops
-        checkKeymap (myConfig dbusclient) myKeymap
+        checkKeymap (myConfig dbusclient homedir) (myKeymap homedir)
 }
 
-myLayout = 
+myLayout homedir = 
     avoidStrutsOn [U] $             -- don't map windows over docks, etc.
-    workspaceDir "~" $              -- start all workspaces in ~
+    workspaceDir homedir $              -- start all workspaces in ~
     smartBorders $                  -- no borders on full-screen
 --    onWorkspace "chat" myThree $    -- use 3-column layout on chat desktop
     mkToggle (single REFLECTX) $
@@ -100,7 +102,7 @@ myWorkspaces =
 promptedGoto = workspacePrompt myXPConfig $ windows . W.greedyView
 promptedShift = workspacePrompt myXPConfig $ windows . W.shift
 
-myKeymap =
+myKeymap homedir =
       [ ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 3%+ unmute")
       , ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 3%- unmute")
       , ("M-<F11>", spawn "amixer -q set Master 3%- unmute")
@@ -112,7 +114,7 @@ myKeymap =
       , ("M-S-c", kill)
         -- Switch to the next layout
       , ("M-<Space>", sendMessage NextLayout)
-      , ("M-S-<Space>", setLayout $ Layout myLayout)
+      , ("M-S-<Space>", setLayout $ Layout $ myLayout homedir)
 
         -- Focus the next window
       , ("M-n", windows W.focusDown)
