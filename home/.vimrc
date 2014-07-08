@@ -56,10 +56,6 @@ set swapsync=""
 
 map <silent> <F8> :if exists(":BufExplorer")<Bar>exe "BufExplorer"<Bar>else<Bar>buffers<Bar>endif<CR>
 
-" NERD Tree binding
-nmap <F10> :NERDTreeToggle<CR>
-imap <F10> <C-O>:NERDTreeToggle<CR>
-
 " Turning paste mode on and off
 set pastetoggle=<F11>
 
