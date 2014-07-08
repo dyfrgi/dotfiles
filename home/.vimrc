@@ -54,15 +54,40 @@ set encoding=utf-8
 " Don't sync swap files
 set swapsync=""
 
+""" Keyboard mappings
 map <silent> <F8> :if exists(":BufExplorer")<Bar>exe "BufExplorer"<Bar>else<Bar>buffers<Bar>endif<CR>
 
 " Turning paste mode on and off
 set pastetoggle=<F11>
 
-""" Keyboard mappings
 " Allow turning off highlighting
 " Note: overrides move down 1
 nmap <silent> <C-N> :silent nohlsearch<CR>
+
+nnoremap <C-p> :Unite file_rec/async<CR>
+nmap <space> [unite]
+nnoremap [unite] <nop>
+
+nnoremap <silent> [unite]e :<C-u>Unite -buffer-name=recent file_mru<cr>
+nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<cr>
+nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks -no-start-insert history/yank<cr>
+
+function! s:unite_settings()
+    imap <buffer> <esc> <plug>(unite_exit)
+    nmap <buffer> <esc> <plug>(unite_exit)
+endfunction
+
+autocmd FileType unite call s:unite_settings()
+
+" Unite config
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_selecta'])
+call unite#set_profile('files', 'smartcase', 1)
+call unite#custom#profile('default', 'context', {
+            \ 'start_insert': 1
+            \ })
+let g:unite_prompt='» '
+let g:unite_source_history_yank_enable=1
 
 
 " Read in cscope files if they exist
@@ -92,6 +117,8 @@ autocmd VimResized * :wincmd =
 " Set up colors
 set background=dark
 colorscheme solarized
+" style SignColumn the same as LineNr
+highlight! link SignColumn LineNr
 
 set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P

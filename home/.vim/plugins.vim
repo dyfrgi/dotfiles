@@ -17,7 +17,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " git integration
 NeoBundle 'tpope/vim-fugitive', { 'augroup' : 'fugitive' }
 NeoBundle 'altercation/vim-colors-solarized'    " solarized color scheme
-NeoBundle 'kien/ctrlp.vim'                      " CtrlP file finder etc.
+" NeoBundle 'kien/ctrlp.vim'                      " CtrlP file finder etc.
 NeoBundle 'octol/vim-cpp-enhanced-highlight'    " Better C++ highlighting
 NeoBundle 'rking/ag.vim'                        " Ag grep replacement
 NeoBundle 'netrw.vim'                           " Latest netrw
@@ -25,7 +25,17 @@ NeoBundle 'bronson/vim-trailing-whitespace'     " highlight trailing whitespace
 
 NeoBundle 'mhinz/vim-signify'                   " Use sign column to show VCS changes
 
+NeoBundle 'Shougo/vimproc.vim', {
+        \ 'build' : {
+        \     'windows' : 'tools\\update-dll-mingw',
+        \     'cygwin' : 'make -f make_cygwin.mak',
+        \     'mac' : 'make -f make_mac.mak',
+        \     'unix' : 'make -f make_unix.mak',
+        \    },
+        \ }
 NeoBundle 'Shougo/unite.vim'                    " Unite search and display plugin
+" MRU support for Unite
+NeoBundleLazy 'Shougo/neomru.vim', {'autoload': {'unite_sources': 'file_mru'}}
 
 call neobundle#end()
 
