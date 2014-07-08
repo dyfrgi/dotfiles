@@ -53,8 +53,8 @@ set smartcase
 set termencoding=utf-8
 set encoding=utf-8
 
-" (Maybe) asynchronous sync() for swap files
-set swapsync=sync
+" Don't sync swap files
+set swapsync=""
 
 map <silent> <F8> :if exists(":BufExplorer")<Bar>exe "BufExplorer"<Bar>else<Bar>buffers<Bar>endif<CR>
 
