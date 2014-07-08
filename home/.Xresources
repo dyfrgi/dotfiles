@@ -31,7 +31,8 @@ URxvt.scrollBar: false
 URxvt.saveLines: 10000
 URxvt.fading: 10
 URxvt.visualBell: false
-URxvt.font: xft:terminus:pixelsize=13,xft:unifont
+URxvt.font: xft:terminus:pixelsize=12,xft:unifont
+URxvt.boldFont: xft:terminus:bold:pixelsize=12
 URxvt.underlineURLs: true
 !URxvt.perl-lib: /home/davean/.urxvt-perl/
 !URxvt.perl-ext-common: url-select
