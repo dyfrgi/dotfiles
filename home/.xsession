@@ -41,5 +41,8 @@ xset r rate 250 50
 # 1:1 mouse movement
 xset m 1/1
 
+# composition manager
+compton -b
+
 # start the window manager
 exec xmonad
