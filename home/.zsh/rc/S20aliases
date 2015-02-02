@@ -53,3 +53,8 @@ alias beep="printf '\a'"
 function ss {
     du -s ${*:-*} | sort -n
 }
+
+# Check version of Vertica RPM
+function check_rpm_version {
+    rpm2cpio $1 | cpio -i --to-stdout ./opt/vertica/sdk/include/BuildInfo.h
+}
