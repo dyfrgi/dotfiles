@@ -28,7 +28,7 @@ URxvt.intensityStyles: false
 
 URxvt.reverseVideo: false
 URxvt.scrollBar: false
-URxvt.saveLines: 10000
+URxvt.saveLines: 100000
 URxvt.fading: 10
 URxvt.visualBell: false
 URxvt.font: xft:terminus:pixelsize=12,xft:unifont
