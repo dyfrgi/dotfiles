@@ -4,7 +4,7 @@ import XMonad.Actions.SpawnOn
 import XMonad.Actions.CycleWS
 import XMonad.Actions.PhysicalScreens
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.UrgencyHook
@@ -23,8 +23,7 @@ import XMonad.Prompt.Workspace
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
 import XMonad.Util.Loggers
-import DBus.Client
-import System.Taffybar.XMonadLog
+import System.Taffybar.Hooks.PagerHints (pagerHints)
 import System.Exit
 import System.IO
 import Data.Monoid
@@ -33,11 +32,11 @@ import System.Directory (getHomeDirectory)
 
 main = do
         homedir <- getHomeDirectory
-        dbusclient <- connectSession
         xmonad
             $ withUrgencyHook NoUrgencyHook
             $ ewmh
-            $ myConfig dbusclient homedir
+            $ pagerHints
+            $ myConfig homedir
 
 --                [ className =? "HipChat" <&&> isInProperty "_NET_WM_STATE" "_NET_WM_STATE_SKIP_TASKBAR" --> doIgnore
 myManageHook = composeAll
@@ -47,11 +46,10 @@ myManageHook = composeAll
                 ]
 
 
-myConfig dbusclient homedir = defaultConfig {
+myConfig homedir = defaultConfig {
     manageHook = myManageHook
     , handleEventHook = fullscreenEventHook
     , layoutHook = myLayout homedir
-    , logHook = myDynamicLog dbusclient
     , modMask = mod4Mask
     , workspaces = myWorkspaces
     , borderWidth = 2
@@ -61,7 +59,7 @@ myConfig dbusclient homedir = defaultConfig {
     , keys = \c -> mkKeymap c $ myKeymap homedir
     , startupHook = do
         return () -- extra laziness to avoid infinite loops
-        checkKeymap (myConfig dbusclient homedir) (myKeymap homedir)
+        checkKeymap (myConfig homedir) (myKeymap homedir)
 }
 
 myLayout homedir = 
@@ -186,27 +184,3 @@ myKeymap homedir =
       [("M-" ++ m ++ [key], f sc)
         | (key, sc) <- zip "',." [0..]
         , (f, m) <- [(viewScreen, ""), (sendToScreen, "S-")]]
-
-myPP :: PP
-myPP = taffybarDefaultPP
-  { ppHiddenNoWindows = const ""
-  , ppCurrent = taffybarColor "yellow"  "#a8a3f7" . pad
-  , ppHidden  = taffybarColor "black"   "#a8a3f7" . pad
-  , ppUrgent  = taffybarColor "red"     "yellow"  . pad
-  , ppWsSep   = ""
-  }
-myDynamicLog dbusclient = dbusLogWithPP dbusclient myPP
-
---myDynamicLog h = dynamicLogWithPP $ dzenPP
---    { ppExtras  = map padL
---                  [ date "%c"
---                  , loadAvg
---                  , battery ]
---    , ppOrder   = \(ws:l:t:exs) -> [ws,t,l]++exs
---    , ppOutput  = hPutStrLn h
---    , ppHidden  = dzenColor "black"     "#a8a3f7" . pad
---    , ppCurrent = dzenColor "yellow"    "#a8a3f7" . pad
---    , ppSep     = ""
---    , ppWsSep   = ""
---    , ppTitle   = dzenColor "white"     "#383387" . shorten 70 . dzenEscape . pad
---    }

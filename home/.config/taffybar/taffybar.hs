@@ -1,7 +1,7 @@
 import System.Taffybar
 
 import System.Taffybar.Systray
-import System.Taffybar.XMonadLog
+import System.Taffybar.TaffyPager
 import System.Taffybar.SimpleClock
 import System.Taffybar.FreedesktopNotifications
 import System.Taffybar.Weather
@@ -41,7 +41,7 @@ main = do
                                   , graphLabel = Just "cpu"
                                   }
   let clock = textClockNew Nothing "<span fgcolor='orange'>%a %b %-d %H:%M</span>" 1
-      log = xmonadLogNew
+      pager = taffyPagerNew defaultPagerConfig
       note = notifyAreaNew defaultNotificationConfig
       wcfg = (defaultWeatherConfig "KBOS") { weatherTemplate = "$tempC$°C $humidity$%" }
       wea = weatherNew wcfg 10
@@ -50,8 +50,7 @@ main = do
       mem = pollingBarNew memCfg 1 memCallback
       cpu = pollingGraphNew cpuCfg 0.5 cpuCallback
       tray = systrayNew
-  defaultTaffybar defaultTaffybarConfig { startWidgets = [ log, note ]
+  defaultTaffybar defaultTaffybarConfig { startWidgets = [ pager, note ]
                                         , endWidgets = [ tray, wea, clock, net, mem, cpu ]
-                                        , barHeight = 20
-                                        , monitorNumber = 1
+                                        , monitorNumber = 0
                                         }
