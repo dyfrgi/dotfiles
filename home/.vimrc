@@ -1,6 +1,15 @@
-set nocompatible        " Use vim defaults instead of vi compatibility
+" Modeline and Notes {
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker :
+" }
 
+" Basics {
+set nocompatible        " Use vim defaults instead of vi compatibility
+let mapleader="-"
+" }
+
+" Use plugins config {
 source ~/.vim/plugins.vim
+" }
 
 syntax on               " turn on syntax hilighting
 filetype plugin indent on
@@ -79,7 +88,7 @@ endfunction
 
 autocmd FileType unite call s:unite_settings()
 
-" Unite config
+" Unite config {
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_selecta'])
 call unite#set_profile('files', 'smartcase', 1)
@@ -88,8 +97,9 @@ call unite#custom#profile('default', 'context', {
             \ })
 let g:unite_prompt='» '
 let g:unite_source_history_yank_enable=1
+"}
 
-
+" Cscope setup {
 " Read in cscope files if they exist
 " FIXME: should make this run on loading C, C++ files
 " and pick up from the same dir
@@ -111,19 +121,24 @@ if has("cscope")
 
   set csverb
 endif
+" }
 
 autocmd VimResized * :wincmd =
 
+" Colors {
 " Set up colors
 set background=dark
 colorscheme solarized
 " style SignColumn the same as LineNr
 highlight! link SignColumn LineNr
+" }
+
+" Tagbar {
+nnoremap <silent> <leader>tt :TagbarToggle<CR>
+" }
 
 set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
-
-let mapleader="-"
 
 let g:ctrlp_max_files = 200000     " show more files in very large directories
 let g:ctrlp_switch_buffer = ''    " don't jump to already open buffers

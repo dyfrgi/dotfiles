@@ -36,6 +36,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'Shougo/unite.vim'                    " Unite search and display plugin
 " MRU support for Unite
 NeoBundleLazy 'Shougo/neomru.vim', {'autoload': {'unite_sources': 'file_mru'}}
+NeoBundleLazy 'majutsushi/tagbar', {'autoload': {'commands':['TagbarToggle']}}
 
 call neobundle#end()
 
