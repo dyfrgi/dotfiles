@@ -44,6 +44,7 @@ URxvt.bell-command: aplay -q ~/.etc/sounds/beep1.wav
 URxvt.urgentOnBell: true
 URxvt.keysym.C-Up:    perl:font-size:increase
 URxvt.keysym.C-Down:  perl:font-size:decrease
+URxvt.termName: rxvt-256color
 
 
 ! Solarized color scheme for the X Window System
