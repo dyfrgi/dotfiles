@@ -1,21 +1,25 @@
 [user]
 	name = Michael Leuchtenburg
-	email = michael@slashhome.org
+
 [merge]
 	tool = vim
+
 [mergetool.vim]
 	cmd = vim \"+Gdiff\" $MERGED
 
 [alias]
-  gl = log --pretty=format:'%C(yellow)%h%C(reset) | %an | %ar | %C(cyan)%s%C(reset)%d' --topo-order --graph --decorate
+    gl = log --pretty=format:'%C(yellow)%h%C(reset) | %an | %ar | %C(cyan)%s%C(reset)%d' --topo-order --graph --decorate
+
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 
 [include]
-  path=~/.git.private
+    path=~/.gitconfig.local
+
 [core]
 	excludesfile = ~/.gitignore_global
+
 [push]
 	default = current
