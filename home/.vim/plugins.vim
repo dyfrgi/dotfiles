@@ -38,6 +38,9 @@ NeoBundle 'Shougo/unite.vim'                    " Unite search and display plugi
 NeoBundleLazy 'Shougo/neomru.vim', {'autoload': {'unite_sources': 'file_mru'}}
 NeoBundleLazy 'majutsushi/tagbar', {'autoload': {'commands':['TagbarToggle']}}
 
+NeoBundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+NeoBundle 'chriskempson/base16-vim'
+
 call neobundle#end()
 
 " Required:

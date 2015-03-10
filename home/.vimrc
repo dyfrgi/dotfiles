@@ -127,13 +127,28 @@ autocmd VimResized * :wincmd =
 " Colors {
 " Set up colors
 set background=dark
-colorscheme solarized
+let base16colorspace=256
+colorscheme base16-bright
 " style SignColumn the same as LineNr
-highlight! link SignColumn LineNr
+" Not needed with base16 - not sure what theme this was needed for, maybe
+" solarized?
+" highlight! link SignColumn LineNr
 " }
 
 " Tagbar {
 nnoremap <silent> <leader>tt :TagbarToggle<CR>
+" }
+
+" Qargs {
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+function! QuickfixFilenames()
+  " Building a hash ensures we get each buffer only once
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
 " }
 
 set laststatus=2
