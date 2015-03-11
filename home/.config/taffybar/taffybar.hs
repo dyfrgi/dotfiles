@@ -5,7 +5,7 @@ import System.Taffybar.TaffyPager
 import System.Taffybar.SimpleClock
 import System.Taffybar.FreedesktopNotifications
 import System.Taffybar.Weather
-import System.Taffybar.MPRIS
+import System.Taffybar.Battery
 import System.Taffybar.NetMonitor
 
 import System.Taffybar.Widgets.PollingBar
@@ -45,12 +45,12 @@ main = do
       note = notifyAreaNew defaultNotificationConfig
       wcfg = (defaultWeatherConfig "KBOS") { weatherTemplate = "$tempC$°C $humidity$%" }
       wea = weatherNew wcfg 10
-      mpris = mprisNew
-      net = netMonitorNew 1 "eth0"
+      bat = batteryBarNew defaultBatteryConfig 10
+      net = netMonitorNew 1 "wlan0"
       mem = pollingBarNew memCfg 1 memCallback
-      cpu = pollingGraphNew cpuCfg 0.5 cpuCallback
+      cpu = pollingGraphNew cpuCfg 1 cpuCallback
       tray = systrayNew
   defaultTaffybar defaultTaffybarConfig { startWidgets = [ pager, note ]
-                                        , endWidgets = [ tray, wea, clock, net, mem, cpu ]
+                                        , endWidgets = [ tray, wea, clock, bat, net, mem, cpu ]
                                         , monitorNumber = 0
                                         }
