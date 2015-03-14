@@ -46,4 +46,4 @@ URxvt.keysym.C-Up:    perl:font-size:increase
 URxvt.keysym.C-Down:  perl:font-size:decrease
 URxvt.termName: rxvt-256color
 
-#include ".Xresources.base16-bright.dark.256"
+#include ".Xresources.base16"

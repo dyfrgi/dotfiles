@@ -128,7 +128,7 @@ autocmd VimResized * :wincmd =
 " Set up colors
 set background=dark
 let base16colorspace=256
-colorscheme base16-bright
+colorscheme base16-default
 " style SignColumn the same as LineNr
 " Not needed with base16 - not sure what theme this was needed for, maybe
 " solarized?
