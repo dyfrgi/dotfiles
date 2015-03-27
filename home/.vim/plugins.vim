@@ -35,11 +35,13 @@ NeoBundle 'Shougo/vimproc.vim', {
         \ }
 NeoBundle 'Shougo/unite.vim'                    " Unite search and display plugin
 " MRU support for Unite
-NeoBundleLazy 'Shougo/neomru.vim', {'autoload': {'unite_sources': 'file_mru'}}
-NeoBundleLazy 'majutsushi/tagbar', {'autoload': {'commands':['TagbarToggle']}}
+NeoBundle 'Shougo/neomru.vim', {'autoload': {'unite_sources': 'file_mru'}}
+NeoBundle 'majutsushi/tagbar', {'autoload': {'commands':['TagbarToggle']}}
 
 NeoBundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 NeoBundle 'chriskempson/base16-vim'
+
+NeoBundle 'dyfrgi/patchreview-vim'              " :PatchReview, :DiffReview
 
 call neobundle#end()
 
