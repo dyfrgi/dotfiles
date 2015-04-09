@@ -17,7 +17,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " git integration
 NeoBundle 'tpope/vim-fugitive', { 'augroup' : 'fugitive' }
 NeoBundle 'altercation/vim-colors-solarized'    " solarized color scheme
-" NeoBundle 'kien/ctrlp.vim'                      " CtrlP file finder etc.
+NeoBundle 'kien/ctrlp.vim'                      " CtrlP file finder etc.
+NeoBundle 'FelikZ/ctrlp-py-matcher'             " Ctrl-P matcher
 NeoBundle 'octol/vim-cpp-enhanced-highlight'    " Better C++ highlighting
 NeoBundle 'rking/ag.vim'                        " Ag grep replacement
 NeoBundle 'netrw.vim'                           " Latest netrw
@@ -42,6 +43,8 @@ NeoBundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 NeoBundle 'chriskempson/base16-vim'
 
 NeoBundle 'dyfrgi/patchreview-vim'              " :PatchReview, :DiffReview
+
+NeoBundle 'wincent/command-t'                   " Command-T fuzzy file finder
 
 call neobundle#end()
 

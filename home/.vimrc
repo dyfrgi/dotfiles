@@ -79,9 +79,12 @@ nmap <silent> <C-N> :silent nohlsearch<CR>
 " Unite config {
 let g:unite_prompt='» '
 let g:unite_source_history_yank_enable=1
+let g:unite_source_rec_max_cache_files=0
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_selecta'])
+call unite#custom#source('file_rec,file_rec/async',
+                        \ 'max_candidates', 0)
 
 " Unite config {
 function! s:unite_settings()
@@ -155,6 +158,15 @@ set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
 " }
 
-let g:ctrlp_max_files = 200000     " show more files in very large directories
-let g:ctrlp_switch_buffer = ''    " don't jump to already open buffers
+" CtrlP settings {
+let g:ctrlp_max_files = 500000     " show more files in very large directories
+let g:ctrlp_switch_buffer = 'evht'   " jump to open buffer in current tab, or in another tab if opening in new tab
 let g:ctrlp_root_markers = ['tags']
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:100'
+let g:ctrlp_match_func = { 'match' : 'pymatcher#PyMatch' }
+" }
+
+" Command-T settings {
+let g:CommandTMaxFiles = 500000
+let g:CommandTInputDebounce=100
+" }
