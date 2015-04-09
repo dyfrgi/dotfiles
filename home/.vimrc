@@ -11,6 +11,7 @@ let mapleader="-"
 source ~/.vim/plugins.vim
 " }
 
+" Various {
 syntax on               " turn on syntax hilighting
 filetype plugin indent on
 
@@ -62,8 +63,9 @@ set encoding=utf-8
 
 " Don't sync swap files
 set swapsync=""
+" }
 
-""" Keyboard mappings
+" Keyboard mappings {
 map <silent> <F8> :if exists(":BufExplorer")<Bar>exe "BufExplorer"<Bar>else<Bar>buffers<Bar>endif<CR>
 
 " Turning paste mode on and off
@@ -72,6 +74,7 @@ set pastetoggle=<F11>
 " Allow turning off highlighting
 " Note: overrides move down 1
 nmap <silent> <C-N> :silent nohlsearch<CR>
+" }
 
 " Unite config {
 let g:unite_prompt='» '
@@ -80,6 +83,7 @@ let g:unite_source_history_yank_enable=1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_selecta'])
 
+" Unite config {
 function! s:unite_settings()
     imap <buffer> <esc> <plug>(unite_exit)
     nmap <buffer> <esc> <plug>(unite_exit)
@@ -146,8 +150,10 @@ function! QuickfixFilenames()
 endfunction
 " }
 
+" Status bar {
 set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
+" }
 
 let g:ctrlp_max_files = 200000     " show more files in very large directories
 let g:ctrlp_switch_buffer = ''    " don't jump to already open buffers
