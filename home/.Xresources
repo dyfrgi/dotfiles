@@ -45,5 +45,6 @@ URxvt.urgentOnBell: true
 URxvt.keysym.C-Up:    perl:font-size:increase
 URxvt.keysym.C-Down:  perl:font-size:decrease
 URxvt.termName: rxvt-256color
+URxvt*iso14755: False
 
 #include ".Xresources.base16"
