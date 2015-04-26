@@ -32,5 +32,8 @@ xset m 1/1
 # composition manager
 compton -b
 
+# taffybar
+taffybar &
+
 # start the window manager
 exec xmonad
