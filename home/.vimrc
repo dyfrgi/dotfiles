@@ -73,29 +73,24 @@ set pastetoggle=<F11>
 " Note: overrides move down 1
 nmap <silent> <C-N> :silent nohlsearch<CR>
 
-nnoremap <C-p> :Unite file_rec/async<CR>
-nmap <space> [unite]
-nnoremap [unite] <nop>
+" Unite config {
+let g:unite_prompt='» '
+let g:unite_source_history_yank_enable=1
 
-nnoremap <silent> [unite]e :<C-u>Unite -buffer-name=recent file_mru<cr>
-nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<cr>
-nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks -no-start-insert history/yank<cr>
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_selecta'])
 
 function! s:unite_settings()
     imap <buffer> <esc> <plug>(unite_exit)
     nmap <buffer> <esc> <plug>(unite_exit)
 endfunction
 
-autocmd FileType unite call s:unite_settings()
+" autocmd FileType unite call s:unite_settings()
 
-" Unite config {
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_selecta'])
-call unite#custom#profile('default', 'context', {
-            \ 'start_insert': 1
-            \ })
-let g:unite_prompt='» '
-let g:unite_source_history_yank_enable=1
+nnoremap <leader>p :<C-u>Unite -buffer-name=files   -start-insert file_rec/async:!<CR>
+nnoremap <leader>e :<C-u>Unite -buffer-name=recent  -start-insert file_mru<cr>
+nnoremap <leader>b :<C-u>Unite -buffer-name=buffers -start-insert buffer<cr>
+nnoremap <leader>y :<C-u>Unite -buffer-name=yanks history/yank<cr>
 "}
 
 " Cscope setup {
@@ -128,7 +123,7 @@ autocmd VimResized * :wincmd =
 " Set up colors
 set background=dark
 let base16colorspace=256
-colorscheme base16-default
+colorscheme base16-isotope
 " style SignColumn the same as LineNr
 " Not needed with base16 - not sure what theme this was needed for, maybe
 " solarized?
