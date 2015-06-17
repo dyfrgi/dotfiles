@@ -33,7 +33,7 @@ set shortmess=filnxToOI
 set guioptions=agirte
 
 " set font for gvim
-set guifont=DejaVu\ Sans\ Mono\ 8
+set guifont=DejaVu\ Sans\ Mono\ 6
 
 " Always show tab-line
 set showtabline=2
@@ -74,6 +74,11 @@ set pastetoggle=<F11>
 " Allow turning off highlighting
 " Note: overrides move down 1
 nmap <silent> <C-N> :silent nohlsearch<CR>
+
+" Tabs {
+nmap <leader>tn :tabnew<CR>
+nmap <leader>tc :tabclose<CR>
+" }
 " }
 
 " Syntastic Config {
@@ -93,7 +98,6 @@ call unite#filters#sorter_default#use(['sorter_selecta'])
 call unite#custom#source('file_rec,file_rec/async',
                         \ 'max_candidates', 0)
 
-" Unite config {
 function! s:unite_settings()
     imap <buffer> <esc> <plug>(unite_exit)
     nmap <buffer> <esc> <plug>(unite_exit)
@@ -142,10 +146,6 @@ colorscheme base16-bright
 " Not needed with base16 - not sure what theme this was needed for, maybe
 " solarized?
 " highlight! link SignColumn LineNr
-" }
-
-" Tagbar {
-nnoremap <silent> <leader>tt :TagbarToggle<CR>
 " }
 
 " Qargs {
