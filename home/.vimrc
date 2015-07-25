@@ -76,6 +76,13 @@ set pastetoggle=<F11>
 nmap <silent> <C-N> :silent nohlsearch<CR>
 " }
 
+" Syntastic Config {
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" }
+
 " Unite config {
 let g:unite_prompt='» '
 let g:unite_source_history_yank_enable=1
@@ -155,7 +162,15 @@ endfunction
 
 " Status bar {
 set laststatus=2
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
+set statusline=[%n]             " buffer number
+set statusline+=\ %<            " truncate here if the line is too long
+set statusline+=%.99f           " filename, max length 99 characters
+set statusline+=\ %h%w%m%r      " help, warning, modified, readonly flags
+set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*     " Syntastic status in warningmsg colors
+set statusline+=%y              " filetype
+set statusline+=%=              " start right-aligned items
+set statusline+=%-16(\ %l,%c-%v\ %) " line number, column number, virtual column number - left justified, minwidth 16
+set statusline+=%P              " percent through the file
 " }
 
 " CtrlP settings {
