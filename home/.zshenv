@@ -37,3 +37,5 @@ SAVEHIST=5000
 DIRSTACKSIZE=8
 
 ulimit -c 50000
+
+[[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
