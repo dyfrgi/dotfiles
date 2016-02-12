@@ -47,4 +47,6 @@ URxvt.keysym.C-Down:  perl:font-size:decrease
 URxvt.termName: rxvt-256color
 URxvt*iso14755: False
 
+Rxvt.print-pipe: "cat > /dev/null"
+
 #include ".Xresources.base16"
