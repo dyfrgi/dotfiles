@@ -41,7 +41,7 @@ main = do
 --                [ className =? "HipChat" <&&> isInProperty "_NET_WM_STATE" "_NET_WM_STATE_SKIP_TASKBAR" --> doIgnore
 myManageHook = composeAll
                 [ manageDocks
-                , isFullscreen --> doFullFloat
+--                , isFullscreen --> doFullFloat
 --                , className =? "mplayer2" --> doFloat
                 ]
 
