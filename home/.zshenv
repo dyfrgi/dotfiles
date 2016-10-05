@@ -7,13 +7,13 @@ export LC_TIME="en_DK.UTF-8"
 
 # Paths contain unique items; no duplicates
 typeset -U path
-path=(~/.cabal/bin ~/bin ~/.pyenv/bin /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin)
+path=(~/.cabal/bin ~/bin ~/.pyenv/bin ~/serverfarm /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin)
 
 # Add a custom directory for completion scripts
 fpath=(~/.zsh/Completion $fpath)
 
-export CC="ccache gcc"
-export CXX="ccache g++"
+export CC="ccache gcc-4.9"
+export CXX="ccache g++-4.9"
 
 export EDITOR=vim
 export VISUAL=vim
