@@ -1,5 +1,6 @@
 [user]
 	name = Michael Leuchtenburg
+	email = michael.leuchtenburg@hpe.com
 
 [merge]
 	tool = vim
