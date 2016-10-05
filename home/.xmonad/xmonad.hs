@@ -39,11 +39,13 @@ main = do
             $ myConfig homedir
 
 --                [ className =? "HipChat" <&&> isInProperty "_NET_WM_STATE" "_NET_WM_STATE_SKIP_TASKBAR" --> doIgnore
-myManageHook = composeAll
-                [ manageDocks
---                , isFullscreen --> doFullFloat
---                , className =? "mplayer2" --> doFloat
-                ]
+myManageHook :: ManageHook
+myManageHook = (composeAll . concat $
+                [   [ className =? c     --> doCenterFloat   | c <- myFloatsC   ]
+                ,   [ manageDocks                                               ]
+                ])
+                where
+                    myFloatsC = ["VirtualBox"]
 
 
 myConfig homedir = defaultConfig {
