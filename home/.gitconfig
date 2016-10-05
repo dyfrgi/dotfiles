@@ -9,6 +9,7 @@
 
 [alias]
     gl = log --pretty=format:'%C(yellow)%h%C(reset) | %an | %ar | %C(cyan)%s%C(reset)%d' --topo-order --graph --decorate
+	d = difftool
 
 [color]
 	diff = auto
@@ -25,3 +26,7 @@
 	default = current
 [pull]
 	rebase = preserve
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
