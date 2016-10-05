@@ -33,7 +33,7 @@ set shortmess=filnxToOI
 set guioptions=agirte
 
 " set font for gvim
-set guifont=DejaVu\ Sans\ Mono\ 6
+set guifont=DejaVu\ Sans\ Mono\ 8
 
 " Always show tab-line
 set showtabline=2
