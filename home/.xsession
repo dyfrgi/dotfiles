@@ -4,6 +4,9 @@
 xrdb -merge .Xresources
 
 ssh-add
+if [ -f ~/.ssh/id_rsa_vertica_2016-10-03 ]; then
+    ssh-add ~/.ssh/id_rsa_vertica_2016-10-03
+fi
 
 # PolicyKit Authentication Agent (needed for network-manager)
 # NOTE: May be replaceable with /usr/lib/policykit-1/polkitd; investigate
