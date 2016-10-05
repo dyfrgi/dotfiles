@@ -10,6 +10,8 @@ set runtimepath+=~/.vim/bundle/neobundle.vim/
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+let g:neobundle#install_process_timeout = 1500
+
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
@@ -45,6 +47,17 @@ NeoBundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 NeoBundle 'chriskempson/base16-vim'
 
 NeoBundle 'dyfrgi/patchreview-vim'              " :PatchReview, :DiffReview
+
+NeoBundle 'Valloric/YouCompleteMe', {
+     \ 'build'      : {
+        \ 'mac'     : './install.py --clang-completer',
+        \ 'unix'    : './install.py --clang-completer',
+        \ 'windows' : 'install.py --clang-completer',
+        \ 'cygwin'  : './install.py --clang-completer'
+        \ }
+     \ }
+
+NeoBundle 'rdnetto/YCM-Generator'
 
 " NeoBundle 'wincent/command-t'                   " Command-T fuzzy file finder
 
