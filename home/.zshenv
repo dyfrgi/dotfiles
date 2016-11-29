@@ -22,6 +22,8 @@ export MAILER=icedove
 export PAGER="less -R"
 export LESS="-iM"
 
+export EMAIL="michael.leuchtenburg@hpe.com"
+
 export MPD_HOST=fnord:@goose
 export MPD_PORT=6600
 export VNC_VIA_CMD="/usr/bin/ssh -o 'ControlPath=/dev/nonexistant' -o 'ControlMaster=no' -f -L %L:%H:%R %G sleep 20"
