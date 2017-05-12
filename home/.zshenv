@@ -9,9 +9,6 @@ export LC_TIME="en_DK.UTF-8"
 typeset -U path
 path=(~/.cabal/bin ~/bin ~/perl5/bin ~/.pyenv/bin ~/serverfarm /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin)
 
-# Add a custom directory for completion scripts
-fpath=(~/.zsh/Completion $fpath)
-
 export CC="ccache gcc-4.9"
 export CXX="ccache g++-4.9"
 
