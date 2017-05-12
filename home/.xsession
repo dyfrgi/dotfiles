@@ -1,5 +1,10 @@
 #!/bin/zsh -l
 
+# Check if we're running inside VMware
+if (lspci | grep -i vmware > /dev/null); then
+    vmware-user-suid-wrapper        # copy and paste, guest resizing support
+fi
+
 # Merge resources with defaults for xterm, etc.
 xrdb -merge .Xresources
 
