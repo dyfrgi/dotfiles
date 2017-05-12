@@ -7,7 +7,7 @@ export LC_TIME="en_DK.UTF-8"
 
 # Paths contain unique items; no duplicates
 typeset -U path
-path=(~/.cabal/bin ~/bin ~/.pyenv/bin ~/serverfarm /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin)
+path=(~/.cabal/bin ~/bin ~/perl5/bin ~/.pyenv/bin ~/serverfarm /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin)
 
 # Add a custom directory for completion scripts
 fpath=(~/.zsh/Completion $fpath)
@@ -39,5 +39,10 @@ SAVEHIST=5000
 DIRSTACKSIZE=8
 
 ulimit -c 50000
+
+export PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+export PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+export PERL_MB_OPT="--install_base \"$HOME/perl5\""
+export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
 
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
