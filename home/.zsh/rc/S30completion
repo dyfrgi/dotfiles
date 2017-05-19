@@ -29,6 +29,9 @@ zstyle ':completion:*:options' auto-description '%d'
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters 
 zstyle ':completion:*:kill:*' force-list always
 
+# don't require beginning-of-name matches for git checkout tab completion
+zstyle ':completion:*:git-checkout:*:remote-branch-name-noprefix' matcher 'b:=* e:=*'
+
 
 : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}}
 if [ -f $HOME/.ssh/known_hosts ]; then
