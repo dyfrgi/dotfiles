@@ -7,10 +7,7 @@ export LC_TIME="en_DK.UTF-8"
 
 # Paths contain unique items; no duplicates
 typeset -U path
-path=(~/.cabal/bin ~/bin ~/perl5/bin ~/.pyenv/bin ~/serverfarm /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin)
-
-export CC="ccache gcc-4.9"
-export CXX="ccache g++-4.9"
+path=(~/.cabal/bin ~/bin ~/.cargo/bin ~/perl5/bin ~/.pyenv/bin ~/vertica-ec2-scripts ~/serverfarm /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin)
 
 export EDITOR=vim
 export VISUAL=vim
@@ -41,5 +38,7 @@ export PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
 export PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
 export PERL_MB_OPT="--install_base \"$HOME/perl5\""
 export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
+
+export DEVJAIL_HOST_MACHINE=engdev3.verticacorp.com
 
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
