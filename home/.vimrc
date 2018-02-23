@@ -61,8 +61,9 @@ set smartcase
 set termencoding=utf-8
 set encoding=utf-8
 
-" Don't sync swap files
-set swapsync=""
+set swapsync=""         " Don't sync swap files
+set autoread            " Automatically read files when changed outside vim and unchanged in vim
+
 " }
 
 " Keyboard mappings {
