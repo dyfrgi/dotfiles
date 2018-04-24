@@ -59,6 +59,8 @@ NeoBundle 'Valloric/YouCompleteMe', {
 
 NeoBundle 'rdnetto/YCM-Generator'
 
+NeoBundle 'andymass/vim-matchup'
+
 " NeoBundle 'wincent/command-t'                   " Command-T fuzzy file finder
 
 call neobundle#end()
