@@ -19,7 +19,7 @@ let g:neobundle#install_process_timeout = 1500
 " git integration
 NeoBundle 'tpope/vim-fugitive', { 'augroup' : 'fugitive' }
 NeoBundle 'altercation/vim-colors-solarized'    " solarized color scheme
-NeoBundle 'kien/ctrlp.vim'                      " CtrlP file finder etc.
+NeoBundle 'ctrlpvim/ctrlp.vim'                  " CtrlP file finder etc.
 NeoBundle 'FelikZ/ctrlp-py-matcher'             " Ctrl-P matcher
 NeoBundle 'octol/vim-cpp-enhanced-highlight'    " Better C++ highlighting
 NeoBundle 'rking/ag.vim'                        " Ag grep replacement

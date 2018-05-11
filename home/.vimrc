@@ -180,6 +180,14 @@ let g:ctrlp_switch_buffer = 'evht'   " jump to open buffer in current tab, or in
 let g:ctrlp_root_markers = ['tags']
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:100'
 let g:ctrlp_match_func = { 'match' : 'pymatcher#PyMatch' }
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+endif
 " }
 
 " Command-T settings {
