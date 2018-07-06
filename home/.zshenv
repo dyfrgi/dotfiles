@@ -7,19 +7,14 @@ export LC_TIME="en_DK.UTF-8"
 
 # Paths contain unique items; no duplicates
 typeset -U path
-path=(~/.cabal/bin ~/bin ~/.cargo/bin ~/perl5/bin ~/.pyenv/bin ~/vertica-ec2-scripts ~/serverfarm /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin)
+path=(~/.cabal/bin ~/bin ~/.local/bin ~/.cargo/bin ~/perl5/bin ~/.pyenv/bin ~/vertica-ec2-scripts ~/serverfarm /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin)
 
 export EDITOR=vim
 export VISUAL=vim
-export MAILER=icedove
 
 export PAGER="less -R"
 export LESS="-iM"
 
-export EMAIL="michael.leuchtenburg@hpe.com"
-
-export MPD_HOST=fnord:@goose
-export MPD_PORT=6600
 export VNC_VIA_CMD="/usr/bin/ssh -o 'ControlPath=/dev/nonexistant' -o 'ControlMaster=no' -f -L %L:%H:%R %G sleep 20"
 
 export SVNROOT="svn+ssh://svn/repos/"
