@@ -27,6 +27,7 @@ import System.Taffybar.Hooks.PagerHints (pagerHints)
 import System.Exit
 import System.IO
 import Data.Monoid
+import Data.Maybe (maybeToList)
 import Control.Monad
 import System.Directory (getHomeDirectory)
 
@@ -34,6 +35,7 @@ main = do
         homedir <- getHomeDirectory
         xmonad
             $ withUrgencyHook NoUrgencyHook
+            $ docks
             $ ewmh
             $ pagerHints
             $ myConfig homedir
@@ -48,9 +50,9 @@ myManageHook = (composeAll . concat $
                     myFloatsC = ["VirtualBox"]
 
 
-myConfig homedir = defaultConfig {
+myConfig homedir = def {
     manageHook = myManageHook
-    , handleEventHook = fullscreenEventHook
+    , handleEventHook = handleEventHook def <+> fullscreenEventHook
     , layoutHook = myLayout homedir
     , modMask = mod4Mask
     , workspaces = myWorkspaces
@@ -62,19 +64,38 @@ myConfig homedir = defaultConfig {
     , startupHook = do
         return () -- extra laziness to avoid infinite loops
         checkKeymap (myConfig homedir) (myKeymap homedir)
+        addEWMHFullscreen
+        startupHook def
 }
 
+-- https://github.com/xmonad/xmonad-contrib/issues/183
+-- https://github.com/xmonad/xmonad-contrib/pull/109 will eliminate the need for this eventually
+addNETSupported :: Atom -> X ()
+addNETSupported x   = withDisplay $ \dpy -> do
+    r               <- asks theRoot
+    a_NET_SUPPORTED <- getAtom "_NET_SUPPORTED"
+    a               <- getAtom "ATOM"
+    liftIO $ do
+       sup <- (join . maybeToList) <$> getWindowProperty32 dpy a_NET_SUPPORTED r
+       when (fromIntegral x `notElem` sup) $
+         changeProperty32 dpy r a_NET_SUPPORTED a propModeAppend [fromIntegral x]
+
+addEWMHFullscreen :: X ()
+addEWMHFullscreen   = do
+    wms <- getAtom "_NET_WM_STATE"
+    wfs <- getAtom "_NET_WM_STATE_FULLSCREEN"
+    mapM_ addNETSupported [wms, wfs]
+
 myLayout homedir = 
-    avoidStrutsOn [U] $             -- don't map windows over docks, etc.
-    workspaceDir homedir $              -- start all workspaces in ~
+    avoidStruts $                   -- don't map windows over docks, etc.
+    workspaceDir homedir $          -- start all workspaces in ~
     smartBorders $                  -- no borders on full-screen
---    onWorkspace "chat" myThree $    -- use 3-column layout on chat desktop
     mkToggle (single REFLECTX) $
     mkToggle (single REFLECTY) $
 
     myGrid
     ||| myTall 
-    ||| myFullTabbed             -- tall and fullscreen tabbed layouts
+    ||| myFullTabbed                -- tall and fullscreen tabbed layouts
     where
         myThree = ThreeCol 1 0.03 0.50
         myGrid = renamed [Replace "Grid"] $ GridRatio (19 / 21)
