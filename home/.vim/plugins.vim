@@ -48,14 +48,14 @@ NeoBundle 'chriskempson/base16-vim'
 
 NeoBundle 'dyfrgi/patchreview-vim'              " :PatchReview, :DiffReview
 
-NeoBundle 'Valloric/YouCompleteMe', {
-     \ 'build'      : {
-        \ 'mac'     : './install.py --clang-completer',
-        \ 'unix'    : './install.py --clang-completer',
-        \ 'windows' : 'install.py --clang-completer',
-        \ 'cygwin'  : './install.py --clang-completer'
-        \ }
-     \ }
+" NeoBundle 'Valloric/YouCompleteMe', {
+"     \ 'build'      : {
+"        \ 'mac'     : './install.py --clang-completer',
+"        \ 'unix'    : './install.py --clang-completer',
+"        \ 'windows' : 'install.py --clang-completer',
+"        \ 'cygwin'  : './install.py --clang-completer'
+"        \ }
+"     \ }
 
 NeoBundle 'rdnetto/YCM-Generator'
 
