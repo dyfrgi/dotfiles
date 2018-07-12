@@ -140,9 +140,13 @@ autocmd VimResized * :wincmd =
 
 " Colors {
 " Set up colors
-set background=dark
-let base16colorspace=256
-colorscheme base16-bright
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+else
+    echom "WARNING: base16 color scheme not set! Run e.g. base16_default-dark"
+endif
+
 " style SignColumn the same as LineNr
 " Not needed with base16 - not sure what theme this was needed for, maybe
 " solarized?
