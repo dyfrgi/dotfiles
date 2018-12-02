@@ -85,8 +85,9 @@ nmap <leader>tc :tabclose<CR>
 " Syntastic Config {
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_pony_checkers = ['currycomb']
 " }
 
 " Unite config {
@@ -171,8 +172,8 @@ set statusline=[%n]             " buffer number
 set statusline+=\ %<            " truncate here if the line is too long
 set statusline+=%.99f           " filename, max length 99 characters
 set statusline+=\ %h%w%m%r      " help, warning, modified, readonly flags
-" set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*     " Syntastic status in warningmsg colors
 set statusline+=%y              " filetype
+set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*     " Syntastic status in warningmsg colors
 set statusline+=%=              " start right-aligned items
 set statusline+=%-16(\ %l,%c-%v\ %) " line number, column number, virtual column number - left justified, minwidth 16
 set statusline+=%P              " percent through the file
