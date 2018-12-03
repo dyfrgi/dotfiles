@@ -24,8 +24,6 @@ NeoBundle 'FelikZ/ctrlp-py-matcher'             " Ctrl-P matcher
 NeoBundle 'octol/vim-cpp-enhanced-highlight'    " Better C++ highlighting
 NeoBundle 'rking/ag.vim'                        " Ag grep replacement
 NeoBundle 'netrw.vim'                           " Latest netrw
-" NeoBundle 'bronson/vim-trailing-whitespace'     " highlight trailing whitespace
-" NeoBundle 'scrooloose/syntastic'                " syntastic syntax checker
 NeoBundle 'wlangstroth/vim-racket'              " Racket syntax etc
 
 NeoBundle 'mhinz/vim-signify'                   " Use sign column to show VCS changes
@@ -49,8 +47,6 @@ NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'dyfrgi/patchreview-vim'              " :PatchReview, :DiffReview
 
 NeoBundle 'andymass/vim-matchup'
-
-" NeoBundle 'wincent/command-t'                   " Command-T fuzzy file finder
 
 call neobundle#end()
 
