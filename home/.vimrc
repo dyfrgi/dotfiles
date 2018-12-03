@@ -181,7 +181,7 @@ set statusline+=%P              " percent through the file
 " CtrlP settings {
 let g:ctrlp_max_files = 500000     " show more files in very large directories
 let g:ctrlp_switch_buffer = 'evht'   " jump to open buffer in current tab, or in another tab if opening in new tab
-let g:ctrlp_root_markers = ['tags']
+let g:ctrlp_root_markers = ['tags', 'TAGS']
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:100'
 let g:ctrlp_match_func = { 'match' : 'pymatcher#PyMatch' }
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
