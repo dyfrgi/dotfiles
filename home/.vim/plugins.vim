@@ -48,17 +48,6 @@ NeoBundle 'chriskempson/base16-vim'
 
 NeoBundle 'dyfrgi/patchreview-vim'              " :PatchReview, :DiffReview
 
-" NeoBundle 'Valloric/YouCompleteMe', {
-"     \ 'build'      : {
-"        \ 'mac'     : './install.py --clang-completer',
-"        \ 'unix'    : './install.py --clang-completer',
-"        \ 'windows' : 'install.py --clang-completer',
-"        \ 'cygwin'  : './install.py --clang-completer'
-"        \ }
-"     \ }
-
-NeoBundle 'rdnetto/YCM-Generator'
-
 NeoBundle 'andymass/vim-matchup'
 
 " NeoBundle 'wincent/command-t'                   " Command-T fuzzy file finder
