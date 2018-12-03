@@ -193,8 +193,3 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 endif
 " }
-
-" Command-T settings {
-let g:CommandTMaxFiles = 500000
-let g:CommandTInputDebounce=100
-" }
