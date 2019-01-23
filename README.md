@@ -6,7 +6,7 @@ Installation
 
 First, install homeshick:
 ```sh
-git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
+git clone https://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
 printf '\nsource "$HOME/.homesick/repos/homeshick/homeshick.sh"' >> $HOME/.bashrc
 # or maybe
 printf '\nsource "$HOME/.homesick/repos/homeshick/homeshick.sh"' >> $HOME/.zshrc
@@ -16,6 +16,5 @@ printf '\nsource "$HOME/.homesick/repos/homeshick/homeshick.sh"' >> $HOME/.zshrc
 Next, clone this repo and link:
 ```sh
 homeshick clone git@github.com:dyfrgi/dotfiles.git
-homeshick clone https://github.com/yyuu/pyenv.git
 homeshick link
 ```
