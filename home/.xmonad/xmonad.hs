@@ -188,7 +188,7 @@ myKeymap homedir =
 
       , ("M-w s", spawn "import -window root ~/screenshots/shot.png")
 
-      , ("M-<Pause>", spawn "xscreensaver-command -lock")
+      , ("M-<Pause>", spawn "cinnamon-screensaver-command -l")
 
         -- Workspace cycling
       , ("M-s", nextWS)
