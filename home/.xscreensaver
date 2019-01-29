@@ -4,8 +4,8 @@
 
 timeout:	0:10:00
 cycle:		0:10:00
-lock:		True
-lockTimeout:	0:01:00
+lock:           True
+lockTimeout:    0:00:05
 passwdTimeout:	0:00:30
 visualID:	default
 installColormap:    True
@@ -24,11 +24,11 @@ fadeTicks:	20
 captureStderr:	True
 ignoreUninstalledPrograms:False
 font:		*-medium-r-*-140-*-m-*
-dpmsEnabled:	False
+dpmsEnabled:    True
 dpmsQuickOff:	False
-dpmsStandby:	2:00:00
-dpmsSuspend:	2:00:00
-dpmsOff:	4:00:00
+dpmsStandby:    0:30:00
+dpmsSuspend:    0:30:00
+dpmsOff:        0:30:00
 grabDesktopImages:  True
 grabVideoFrames:    False
 chooseRandomImages: False
@@ -255,4 +255,3 @@ GetViewPortIsFullOfLies:False
 procInterrupts:	True
 xinputExtensionDev: False
 overlayStderr:	True
-
