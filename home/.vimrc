@@ -2,6 +2,9 @@
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker :
 " }
 
+source ~/.vim/rc/functions.vim
+
+
 " Basics {
 set nocompatible        " Use vim defaults instead of vi compatibility
 let mapleader="-"
@@ -194,3 +197,5 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 endif
 " }
+
+call SourceAllInDirectory('~/.vim/rc/after/')
