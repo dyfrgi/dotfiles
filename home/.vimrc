@@ -176,7 +176,6 @@ set statusline+=\ %<            " truncate here if the line is too long
 set statusline+=%.99f           " filename, max length 99 characters
 set statusline+=\ %h%w%m%r      " help, warning, modified, readonly flags
 set statusline+=%y              " filetype
-set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*     " Syntastic status in warningmsg colors
 set statusline+=%=              " start right-aligned items
 set statusline+=%-16(\ %l,%c-%v\ %) " line number, column number, virtual column number - left justified, minwidth 16
 set statusline+=%P              " percent through the file
