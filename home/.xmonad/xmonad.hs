@@ -108,9 +108,9 @@ myXPConfig = greenXPConfig {
     }
 
 myWorkspaces =
-    [ "chat"
-    , "mail"
-    , "web"
+    [ "1"
+    , "2"
+    , "3"
     , "4"
     , "5"
     , "6"
@@ -124,11 +124,12 @@ promptedGoto = workspacePrompt myXPConfig $ windows . W.greedyView
 promptedShift = workspacePrompt myXPConfig $ windows . W.shift
 
 myKeymap homedir =
-      [ ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 3%+ unmute")
-      , ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 3%- unmute")
-      , ("M-<F11>", spawn "amixer -q set Master 3%- unmute")
-      , ("M-<F12>", spawn "amixer -q set Master 3%+ unmute")
-      , ("<XF86AudioMute>", spawn "amixer -q set Master toggle")
+      [ ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume 0 +3%")
+      , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume 0 -3%")
+      , ("M-<F11>", spawn "pactl set-sink-volume 0 -3%")
+      , ("M-<F12>", spawn "pactl set-sink-volume 0 +3%")
+      , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
+      -- , ("<XF86AudioMicMute>", spawn "pactl set-source-mute 1 toggle")
         -- Run dmenu to launch programs
       , ("M-p", spawn "dmenu_run")
         -- Close the focused window
@@ -177,7 +178,7 @@ myKeymap homedir =
         -- Push the focused window back into tiling
       , ("M-w t", withFocused $ windows . W.sink)
         -- Change the working dir of the current workspace
-      , ("M-w c", changeDir defaultXPConfig)
+      , ("M-w c", changeDir def)
         -- Turn off avoiding the toolbar
       , ("M-w m", sendMessage $ ToggleStrut U)
       , ("M-w r", sendMessage $ ToggleStrut R)
@@ -189,6 +190,7 @@ myKeymap homedir =
       , ("M-w s", spawn "import -window root ~/screenshots/shot.png")
 
       , ("M-<Pause>", spawn "cinnamon-screensaver-command -l")
+      , ("M-C-M1-<Space>", spawn "cinnamon-screensaver-command -l")
 
         -- Workspace cycling
       , ("M-s", nextWS)
