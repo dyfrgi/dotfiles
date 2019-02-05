@@ -1,7 +1,15 @@
 " Source a file only if it exists
 function! SourceIfExists(path)
-    if filereadable(expand(a:path))
+    if FileExists(a:path)
         execute 'source' a:path
+    endif
+endfunction
+
+function! FileExists(path)
+    if filereadable(expand(a:path))
+        return 1
+    else
+        return 0
     endif
 endfunction
 
