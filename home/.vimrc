@@ -108,7 +108,7 @@ function! s:unite_settings()
     nmap <buffer> <esc> <plug>(unite_exit)
 endfunction
 
-" autocmd FileType unite call s:unite_settings()
+autocmd FileType unite call s:unite_settings()
 
 nnoremap <leader>p :<C-u>Unite -buffer-name=files   -start-insert file_rec/async:!<CR>
 nnoremap <leader>e :<C-u>Unite -buffer-name=recent  -start-insert file_mru<cr>
