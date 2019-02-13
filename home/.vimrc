@@ -85,14 +85,6 @@ nmap <leader>tc :tabclose<CR>
 " }
 " }
 
-" Syntastic Config {
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_pony_checkers = ['currycomb']
-" }
-
 " Unite config {
 let g:unite_prompt='» '
 let g:unite_source_history_yank_enable=1

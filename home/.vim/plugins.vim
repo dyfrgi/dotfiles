@@ -24,10 +24,8 @@ NeoBundle 'FelikZ/ctrlp-py-matcher'             " Ctrl-P matcher
 NeoBundle 'octol/vim-cpp-enhanced-highlight'    " Better C++ highlighting
 NeoBundle 'rking/ag.vim'                        " Ag grep replacement
 NeoBundle 'netrw.vim'                           " Latest netrw
-NeoBundle 'vim-syntastic/syntastic'             " syntastic syntax checker
 NeoBundle 'wlangstroth/vim-racket'              " Racket syntax etc
 NeoBundle 'jakwings/vim-pony'                   " Pony syntax highlighting, auto-tab, bracket matching
-NeoBundle 'killerswan/pony-currycomb.vim'       " Pony syntastic support
 
 NeoBundle 'mhinz/vim-signify'                   " Use sign column to show VCS changes
 
