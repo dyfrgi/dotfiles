@@ -40,5 +40,10 @@ xset m 1/1
 # taffybar
 taffybar &
 
+# dunst notifier
+dunst &
+
+test -x ~/.xsession-local && source ~/.xsession-local
+
 # start the window manager
 exec xmonad

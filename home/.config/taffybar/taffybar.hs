@@ -3,7 +3,6 @@ import System.Taffybar
 import System.Taffybar.Systray
 import System.Taffybar.TaffyPager
 import System.Taffybar.SimpleClock
-import System.Taffybar.FreedesktopNotifications
 import System.Taffybar.Weather
 import System.Taffybar.Battery
 import System.Taffybar.NetMonitor
@@ -42,7 +41,6 @@ main = do
                                   }
   let clock = textClockNew Nothing "<span fgcolor='orange'>%a %b %-d %H:%M</span>" 1
       pager = taffyPagerNew defaultPagerConfig
-      note = notifyAreaNew defaultNotificationConfig
       wcfg = (defaultWeatherConfig "KBOS") { weatherTemplate = "$tempC$°C $humidity$%" }
       wea = weatherNew wcfg 10
       bat = batteryBarNew defaultBatteryConfig 10
@@ -50,7 +48,7 @@ main = do
       mem = pollingBarNew memCfg 1 memCallback
       cpu = pollingGraphNew cpuCfg 1 cpuCallback
       tray = systrayNew
-  defaultTaffybar defaultTaffybarConfig { startWidgets = [ pager, note ]
+  defaultTaffybar defaultTaffybarConfig { startWidgets = [ pager ]
                                         , endWidgets = [ tray, wea, clock, bat, net, mem, cpu ]
                                         , monitorNumber = 0
                                         }
