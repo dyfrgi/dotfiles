@@ -26,6 +26,7 @@ import XMonad.Util.Loggers
 import System.Taffybar.Hooks.PagerHints (pagerHints)
 import System.Exit
 import System.IO
+import Data.Default
 import Data.Monoid
 import Data.Maybe (maybeToList)
 import Control.Monad
@@ -166,12 +167,12 @@ myKeymap homedir =
 
       , ("M-g", promptedGoto)
       , ("M-S-g", promptedShift)
-        
+
         -- Quit
       , ("M-S-q", io (exitWith ExitSuccess))
         -- Restart xmonad
       , ("M-q", restart "xmonad" True)
-        
+
         -- Start a terminal
       , ("M-<Return>", safeSpawn "urxvt" [])
 
@@ -189,6 +190,7 @@ myKeymap homedir =
 
       , ("M-w s", spawn "import -window root ~/screenshots/shot.png")
 
+      -- lock the screen
       , ("M-<Pause>", spawn "cinnamon-screensaver-command -l")
       , ("M-C-M1-<Space>", spawn "cinnamon-screensaver-command -l")
 
@@ -208,4 +210,4 @@ myKeymap homedir =
       ++
       [("M-" ++ m ++ [key], f sc)
         | (key, sc) <- zip "',." [0..]
-        , (f, m) <- [(viewScreen, ""), (sendToScreen, "S-")]]
+        , (f, m) <- [(viewScreen def, ""), (sendToScreen def, "S-")]]
