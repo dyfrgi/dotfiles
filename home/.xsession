@@ -34,8 +34,11 @@ xset r rate 250 50
 xset m 1/1
 
 # composition manager
-# disable temporarily for possibly incompatibility with xsecurelock
-#compton -b
+compton -b
+
+# configure screensaver
+xss-lock -n ~/bin/dim-screen2.sh -l -- env XSECURELOCK_SAVER=saver_blank /usr/share/goobuntu-desktop-files/xsecurelock.sh &
+xset s 300 10   # 5 minutes, wait 10 seconds after dimming before locking
 
 # taffybar
 taffybar &

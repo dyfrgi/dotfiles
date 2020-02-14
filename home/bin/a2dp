@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# See go/how2bluetooth for more info
+
+# Last updated: 2017-12-12
+
+thisfile="/google/src/head/depot/google3/experimental/users/fstanis/bluetooth/a2dp"
+
+# Check for updates (if we have prodaccess)
+if [[ -f "$thisfile" ]] && ! cmp -s "$thisfile" "${BASH_SOURCE[0]}"; then
+  echo -e "There's an update for this script in google3. Please copy the new version from $thisfile\n"
+fi
+
+# Check if pcregrep is installed
+if ! command -v pcregrep > /dev/null; then
+  echo -e "\e[31mpcregrep not installed, please run sudo apt-get install pcregrep.\e[0m"
+  exit 1
+fi
+
+# Check if the config files are set up according to go/how2bluetooth
+if ! grep -q "restore_device=false" /etc/pulse/default.pa; then
+  echo -e "\e[33mWarning: It's recommended to modify your pulse config. Please read go/how2bluetooth for more info.\e[0m"
+fi
+if ! grep -q "load-module module-switch-on-connect" /etc/pulse/default.pa; then
+  echo -e "\e[33mWarning: It's recommended to modify your pulse config. Please read go/how2bluetooth for more info (updated 14 November).\e[0m"
+fi
+
+bluetoothconfig="/etc/bluetooth/audio.conf"
+if [[ ! -f "$bluetoothconfig" ]]; then
+  bluetoothconfig="/etc/bluetooth/main.conf"
+fi
+if ! grep -q '^Disable=\([A-Za-z,]\+\)\?Headset' "$bluetoothconfig"; then
+  echo -e "\e[33mWarning: It's recommended to disable the Headset profile for bluetooth. Please read go/how2bluetooth for more info.\e[0m"
+fi
+if ! grep -q '^Disable=\([A-Za-z,]\+\)\?Socket' "$bluetoothconfig"; then
+  echo -e "\e[33mWarning: It's recommended to disable the Socket profile for bluetooth. Please read go/how2bluetooth for more info.\e[0m"
+fi
+
+card_regex="([0-9]+)\s+(bluez_card\.\w+)"
+sink_regex="([0-9]+)\s+(bluez_sink\.\w+)"
+cards=$(pactl list cards short)
+
+# TODO: this only works if there's one bluez device
+if [[ "$cards" =~ $card_regex ]]; then
+  card="${BASH_REMATCH[1]}"
+  card_name="${BASH_REMATCH[2]}"
+
+  echo "Card $card_name found"
+
+  if [ "$1" == "off" ]; then
+    pacmd set-card-profile "$card" off
+    echo "A2DP turned off"
+  else
+    # Profile can be called a2dp or a2dp_sink
+    # pacmd doesn't return correct exit code, so we check for failure using grep
+    if pacmd set-card-profile "$card" a2dp | grep "Failed\|No such profile" > /dev/null; then
+      if pacmd set-card-profile "$card" a2dp_sink | grep "Failed" > /dev/null; then
+        echo -e "\e[31mFailed to set profile to A2DP\e[0m"
+        echo "Maybe your headset doesn't support it?"
+        exit 1
+      fi
+    fi
+    echo -e "\e[32mA2DP turned on\e[0m"
+
+    # Card profile set, now set the default sink and update existing sinks
+    sinks=$(pactl list sinks short)
+    if [[ "$sinks" =~ $sink_regex ]]; then
+      sink="${BASH_REMATCH[1]}"
+      sink_name="${BASH_REMATCH[2]}"
+
+      echo "Sink $sink_name found"
+
+      pacmd set-default-sink "$sink"
+
+      inputs=$(pacmd list-sink-inputs | pcregrep -M --only-matching=1 'index:\s+([0-9]+)')
+      for input in $inputs; do
+        pacmd move-sink-input "$input" "$sink"
+      done
+    else
+      echo -e "\e[31mFailed to find bluetooth sink\e[0m"
+    fi
+  fi
+else
+  echo -e "\e[31mBluetooth headset not connected\e[0m"
+  echo "You might want to try blueman-manager - see go/how2bluetooth for more info"
+  exit 1
+fi
