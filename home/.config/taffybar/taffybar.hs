@@ -1,6 +1,7 @@
 import System.Taffybar
 
 import System.Taffybar.Systray
+import System.Taffybar.WorkspaceHUD
 import System.Taffybar.TaffyPager
 import System.Taffybar.SimpleClock
 import System.Taffybar.Weather
@@ -39,8 +40,8 @@ main = do
                                                       ]
                                   , graphLabel = Just "cpu"
                                   }
-  let clock = textClockNew Nothing "<span fgcolor='orange'>%a %b %-d %H:%M</span>" 1
-      pager = taffyPagerNew defaultPagerConfig
+      clock = textClockNew Nothing "<span fgcolor='orange'>%a %b %-d %H:%M</span>" 1
+      pager = taffyPagerHUDNew defaultPagerConfig defaultWorkspaceHUDConfig
       wcfg = (defaultWeatherConfig "KBOS") { weatherTemplate = "$tempC$°C $humidity$%" }
       wea = weatherNew wcfg 10
       bat = batteryBarNew defaultBatteryConfig 10
