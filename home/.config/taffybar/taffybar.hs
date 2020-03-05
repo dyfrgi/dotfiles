@@ -1,55 +1,96 @@
-import System.Taffybar
+{-# LANGUAGE OverloadedStrings #-}
 
-import System.Taffybar.Systray
-import System.Taffybar.WorkspaceHUD
-import System.Taffybar.TaffyPager
-import System.Taffybar.SimpleClock
-import System.Taffybar.Weather
-import System.Taffybar.Battery
-import System.Taffybar.NetMonitor
+module Main where
 
-import System.Taffybar.Widgets.PollingBar
-import System.Taffybar.Widgets.PollingGraph
+import System.Taffybar (startTaffybar)
 
-import System.Information.Memory
-import System.Information.CPU
+import System.Taffybar.Context (TaffybarConfig(..))
+import System.Taffybar.Hooks
+import System.Taffybar.Information.CPU
+import System.Taffybar.Information.Memory
+import System.Taffybar.SimpleConfig
+import System.Taffybar.Widget
+import System.Taffybar.Widget.Generic.PollingGraph
 
+transparent, yellow1, yellow2, green1, green2, taffyBlue
+  :: (Double, Double, Double, Double)
+transparent = (0.0, 0.0, 0.0, 0.0)
+yellow1 = (0.9453125, 0.63671875, 0.2109375, 1.0)
+yellow2 = (0.9921875, 0.796875, 0.32421875, 1.0)
+green1 = (0, 1, 0, 1)
+green2 = (1, 0, 1, 0.5)
+taffyBlue = (0.129, 0.588, 0.953, 1)
+
+myGraphConfig, netCfg, memCfg, cpuCfg :: GraphConfig
+myGraphConfig =
+  defaultGraphConfig
+  { graphPadding = 0
+  , graphBorderWidth = 0
+  , graphWidth = 75
+  , graphBackgroundColor = transparent
+  }
+
+netCfg = myGraphConfig
+  { graphDataColors = [yellow1, yellow2]
+  , graphLabel = Just "net"
+  }
+
+memCfg = myGraphConfig
+  { graphDataColors = [taffyBlue]
+  , graphLabel = Just "mem"
+  }
+
+cpuCfg = myGraphConfig
+  { graphDataColors = [green1, green2]
+  , graphLabel = Just "cpu"
+  }
+
+memCallback :: IO [Double]
 memCallback = do
-    mi <- parseMeminfo
-    return $ memoryUsedRatio mi
+  mi <- parseMeminfo
+  return [memoryUsedRatio mi]
 
+cpuCallback :: IO [Double]
 cpuCallback = do
-  (userLoad, systemLoad, totalLoad) <- cpuLoad
+  (_, systemLoad, totalLoad) <- cpuLoad
   return [totalLoad, systemLoad]
 
-colorMem v =
-  case  v of
-    _ | v < 0.25 -> (0, 0, 1)
-    _ | v < 0.5  -> (0, 0.5, 1)
-    _ | v < 0.625-> (0, 1, 0.5)
-    _ | v < 0.75 -> (0, 1, 0)
-    _ | v < 0.8  -> (0.5, 1, 0)
-    _ | v < 0.9  -> (1, 1, 0)
-    _ | v < 0.95 -> (1, 0.5, 0)
-    _            -> (1, 0, 0)
+exampleTaffybarConfig :: TaffybarConfig
+exampleTaffybarConfig =
+  let myWorkspacesConfig =
+        defaultWorkspacesConfig
+        { minIcons = 1
+        , widgetGap = 0
+        , showWorkspaceFn = hideEmpty
+        }
+      workspaces = workspacesNew myWorkspacesConfig
+      cpu = pollingGraphNew cpuCfg 0.5 cpuCallback
+      mem = pollingGraphNew memCfg 1 memCallback
+      net = networkGraphNew netCfg Nothing
+      clock = textClockNewWith defaultClockConfig
+      layout = layoutNew defaultLayoutConfig
+      windowsW = windowsNew defaultWindowsConfig
+      -- See https://github.com/taffybar/gtk-sni-tray#statusnotifierwatcher
+      -- for a better way to set up the sni tray
+      tray = sniTrayThatStartsWatcherEvenThoughThisIsABadWayToDoIt
+      myConfig = defaultSimpleTaffyConfig
+        { startWidgets =
+            workspaces : map (>>= buildContentsBox) [ layout, windowsW ]
+        , endWidgets = map (>>= buildContentsBox)
+          [ batteryIconNew
+          , clock
+          , tray
+          , cpu
+          , mem
+          , net
+          , mpris2New
+          ]
+        , barPosition = Top
+        , barPadding = 0
+        , barHeight = 30
+        , widgetSpacing = 0
+        }
+  in withBatteryRefresh $ withLogServer $
+     withToggleServer $ toTaffyConfig myConfig
 
-main = do
-  let memCfg = defaultBarConfig colorMem
-      cpuCfg = defaultGraphConfig { graphDataColors = [ (0, 1, 0, 1)
-                                                      , (1, 0, 1, 0.5)
-                                                      ]
-                                  , graphLabel = Just "cpu"
-                                  }
-      clock = textClockNew Nothing "<span fgcolor='orange'>%a %b %-d %H:%M</span>" 1
-      pager = taffyPagerHUDNew defaultPagerConfig defaultWorkspaceHUDConfig
-      wcfg = (defaultWeatherConfig "KBOS") { weatherTemplate = "$tempC$°C $humidity$%" }
-      wea = weatherNew wcfg 10
-      bat = batteryBarNew defaultBatteryConfig 10
-      net = netMonitorNew 1 "wlan0"
-      mem = pollingBarNew memCfg 1 memCallback
-      cpu = pollingGraphNew cpuCfg 1 cpuCallback
-      tray = systrayNew
-  defaultTaffybar defaultTaffybarConfig { startWidgets = [ pager ]
-                                        , endWidgets = [ tray, wea, clock, bat, net, mem, cpu ]
-                                        , monitorNumber = 0
-                                        }
+main = startTaffybar exampleTaffybarConfig
