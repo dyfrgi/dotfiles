@@ -37,16 +37,18 @@ xset m 1/1
 compton -b
 
 # configure screensaver
-xss-lock -n ~/bin/dim-screen2.sh -l -- env XSECURELOCK_SAVER=saver_blank /usr/share/goobuntu-desktop-files/xsecurelock.sh &
+# allow script to start xsecurelock to be overridden by env files
+export XSECURELOCK_SCRIPT="${XSECURELOCK_SCRIPT:-xsecurelock}"
+xss-lock -n ~/bin/dim-screen2.sh -l -- env XSECURELOCK_SAVER=saver_blank $XSECURELOCK_SCRIPT &
 xset s 300 10   # 5 minutes, wait 10 seconds after dimming before locking
 
 # taffybar
-taffybar &
+# taffybar &
 
 # dunst notifier
-dunst &
+# dunst &
 
 test -x ~/.xsession-local && source ~/.xsession-local
 
 # start the window manager
-exec xmonad
+exec awesome
