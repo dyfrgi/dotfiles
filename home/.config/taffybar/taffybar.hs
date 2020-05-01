@@ -60,6 +60,7 @@ exampleTaffybarConfig =
   let myWorkspacesConfig =
         defaultWorkspacesConfig
         { minIcons = 1
+        , getWindowIconPixbuf = scaledWindowIconPixbufGetter getWindowIconPixbufFromEWMH
         , widgetGap = 0
         , showWorkspaceFn = hideEmpty
         }
