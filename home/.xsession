@@ -12,16 +12,19 @@ ssh-add
 
 # PolicyKit Authentication Agent (needed for network-manager)
 # NOTE: May be replaceable with /usr/lib/policykit-1/polkitd; investigate
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+# Should be automatically started by dbus-daemon
+# /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 # Network manager
 nm-applet &
 
 # Notification popups
-/usr/lib/notify-osd/notify-osd & # backgrounds itself, but background just in case this changes, etc.
+# replaced by naughty in awesome
+# /usr/lib/notify-osd/notify-osd & # backgrounds itself, but background just in case this changes, etc.
 
 # Set default cursor
-xsetroot -cursor_name left_ptr
+# xsetroot -cursor_name left_ptr
 
+# this is the default, maybe not needed? FIXME
 if [ -f ~/.Xauthority ]; then
   export XAUTHORITY=$HOME/.Xauthority
 fi
@@ -31,7 +34,7 @@ fi
 xset r rate 250 50
 
 # 1:1 mouse movement
-xset m 1/1
+# xset m 1/1
 
 # composition manager
 compton -b
