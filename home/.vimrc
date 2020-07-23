@@ -14,6 +14,32 @@ let mapleader="-"
 source ~/.vim/plugins.vim
 " }
 
+" Colors {
+" Enable true color
+if exists('+termguicolors')
+   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+   set termguicolors
+endif
+
+" turn on undercurl support
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
+
+" Set up colors
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+else
+    echom "WARNING: base16 color scheme not set! Run e.g. base16_default-dark"
+endif
+
+" style SignColumn the same as LineNr
+" Not needed with base16 - not sure what theme this was needed for, maybe
+" solarized?
+" highlight! link SignColumn LineNr
+" }
+
 " Various {
 syntax on               " turn on syntax hilighting
 filetype plugin indent on
@@ -134,21 +160,6 @@ endif
 
 autocmd VimResized * :wincmd =
 
-" Colors {
-" Set up colors
-if filereadable(expand("~/.vimrc_background"))
-    let base16colorspace=256
-    source ~/.vimrc_background
-else
-    echom "WARNING: base16 color scheme not set! Run e.g. base16_default-dark"
-endif
-
-" style SignColumn the same as LineNr
-" Not needed with base16 - not sure what theme this was needed for, maybe
-" solarized?
-" highlight! link SignColumn LineNr
-" }
-
 " Qargs {
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
@@ -190,3 +201,6 @@ endif
 " }
 
 call SourceAllInDirectory('~/.vim/rc/after/')
+
+" workaround for base16 bustedness
+hi SpellCap ctermbg=NONE
