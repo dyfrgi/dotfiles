@@ -2,9 +2,7 @@
 !XTerm*foreground: gray90
 !XTerm*cursorColor: grey
 !XTerm*dynamicColors: on
-!XTerm*faceName: Inconsolata
-!XTerm*faceSize: 9
-!XTerm*font: -*-fixed-medium-r-*-*-13-*-*-*-*-*-iso10646-*
+XTerm*faceName: Hack:pixelsize=12
 
 XTerm*geometry: 80x25
 XTerm*scrollBar: false
