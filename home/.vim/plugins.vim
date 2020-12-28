@@ -50,8 +50,10 @@ NeoBundle 'dyfrgi/patchreview-vim'              " :PatchReview, :DiffReview
 NeoBundle 'andymass/vim-matchup'
 
 " Language server support
-NeoBundle 'prabirshrestha/async.vim'
 NeoBundle 'prabirshrestha/vim-lsp'
+NeoBundle 'prabirshrestha/async.vim'
+NeoBundle 'prabirshrestha/asyncomplete.vim'
+NeoBundle 'prabirshrestha/asyncomplete-lsp.vim'
 
 call neobundle#end()
 
