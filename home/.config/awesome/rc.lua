@@ -25,6 +25,7 @@ local has_fdo, freedesktop = pcall(require, "freedesktop")
 -- Load batteryarc widget
 local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
 
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -131,9 +132,14 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 mytextclock = wibox.widget.textclock()
 
 -- Create a battery widget
-mybattery = batteryarc_widget({
-    show_current_level = true
-})
+has_battery = (os.execute("acpi | grep Battery") == 0)
+if has_battery then
+    mybattery = batteryarc_widget({
+        show_current_level = true
+    })
+else
+    mybattery = nil
+end
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
