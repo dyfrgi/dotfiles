@@ -356,7 +356,11 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+    -- Volume
+    awful.key({}, "XF86AudioLowerVolume", function() awful.spawn("pamixer -d 5") end),
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.spawn("pamixer -i 5") end),
+    awful.key({}, "XF86AudioMute", function() awful.spawn("pamixer -t") end)
 )
 
 clientkeys = gears.table.join(
