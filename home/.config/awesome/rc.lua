@@ -132,14 +132,9 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 mytextclock = wibox.widget.textclock()
 
 -- Create a battery widget
-has_battery = (os.execute("acpi | grep Battery") == 0)
-if has_battery then
-    mybattery = batteryarc_widget({
-        show_current_level = true
-    })
-else
-    mybattery = nil
-end
+mybattery = batteryarc_widget({
+    show_current_level = true
+})
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -271,13 +266,13 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
-    awful.key({ modkey,           }, "h",
+    awful.key({ modkey,           }, "t",
         function ()
             awful.client.focus.byidx( 1)
         end,
         {description = "focus next by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "t",
+    awful.key({ modkey,           }, "h",
         function ()
             awful.client.focus.byidx(-1)
         end,
@@ -287,13 +282,13 @@ globalkeys = gears.table.join(
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "h", function () awful.client.swap.byidx(  1)    end,
+    awful.key({ modkey, "Shift"   }, "t", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "t", function () awful.client.swap.byidx( -1)    end,
+    awful.key({ modkey, "Shift"   }, "h", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, "Control" }, "h", function () awful.screen.focus_relative( 1) end,
+    awful.key({ modkey, "Control" }, "t", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
-    awful.key({ modkey, "Control" }, "t", function () awful.screen.focus_relative(-1) end,
+    awful.key({ modkey, "Control" }, "h", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
@@ -379,8 +374,6 @@ clientkeys = gears.table.join(
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
---    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
---              {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "b",
         function (c)
             -- The client currently has the input focus, so it cannot be
