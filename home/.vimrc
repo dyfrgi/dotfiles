@@ -27,11 +27,10 @@ let &t_Cs = "\e[4:3m"
 let &t_Ce = "\e[4:0m"
 
 " Set up colors
-if filereadable(expand("~/.vimrc_background"))
+if exists('$BASE16_THEME')
+      \ && (!exists('g:colors_name') || g:colors_name != 'base16-$BASE16_THEME')
     let base16colorspace=256
-    source ~/.vimrc_background
-else
-    echom "WARNING: base16 color scheme not set! Run e.g. base16_default-dark"
+    colorscheme base16-$BASE16_THEME
 endif
 
 " style SignColumn the same as LineNr
