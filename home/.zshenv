@@ -3,11 +3,12 @@ export TEXINPUTS=".:~/.latex/:"
 
 # Unicode: makes text happy
 export LANG="en_US.UTF-8"
-export LC_TIME="en_DK.UTF-8"
+# 24h clock, most systems have this locale
+export LC_TIME="C.UTF-8"
 
 # Paths contain unique items; no duplicates
 typeset -U path
-path=(~/.cabal/bin ~/bin ~/.local/bin ~/.cargo/bin ~/go/bin ~/perl5/bin ~/.pyenv/bin ~/vertica-ec2-scripts ~/serverfarm /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin)
+path=(~/.cabal/bin ~/bin ~/.ghcup/bin ~/.local/bin ~/.cargo/bin ~/go/bin ~/perl5/bin ~/.pyenv/bin ~/vertica-ec2-scripts ~/serverfarm /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin)
 
 export EDITOR=vim
 export VISUAL=vim
