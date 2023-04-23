@@ -10,3 +10,6 @@
 [submodule "home/.config/awesome/awesome-wm-widgets"]
 	path = home/.config/awesome/awesome-wm-widgets
 	url = https://github.com/streetturtle/awesome-wm-widgets.git
+[submodule "home/.tmux/plugins/tpm"]
+	path = home/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
