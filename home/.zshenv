@@ -8,7 +8,7 @@ export LC_TIME="C.UTF-8"
 
 # Paths contain unique items; no duplicates
 typeset -U path
-path=(~/.cabal/bin ~/bin ~/.ghcup/bin ~/.local/bin ~/.cargo/bin ~/go/bin ~/perl5/bin ~/.pyenv/bin ~/vertica-ec2-scripts ~/serverfarm /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin)
+path=(~/.cabal/bin ~/bin ~/.ghcup/bin ~/.local/bin ~/.cargo/bin ~/go/bin ~/perl5/bin ~/.pyenv/bin ~/vertica-ec2-scripts ~/serverfarm /usr/local/sbin /usr/sbin /sbin $path /usr/local/bin /usr/bin /bin /usr/lib/vpnc /opt/HipChat/bin ~/Rack2Free)
 
 export EDITOR=vim
 export VISUAL=vim
