@@ -30,5 +30,5 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 
 <Multi_key> <parenleft> <equal> : "∈" U2208 # ELEMENT OF
 
-<Multi_key> <quotedbl> <tilde> : "⍨" U2368 # APL FUNCTIONAL SYMBOL TILDE DIAERESIS
-<Multi_key> <tilde> <quotedbl> : "⍨" U2368 # APL FUNCTIONAL SYMBOL TILDE DIAERESIS
+#<Multi_key> <quotedbl> <tilde> : "⍨" U2368 # APL FUNCTIONAL SYMBOL TILDE DIAERESIS
+#<Multi_key> <tilde> <quotedbl> : "⍨" U2368 # APL FUNCTIONAL SYMBOL TILDE DIAERESIS
