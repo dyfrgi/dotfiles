@@ -41,5 +41,3 @@ Rxvt.keysym.C-Down:  perl:font-size:decrease
 Rxvt*iso14755: False
 
 Rxvt.print-pipe: "cat > /dev/null"
-
-#include ".Xresources.base16"
