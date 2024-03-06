@@ -11,6 +11,7 @@
 [alias]
     gl = log --pretty=format:'%C(yellow)%h%C(reset) | %an | %ar | %C(cyan)%s%C(reset)%d' --topo-order --graph --decorate
 	d = difftool
+  co = checkout
 
 [color]
 	diff = auto
