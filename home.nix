@@ -19,6 +19,9 @@ in
       luajit = (withCompilerFlags prev.luajit [ "-DLUAJIT_USE_PERFTOOLS" ]).override { self = final.luajit; };
     })
   ];
+  programs.pyenv = {
+      enable = true;
+  };
   programs.neovim = {
       enable = true;
       plugins = with pkgs.vimPlugins; [
