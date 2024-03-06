@@ -1,0 +1,4 @@
+#!/usr/bin/zsh
+
+# [[ -f /usr/lib/environment.d/nix-daemon.conf ]] && source /usr/lib/environment.d/nix-daemon.conf
+[[ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]] && source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
