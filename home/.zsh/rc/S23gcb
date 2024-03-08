@@ -1,3 +1,0 @@
-function gcb {
-  git clone git@github.com:backupify/$1.git
-}
