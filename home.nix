@@ -1,8 +1,39 @@
-{pkgs, ...}:
+{pkgs, config, lib, ...}:
 let
+  inherit (builtins) foldl';
   withCompilerFlags = (package: flags: package.overrideAttrs(old: {
       env = (old.env or {}) // { NIX_CFLAGS_COMPILE = toString (old.env.NIX_CFLAGS_COMPILE or "") + " ${toString flags}"; };
   }));
+  dotfilesPath = "${config.home.homeDirectory}/.config/home-manager/";
+  linkHome = path: config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/home/${path}";
+  homeFilesToLink = [
+    ".dircolors"
+    ".etc/"
+    ".gitconfig"
+    ".gitignore_global"
+    ".gitk"
+    ".gtkrc-2.0"
+    ".inputrc"
+    ".mplayer/"
+    ".reportbugrc"
+    ".rtorrent.rc"
+    ".screenrc"
+    ".tmux/"
+    ".tmux.conf"
+    ".XCompose"
+    ".xmonad/"
+    ".xscreensaver"
+    ".xsession"
+    ".zsh/"
+    ".zshenv"
+    ".zshrc"
+  ];
+  xdgConfigFilesToLink = [
+    "awesome/"
+    "compton.conf"
+    "nvim/"
+    "taffybar/"
+  ];
 in
 {
   home.username = "mleuchtenburg";
@@ -34,4 +65,7 @@ in
     pkgs.xdg-utils
     pkgs.yt-dlp
   ];
+
+  home.file = foldl' (acc: elem: { "${elem}" = { source = linkHome elem; }; } // acc) {} homeFilesToLink;
+  xdg.configFile = foldl' (acc: elem: { "${elem}" = { source = linkHome ".config/${elem}"; }; } // acc) {} xdgConfigFilesToLink;
 }
