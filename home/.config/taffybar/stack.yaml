@@ -1,0 +1,29 @@
+resolver: lts-14.27
+
+packages:
+    - '.'
+
+extra-deps:
+- taffybar-3.2.1
+- ConfigFile-1.1.4
+- broadcast-chan-0.2.0.2
+- dbus-hslogger-0.1.0.1
+- gi-cairo-connector-0.0.1
+- gi-cairo-render-0.0.1
+- gtk-strut-0.1.3.0
+- rate-limit-1.4.1
+- status-notifier-item-0.3.0.4
+- time-units-1.0.0
+- xml-helpers-1.0.0
+- xdg-desktop-entry-0.1.1.0
+- gtk-sni-tray-0.1.5.0
+- gi-gdkx11-3.0.9
+- gi-xlib-2.0.8
+- cairo-0.13.8.0
+- gi-dbusmenugtk3-0.4.8
+- gi-dbusmenu-0.4.7
+- gtk2hs-buildtools-0.13.8.0
+
+flags: {}
+
+extra-package-dbs: []

@@ -1,0 +1,33 @@
+#!/usr/bin/zsh
+
+# The arcanist binary is in here as `arc`, which various scripts depend on
+path+="/usr/share/arcanist/bin"
+
+eval "$(direnv hook zsh)"
+
+# suggested aliases from https://memsql.atlassian.net/wiki/spaces/ENG/pages/315883521/Engineering+dev+environment+setup#Configure-shell-aliases
+alias memsql='mysql -h 127.0.0.1 -u root --prompt="memsql> "' # client to connect to memsql
+alias my='mysql -h 127.0.0.1 --socket=/var/run/mysqld/mysqld.sock -u root --port 3307' # client to connect to mysql (running on port 3307)
+
+# run singlebox memsqld
+alias       single='cd $PATH_TO_MEMSQL/debug;   ./memsqld --singlebox'
+alias      singler='cd $PATH_TO_MEMSQL/release; ./memsqld --singlebox'
+# run loopback memsqld
+alias  distributed='cd $PATH_TO_MEMSQL/debug;   ./memsqld'
+alias distributedr='cd $PATH_TO_MEMSQL/release; ./memsqld'
+# run memsqld in gdb
+alias      singled='cd $PATH_TO_MEMSQL/debug; gdb -ex run --args ./memsqld --singlebox'
+alias distributedd='cd $PATH_TO_MEMSQL/debug; gdb -ex run --args ./memsqld            '
+
+alias t='$PATH_TO_MEMSQL/memsqltest/t.py'
+alias pt='psy test -f' # This will trigger debug+release builds. Before sending out a diff, you should always make sure release builds are working.
+alias ptdebug='psy test --debug-only -f' # This will trigger only a debug build - useful for iterating as it saves psyduck resources, and builds faster.
+
+alias memmake='memsql-please make debug --skip-binplace memsql-server'
+alias memclean='memsql-please make debug --skip-binplace clean'
+
+alias c_d='rm -r data/* tracelogs/*' # Clear memsql data (run from the build/install dir you wish to clear)
+alias c_p='rm -r plancache/*' # Clear memsql plancache (run from the build/install dir you wish to clear)
+alias c_b='rm -r bincache/*' # Clear builds cached by distributed.py (run from memsql/)
+
+export MEMSQL_PLEASE_DOCKER_CPU_SHARES='{"default":10}'

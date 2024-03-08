@@ -1,0 +1,20 @@
+name:                my-taffybar
+version:             0.1.0.0
+license:             BSD3
+author:              "Michael Leuchtenburg"
+maintainer:          "michael@slashhome.org"
+
+dependencies:
+- base >= 4.7 && < 5
+- taffybar
+
+executables:
+  my-taffybar:
+    main:                taffybar.hs
+    source-dirs:         .
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - taffybar

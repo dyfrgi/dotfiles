@@ -1,0 +1,43 @@
+!XTerm*background: Black
+!XTerm*foreground: gray90
+!XTerm*cursorColor: grey
+!XTerm*dynamicColors: on
+XTerm*faceName: Hack:pixelsize=12
+
+XTerm*geometry: 80x25
+XTerm*scrollBar: false
+XTerm*charClass:33:48,35:48,37-38:48,45-47:48,58:48,61:48,63-64:48,126:48
+XTerm*backarrowKeyIsErase: false
+XTerm*locale: UTF-8
+XTerm*utf8: 1
+XTerm*eightBitInput: false
+XTerm*saveLines: 4096
+XTerm*bellIsUrgent: true
+
+! Do not scroll down when something comes on the screen
+Rxvt.scrollTtyOutput: false
+Rxvt.scrollWithBuffer: true
+! But do scroll to the bottom if I press a key (other than input to rxvt itself)
+Rxvt.scrollTtyKeypress: true
+
+! Do not use messed up colors for bold
+Rxvt.intensityStyles: false
+
+Rxvt.reverseVideo: false
+Rxvt.scrollBar: false
+Rxvt.saveLines: 100000
+Rxvt.visualBell: false
+Rxvt.font: xft:terminus:pixelsize=12,xft:unifont
+Rxvt.boldFont: xft:terminus:bold:pixelsize=12
+Rxvt.underlineURLs: true
+Rxvt.perl-ext-common: default,bell-command,matcher,font-size
+Rxvt.urlLauncher: sensible-browser
+Rxvt.matcher.button: 1
+Rxvt.keysym.M-u: perl:matcher:list
+Rxvt.bell-command: aplay -q ~/.etc/sounds/beep1.wav
+Rxvt.urgentOnBell: true
+Rxvt.keysym.C-Up:    perl:font-size:increase
+Rxvt.keysym.C-Down:  perl:font-size:decrease
+Rxvt*iso14755: False
+
+Rxvt.print-pipe: "cat > /dev/null"

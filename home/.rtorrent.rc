@@ -1,0 +1,4 @@
+port_range=40000-40010
+dht_port=50011
+encryption=require
+session_save=true

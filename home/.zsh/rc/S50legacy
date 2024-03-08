@@ -1,0 +1,13 @@
+# ~/.zshrc
+# Michael Leuchtenburg
+# Some parts taken from http://dev.gentoo.org/~slarti/conf/zshrc.html
+
+autoload -U zcalc
+
+# Makes it easy to type URLs as command line arguments. As you type, the
+# input character is analyzed and, if it may need quoting, the current
+# word is checked for a URI scheme. If one is found and the current word
+# is not already quoted, a blackslash is inserted before the input
+# caracter.
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic

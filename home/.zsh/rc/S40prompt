@@ -1,0 +1,65 @@
+#!/usr/bin/zsh
+
+autoload -U colors
+colors
+
+autoload -Uz vcs_info
+setopt prompt_subst   # required to use $vcs_info_msg_0_ in PROMPT
+
+red="%{$fg[red]%}"
+blue="%{$fg[blue]%}"
+bblue="%{$fg_bold[blue]%}"
+green="%{$fg[green]%}"
+magenta="%{$fg[magenta]%}"
+cyan="%{$fg[cyan]%}"
+yellow="%{$fg[yellow]%}"
+default="%{$reset_color%}"
+
+FMT_BRANCH="${green}%b%u%c${default}" # e.g. master¹²
+FMT_ACTION="(${blue}%a${default}%)"   # e.g. (rebase-i)
+FMT_PATH="%R${}/%S"              # e.g. ~/repo/subdir
+lb="${blue}["
+rb="${blue}]"
+
+# check-for-changes can be kind of expensive, may want to disable for big repos
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr   '¹'  # display ¹ if there are unstaged changes
+zstyle ':vcs_info:*' stagedstr     '²'  # display ² if there are staged changes
+zstyle ':vcs_info:*' actionformats "$lb${FMT_BRANCH}${FMT_ACTION}$rb"
+zstyle ':vcs_info:*' formats       "$lb${FMT_BRANCH}$rb"
+zstyle ':vcs_info:*' nvcsformats   ""                             "%~"
+zstyle ':vcs_info:*' enable git svn
+
+# PROMPT will have variables substituted on display, not on set due to prompt_subst
+VCS_PROMPT='${vcs_info_msg_0_}'
+PROMPT="${blue}[$cyan%(!.ROOT.%n)$green@$cyan%m$green:$cyan%~$blue]$VCS_PROMPT%(0#.$red#$default.$default%%) "
+RPROMPT="%(?..[$red%?$default])[$cyan%*$default]"
+
+function title {
+    local SHORT=$1
+    local LONG=$2
+
+    case $TERM in
+      xterm*) ;&
+      rxvt*)
+        print -nP "\e]2;$LONG:q\a"  # set windowo title
+        print -nP "\e]1;$SHORT:q\a" # set icon name
+      ;;
+      screen*)
+        print -nP "\ek$SHORT:q\e\\"
+      ;;
+    esac
+}
+
+function preexec() {
+    local CMD=${1[(wr)^(*=*|sudo|ssh|rake|-*)]} #cmd name only, or if this is sudo or ssh, the next cmd
+    local LINE="${2:gs/$/\\$}"  # cmd with args, escaping $
+    LINE="${LINE:gs/%/%%}"  # escape % also
+    title $CMD $LINE
+}
+
+function precmd() {
+    title "%m:%~" "%m:%~"
+    vcs_info
+}
+

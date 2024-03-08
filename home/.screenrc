@@ -1,0 +1,21 @@
+# No startup message, please
+startup_message off
+
+# number title (other users): hardstatus
+caption string "%3n %t%? (%u)%?%?: %h%?"
+
+# default hardstatus
+hardstatus string "%h"
+
+# don't use actual hardstatus line - hardstatus goes to window title in xterm
+hardstatus off
+
+# use alternative screen support in virtual terminals
+altscreen on
+
+# don't block programs when all connections die
+defnonblock 5
+
+# actually beep when beeps happen, regardless of which window they're in
+bell_msg "Bell in window %n^G"
+vbell off

@@ -1,0 +1,18 @@
+#!/usr/bin/zsh
+
+# FIXME: Add comments describing function of each option
+
+setopt append_history
+setopt auto_continue
+setopt auto_pushd
+setopt hist_save_no_dups
+setopt histignoredups
+setopt inc_append_history
+setopt no_check_jobs
+setopt no_hup
+setopt nobeep
+unsetopt nomatch
+setopt pushd_ignore_dups
+setopt pushd_minus
+setopt pushd_silent
+setopt pushd_to_home

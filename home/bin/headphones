@@ -1,0 +1,10 @@
+#!/usr/bin/expect -f
+
+spawn bluetoothctl
+expect "# "
+send "disconnect CC:98:8B:3E:25:7A\r"
+expect "Successful disconnected"
+send "connect CC:98:8B:3E:25:7A\r"
+expect "Connection successful"
+send -- "exit\r"
+expect eof

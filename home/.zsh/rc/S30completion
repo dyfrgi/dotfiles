@@ -1,0 +1,57 @@
+#!/usr/bin/zsh
+
+# Set up completion
+zmodload zsh/complist
+
+zstyle ':completion:*' completer _complete 
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-grouped true
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' matcher-list '+m:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' original false
+zstyle ':completion:*' select-prompt %SSelected: %l%s
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' substitute false
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+zstyle ':completion:*' use-perl true
+
+# ignore backup files when completing commands
+zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'
+zstyle ':completion:*:descriptions' format "%B---- %d%b"
+zstyle ':completion:*:warnings' format '%B%U---- no match for: %d%u%b'
+zstyle ':completion:*:messages' format '%B%U---- %d%u%b' 
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters 
+zstyle ':completion:*:kill:*' force-list always
+
+# don't require beginning-of-name matches for git checkout tab completion
+zstyle ':completion:*:git-checkout:*:remote-branch-name-noprefix' matcher 'b:=* e:=*'
+
+
+: ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}}
+if [ -f $HOME/.ssh/known_hosts ]; then
+    _ssh_known_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*})
+fi
+
+zstyle ':completion:*:*:*:users' ignored-patterns \
+	adm alias apache at bin cron cyrus daemon ftp games gdm guest halt ident junkbust ldap lp mail mailnull man mysql \
+	named news nfsnobody nobody nscd ntp nut operator pcap portage postfix postgres postmaster qmaild qmaill qmailp qmailq qmailr qmails radvd \
+	rpc rpcuser rpm shutdown mmsp vpopmail quid sshd sync uucp vcsa xfs
+
+zstyle '*' single-ignored show
+
+hosts=(
+	$_etc_hosts[@]
+	$_ssh_known_hosts[@]
+	localhost
+      )
+zstyle ':completion:*' hosts $hosts
+
+autoload -U compinit
+compinit
+
