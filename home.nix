@@ -24,7 +24,6 @@ let
     ".xmonad/"
     ".xscreensaver"
     ".xsession"
-    ".zsh/"
     ".zshenv"
     ".zshrc"
   ];
@@ -66,6 +65,9 @@ in
     pkgs.yt-dlp
   ];
 
-  home.file = foldl' (acc: elem: { "${elem}" = { source = linkHome elem; }; } // acc) {} homeFilesToLink;
+  home.file = {
+    ".zsh" = { source = home/.zsh; recursive = true; };
+    ".zsh/rc/S15home-manager-extra".text = config.programs.zsh.initExtra;
+  } // foldl' (acc: elem: { "${elem}" = { source = linkHome elem; }; } // acc) {} homeFilesToLink;
   xdg.configFile = foldl' (acc: elem: { "${elem}" = { source = linkHome ".config/${elem}"; }; } // acc) {} xdgConfigFilesToLink;
 }
