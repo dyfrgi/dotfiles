@@ -49,6 +49,7 @@ in
       luajit = (withCompilerFlags prev.luajit [ "-DLUAJIT_USE_PERFTOOLS" ]).override { self = final.luajit; };
     })
   ];
+  nixpkgs.config.allowUnfree = true;
   programs.pyenv = {
       enable = true;
   };
@@ -61,6 +62,7 @@ in
   home.packages = [
     pkgs.lazygit
     pkgs.logseq
+    pkgs.slack
     pkgs.xdg-utils
     pkgs.yt-dlp
   ];
