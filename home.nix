@@ -60,8 +60,10 @@ in
       ];
   };
   home.packages = [
+    pkgs.bat
     pkgs.lazygit
     pkgs.logseq
+    pkgs.scc
     pkgs.slack
     pkgs.xdg-utils
     pkgs.yt-dlp
