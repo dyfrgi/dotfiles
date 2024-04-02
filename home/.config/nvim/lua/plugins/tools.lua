@@ -4,6 +4,7 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     cmd = "Neotree",
+    dependencies = { "MunifTanjim/nui.nvim" },
     keys = {
       {
         "<leader>fe",
@@ -69,12 +70,6 @@ return {
       },
     },
     config = function(_, opts)
-      local events = require("neo-tree.events")
-      opts.event_handlers = opts.event_handlers or {}
-      vim.list_extend(opts.event_handlers, {
-        { event = events.FILE_MOVED, handler = on_move },
-        { event = events.FILE_RENAMED, handler = on_move },
-      })
       require("neo-tree").setup(opts)
       vim.api.nvim_create_autocmd("TermClose", {
         pattern = "*lazygit",

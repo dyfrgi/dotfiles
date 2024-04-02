@@ -42,6 +42,8 @@ return {
       },
       { "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
     },
+    config = function(_, opts)
+    end,
   },
   {
     "williamboman/mason.nvim",
