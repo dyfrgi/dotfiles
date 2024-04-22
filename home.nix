@@ -39,6 +39,8 @@ in
   home.homeDirectory = "/home/mleuchtenburg";
   home.stateVersion = "23.11";
   home.enableDebugInfo = true;
+  xdg.enable = true; # set XDG_ env vars
+  xdg.systemDirs.data = ["${config.home.profileDirectory}/share"]; # add nix-profile to XDG_DATA_DIRS
   programs.home-manager.enable = true;
   home.sessionVariables = {
     NIXOS_XDG_OPEN_USE_PORTAL = 1;
