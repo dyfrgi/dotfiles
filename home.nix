@@ -62,7 +62,9 @@ in
       ];
   };
   home.packages = [
+    pkgs.awscli2
     pkgs.bat
+    pkgs.google-cloud-sdk
     pkgs.lazygit
     pkgs.logseq
     pkgs.scc
