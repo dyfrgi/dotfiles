@@ -1,3 +1,0 @@
-#!/usr/bin/zsh
-
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
