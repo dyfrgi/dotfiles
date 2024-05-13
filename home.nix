@@ -28,6 +28,7 @@ let
     ".zshrc"
   ];
   xdgConfigFilesToLink = [
+    "alacritty/"
     "awesome/"
     "compton.conf"
     "nvim/"
@@ -35,8 +36,8 @@ let
   ];
 in
 {
-  home.username = "mleuchtenburg";
-  home.homeDirectory = "/home/mleuchtenburg";
+  home.username = "msl";
+  home.homeDirectory = "/home/msl";
   home.stateVersion = "23.11";
   home.enableDebugInfo = true;
   xdg.enable = true; # set XDG_ env vars
@@ -61,12 +62,20 @@ in
         nvim-treesitter.withAllGrammars
       ];
   };
+
+  programs.alacritty = {
+      enable = true;
+  };
+
   home.packages = [
     pkgs.awscli2
     pkgs.bat
+    pkgs.firefox
     pkgs.google-cloud-sdk
     pkgs.lazygit
     pkgs.logseq
+    pkgs.nerdfonts
+    pkgs.ripgrep
     pkgs.scc
     pkgs.slack
     pkgs.xdg-utils
@@ -78,4 +87,9 @@ in
     ".zsh/rc/S15home-manager-extra".text = config.programs.zsh.initExtra;
   } // foldl' (acc: elem: { "${elem}" = { source = linkHome elem; }; } // acc) {} homeFilesToLink;
   xdg.configFile = foldl' (acc: elem: { "${elem}" = { source = linkHome ".config/${elem}"; }; } // acc) {} xdgConfigFilesToLink;
+
+  xsession.windowManager.awesome = {
+    enable = true;
+  };
+  services.picom.enable = true;
 }
