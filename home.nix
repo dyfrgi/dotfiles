@@ -1,4 +1,4 @@
-{pkgs, config, lib, ...}:
+{pkgs, pkgsUnstable, config, lib, ...}:
 let
   inherit (builtins) foldl';
   withCompilerFlags = (package: flags: package.overrideAttrs(old: {
@@ -54,6 +54,7 @@ in
   nixpkgs.config.allowUnfree = true;
   programs.pyenv = {
       enable = true;
+      package = pkgsUnstable.pyenv;
   };
   programs.neovim = {
       enable = true;
@@ -67,6 +68,7 @@ in
     pkgs.google-cloud-sdk
     pkgs.lazygit
     pkgs.logseq
+    pkgsUnstable.poetry
     pkgs.scc
     pkgs.slack
     pkgs.xdg-utils
