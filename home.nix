@@ -40,29 +40,19 @@ in
   home.homeDirectory = "/home/msl";
   home.stateVersion = "23.11";
   home.enableDebugInfo = true;
+
+	imports = [ ./nvim.nix ];
+
   xdg.enable = true; # set XDG_ env vars
   xdg.systemDirs.data = ["${config.home.profileDirectory}/share"]; # add nix-profile to XDG_DATA_DIRS
   programs.home-manager.enable = true;
   home.sessionVariables = {
     NIXOS_XDG_OPEN_USE_PORTAL = 1;
   };
-  nixpkgs.overlays = [
-    (final: prev: {
-# the call to override is needed because it sets up all the spliced versions of luajit
-      luajit = (withCompilerFlags prev.luajit [ "-DLUAJIT_USE_PERFTOOLS" ]).override { self = final.luajit; };
-    })
-  ];
   nixpkgs.config.allowUnfree = true;
   programs.pyenv = {
       enable = true;
   };
-  programs.neovim = {
-      enable = true;
-      plugins = with pkgs.vimPlugins; [
-        nvim-treesitter.withAllGrammars
-      ];
-  };
-
   programs.alacritty = {
       enable = true;
   };

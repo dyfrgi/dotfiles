@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.autowrite = true
 vim.clipboard = "unnamedplus" -- use the '+' register by default
 
@@ -56,5 +57,5 @@ opt.fillchars = {
 opt.foldlevel = 99
 opt.foldmethod = "indent" -- TODO: replace with treesitter
 
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+vim.cmd.colorscheme("tokyonight")
+require("keymaps")
