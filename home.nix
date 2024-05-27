@@ -28,7 +28,6 @@ let
     ".zshrc"
   ];
   xdgConfigFilesToLink = [
-    "alacritty/"
     "awesome/"
     "compton.conf"
     "nvim/"
@@ -56,6 +55,12 @@ in
   };
   programs.alacritty = {
       enable = true;
+      settings = {
+        font = {
+          normal.family = "Fira Code Nerdfont";
+          size = 9.0;
+        };
+      };
   };
 
   home.packages = [
