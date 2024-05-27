@@ -50,6 +50,7 @@ in
     NIXOS_XDG_OPEN_USE_PORTAL = 1;
   };
   nixpkgs.config.allowUnfree = true;
+  programs.direnv.enable = true;
   programs.pyenv = {
       enable = true;
   };
@@ -60,13 +61,14 @@ in
   home.packages = [
     pkgs.awscli2
     pkgs.bat
-		pkgs.discord
-		pkgs.fd						# used by telescope-nvim
+    pkgs.discord
+    pkgs.fd                 # used by telescope-nvim
     pkgs.firefox
     pkgs.google-cloud-sdk
     pkgs.lazygit
     pkgs.logseq
     pkgs.nerdfonts
+    pkgs.pavucontrol
     pkgs.ripgrep
     pkgs.scc
     pkgs.slack
