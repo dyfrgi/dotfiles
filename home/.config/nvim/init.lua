@@ -59,3 +59,4 @@ opt.foldmethod = "indent" -- TODO: replace with treesitter
 
 vim.cmd.colorscheme("tokyonight")
 require("keymaps")
+require("miniclue")

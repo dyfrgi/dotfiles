@@ -60,6 +60,8 @@ in
   home.packages = [
     pkgs.awscli2
     pkgs.bat
+		pkgs.discord
+		pkgs.fd						# used by telescope-nvim
     pkgs.firefox
     pkgs.google-cloud-sdk
     pkgs.lazygit

@@ -3,9 +3,9 @@
   programs.neovim = {
       enable = true;
       plugins = with pkgs.vimPlugins; [
-#				mini-nvim
+				mini-nvim
 #				neo-tree-nvim
-#        nvim-treesitter.withAllGrammars
+        nvim-treesitter.withAllGrammars
 #				suda-vim
 				telescope-nvim
 				telescope-fzf-native-nvim
