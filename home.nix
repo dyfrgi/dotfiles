@@ -66,8 +66,11 @@ in
   home.packages = [
     pkgs.awscli2
     pkgs.bat
+    pkgs.brightnessctl
+    pkgs.google-chrome
     pkgs.discord
     pkgs.fd                 # used by telescope-nvim
+    pkgs.flameshot
     pkgs.firefox
     pkgs.google-cloud-sdk
     pkgs.lazygit
@@ -77,6 +80,7 @@ in
     pkgs.ripgrep
     pkgs.scc
     pkgs.slack
+    pkgs.via
     pkgs.xdg-utils
     pkgs.yt-dlp
   ];

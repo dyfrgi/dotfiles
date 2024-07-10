@@ -386,7 +386,10 @@ globalkeys = gears.table.join(
 	end),
 	awful.key({}, "XF86AudioMute", function()
 		awful.spawn("pamixer -t")
-	end)
+	end),
+  awful.key({ modkey }, "F11", function()
+    awful.spawn("flameshot gui")
+  end)
 )
 
 clientkeys = gears.table.join(
