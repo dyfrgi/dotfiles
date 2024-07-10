@@ -72,6 +72,7 @@ in
     pkgs.fd                 # used by telescope-nvim
     pkgs.flameshot
     pkgs.firefox
+    pkgs.fzf
     pkgs.google-cloud-sdk
     pkgs.lazygit
     pkgs.logseq
