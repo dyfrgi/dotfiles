@@ -48,7 +48,12 @@ in
   home.sessionVariables = {
     NIXOS_XDG_OPEN_USE_PORTAL = 1;
   };
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "electron-27.3.11" # logseq-0.10.9
+    ];
+  };
   programs.direnv.enable = true;
   programs.pyenv = {
       enable = true;
@@ -63,27 +68,28 @@ in
       };
   };
 
-  home.packages = [
-    pkgs.awscli2
-    pkgs.bat
-    pkgs.brightnessctl
-    pkgs.google-chrome
-    pkgs.discord
-    pkgs.fd                 # used by telescope-nvim
-    pkgs.flameshot
-    pkgs.firefox
-    pkgs.fzf
-    pkgs.google-cloud-sdk
-    pkgs.lazygit
-    pkgs.logseq
-    pkgs.nerdfonts
-    pkgs.pavucontrol
-    pkgs.ripgrep
-    pkgs.scc
-    pkgs.slack
-    pkgs.via
-    pkgs.xdg-utils
-    pkgs.yt-dlp
+  home.packages = with pkgs; [
+    acpi
+    awscli2
+    bat
+    brightnessctl
+    google-chrome
+    discord
+    fd                 # used by telescope-nvim
+    flameshot
+    firefox
+    fzf
+    google-cloud-sdk
+    lazygit
+    logseq
+    nerdfonts
+    pavucontrol
+    ripgrep
+    scc
+    slack
+    via
+    xdg-utils
+    yt-dlp
   ];
 
   home.file = {
