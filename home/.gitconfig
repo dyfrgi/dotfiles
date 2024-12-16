@@ -1,15 +1,12 @@
 [user]
 	name = Michael Leuchtenburg
-	email = michael@slashhome.org
+	email = mleuchtenburg@singlestore.com
 
 [merge]
-	tool = vim
-
-[mergetool.vim]
-	cmd = vim \"+Gdiff\" $MERGED
+	tool = nvimdiff
 
 [alias]
-    gl = log --pretty=format:'%C(yellow)%h%C(reset) | %an | %ar | %C(cyan)%s%C(reset)%d' --topo-order --graph --decorate
+  gl = log --pretty=format:'%C(yellow)%h%C(reset) | %an | %ar | %C(cyan)%s%C(reset)%d' --topo-order --graph --decorate
 	d = difftool
   co = checkout
 
@@ -27,9 +24,6 @@
 
 [push]
 	default = current
-[diff]
-	tool = vimdiff
-[difftool]
-	prompt = false
+
 [init]
 	defaultBranch = main
