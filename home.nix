@@ -40,6 +40,7 @@ in
   home.stateVersion = "23.11";
   home.enableDebugInfo = true;
   xdg.enable = true; # set XDG_ env vars
+  xdg.mime.enable = false;
   xdg.systemDirs.data = ["${config.home.profileDirectory}/share"]; # add nix-profile to XDG_DATA_DIRS
   programs.home-manager.enable = true;
   home.sessionVariables = {
@@ -65,7 +66,9 @@ in
   home.packages = [
     pkgs.awscli2
     pkgs.bat
+    pkgs.fd
     pkgs.google-cloud-sdk
+    pkgs.gh
     pkgs.lazygit
     pkgs.logseq
     pkgsUnstable.poetry
