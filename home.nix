@@ -103,4 +103,5 @@ in
     enable = true;
   };
   services.picom.enable = true;
+  services.ssh-agent.enable = true;
 }
