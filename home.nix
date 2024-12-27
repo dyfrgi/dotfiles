@@ -89,6 +89,7 @@ in
     slack
     via
     xdg-utils
+    xsel
     yt-dlp
   ];
 
