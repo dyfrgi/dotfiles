@@ -20,7 +20,6 @@ opt.mouse = "a" -- enable mouse always
 opt.number = true -- print line numbers
 opt.pumblend = 10 -- enable pseudo-transparency for the popup-menu
 opt.pumheight = 10 -- show at most 10 items in the popup menu
-opt.relativenumber = true -- relative line numbers
 opt.scrolloff = 4 -- lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 opt.shiftround = true -- Round indent
@@ -59,7 +58,6 @@ opt.fillchars = {
 opt.foldlevel = 99
 opt.foldmethod = "indent" -- TODO: replace with treesitter
 
-vim.cmd.colorscheme("tokyonight")
 require("config.lazy")
 
 require("lazy").setup({
