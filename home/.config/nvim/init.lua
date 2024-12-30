@@ -60,10 +60,8 @@ opt.foldlevel = 99
 opt.foldmethod = "indent" -- TODO: replace with treesitter
 
 vim.cmd.colorscheme("tokyonight")
-require("keymaps")
-require("miniclue")
+require("config.lazy")
 
-require("config.lazy") -- bootstrap lazy.nvim
 require("lazy").setup({
   spec = {
     { import = "plugins" },
@@ -76,6 +74,7 @@ require("lazy").setup({
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {
+      reset = false,
       -- disable some rtp plugins
       disabled_plugins = {
         "gzip",
