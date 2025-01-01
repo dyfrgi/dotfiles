@@ -103,10 +103,7 @@ return {
     cmd = "Telescope",
     version = false, -- telescope did only one release, so use HEAD for now
     dependencies = {
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-      },
+      -- "nvim-telescope/telescope-fzf-native.nvim", -- installed via nix
       "nvim-lua/plenary.nvim",
     },
     keys = {
@@ -243,38 +240,37 @@ return {
     },
   },
 
-  -- which-key helps you remember key bindings by showing a popup
-  -- with the active keybindings of the command you started typing.
---  {
---    "folke/which-key.nvim",
---    event = "VeryLazy",
---    opts = {
---      plugins = { spelling = true },
---      defaults = {
---        mode = { "n", "v" },
---        ["g"] = { name = "+goto" },
---        ["gs"] = { name = "+surround" },
---        ["]"] = { name = "+next" },
---        ["["] = { name = "+prev" },
---        ["<leader><tab>"] = { name = "+tabs" },
---        ["<leader>b"] = { name = "+buffer" },
---        ["<leader>c"] = { name = "+code" },
---        ["<leader>f"] = { name = "+file/find" },
---        ["<leader>g"] = { name = "+git" },
---        ["<leader>gh"] = { name = "+hunks" },
---        ["<leader>q"] = { name = "+quit/session" },
---        ["<leader>s"] = { name = "+search" },
---        ["<leader>u"] = { name = "+ui" },
---        ["<leader>w"] = { name = "+windows" },
---        ["<leader>x"] = { name = "+diagnostics/quickfix" },
---      },
---    },
---    config = function(_, opts)
---      local wk = require("which-key")
---      wk.setup(opts)
---      wk.register(opts.defaults)
---    end,
---  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      plugins = { spelling = true },
+      spec = {
+        {
+          mode = { "n", "v" },
+          { "<leader><tab>", group = "tabs" },
+          { "<leader>b", group = "buffer" },
+          { "<leader>c", group = "code" },
+          { "<leader>f", group = "file/find" },
+          { "<leader>g", group = "git" },
+          { "<leader>gh", group = "hunks" },
+          { "<leader>q", group = "quit/session" },
+          { "<leader>s", group = "search" },
+          { "<leader>u", group = "ui" },
+          { "<leader>w", group = "windows" },
+          { "<leader>x", group = "diagnostics/quickfix" },
+          { "[", group = "prev" },
+          { "]", group = "next" },
+          { "g", group = "goto" },
+          { "gs", group = "surround" },
+        },
+      },
+    },
+    config = function(_, opts)
+      local wk = require("which-key")
+      wk.setup(opts)
+    end,
+  },
 
   -- git signs highlights text that has changed since the list
   -- git commit, and also lets you interactively stage & unstage
