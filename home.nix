@@ -73,12 +73,13 @@ in
     awscli2
     bat
     brightnessctl
-    google-chrome
+    devenv
     discord
     fd                 # used by telescope-nvim
     flameshot
     firefox
     fzf
+    google-chrome
     google-cloud-sdk
     lazygit
     logseq
