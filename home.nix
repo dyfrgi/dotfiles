@@ -44,55 +44,24 @@ in
 
   xdg.enable = true; # set XDG_ env vars
   xdg.systemDirs.data = ["${config.home.profileDirectory}/share"]; # add nix-profile to XDG_DATA_DIRS
+
   programs.home-manager.enable = true;
-  home.sessionVariables = {
-    NIXOS_XDG_OPEN_USE_PORTAL = 1;
-  };
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "electron-27.3.11" # logseq-0.10.9
-    ];
-  };
   programs.direnv.enable = true;
   programs.pyenv = {
       enable = true;
-  };
-  programs.alacritty = {
-      enable = true;
-      settings = {
-        font = {
-          normal.family = "Fira Code Nerdfont";
-          size = 9.0;
-        };
-      };
   };
 
   home.packages = with pkgs; [
     acpi
     awscli2
     bat
-    brightnessctl
     devenv
-    discord
     fd                 # used by telescope-nvim
-    flameshot
-    firefox
     fzf
-    gimp
-    google-chrome
     google-cloud-sdk
     lazygit
-    logseq
-    nerdfonts
-    okular
-    pavucontrol
     ripgrep
     scc
-    slack
-    via
-    xdg-utils
-    xsel
     yt-dlp
   ];
 
@@ -105,6 +74,5 @@ in
   xsession.windowManager.awesome = {
     enable = true;
   };
-  services.picom.enable = true;
   services.ssh-agent.enable = true;
 }

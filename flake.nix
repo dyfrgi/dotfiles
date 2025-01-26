@@ -16,9 +16,13 @@
     homeConfigurations = {
       "mleuchtenburg" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "x86_64-linux"; };
-        modules = [ ./home.nix ];
+        modules = [ ./home.nix ./gui.nix ];
       };
       "msl" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { system = "x86_64-linux"; };
+        modules = [ ./home.nix ./gui.nix ];
+      };
+      "msl@slab" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "x86_64-linux"; };
         modules = [ ./home.nix ];
       };
