@@ -22,7 +22,7 @@
         pkgs = import nixpkgs { system = "x86_64-linux"; };
         modules = [ ./home.nix ./gui.nix ];
       };
-      "msl@slab" = home-manager.lib.homeManagerConfiguration {
+      "msl@splat" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "x86_64-linux"; };
         modules = [ ./home.nix ];
       };
