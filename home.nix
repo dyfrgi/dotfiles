@@ -79,11 +79,13 @@ in
     flameshot
     firefox
     fzf
+    gimp
     google-chrome
     google-cloud-sdk
     lazygit
     logseq
     nerdfonts
+    okular
     pavucontrol
     ripgrep
     scc
