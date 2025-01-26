@@ -70,8 +70,5 @@ in
   } // foldl' (acc: elem: { "${elem}" = { source = linkHome elem; }; } // acc) {} homeFilesToLink;
   xdg.configFile = foldl' (acc: elem: { "${elem}" = { source = linkHome ".config/${elem}"; }; } // acc) {} xdgConfigFilesToLink;
 
-  xsession.windowManager.awesome = {
-    enable = true;
-  };
   services.ssh-agent.enable = true;
 }
