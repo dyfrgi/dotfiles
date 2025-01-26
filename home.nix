@@ -16,7 +16,6 @@ let
     ".inputrc"
     ".mplayer/"
     ".reportbugrc"
-    ".rtorrent.rc"
     ".screenrc"
     ".tmux/"
     ".tmux.conf"
