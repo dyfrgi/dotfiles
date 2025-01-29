@@ -14,6 +14,9 @@
   programs.alacritty = {
       enable = true;
       settings = {
+        terminal = {
+          osc52 = "CopyPaste";
+        };
         font = {
           normal.family = "Fira Code Nerdfont";
           size = 9.0;

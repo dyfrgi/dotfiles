@@ -49,6 +49,7 @@ in
   programs.pyenv = {
       enable = true;
   };
+  programs.nix-index-database.comma.enable = true;
 
   home.packages = with pkgs; [
     acpi
@@ -61,6 +62,7 @@ in
     lazygit
     ripgrep
     scc
+    whois
     yt-dlp
   ];
 
