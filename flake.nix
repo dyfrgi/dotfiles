@@ -36,7 +36,10 @@
       };
       "msl@splat" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "x86_64-linux"; };
-        modules = [ ./home.nix ];
+        modules = [
+          ./home.nix
+          nix-index-database.hmModules.nix-index
+        ];
       };
     };
   };

@@ -24,6 +24,9 @@
       };
   };
 
+  programs.autorandr.enable = true;
+  services.autorandr.enable = true;
+
   home.packages = with pkgs; [
     brightnessctl
     discord
