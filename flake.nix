@@ -22,7 +22,7 @@
         pkgs = import nixpkgs { system = "x86_64-linux"; };
         modules = [ 
           ./home.nix
-          ./gui.nix
+          ./modules/gui.nix
           nix-index-database.hmModules.nix-index
         ];
       };
@@ -30,7 +30,7 @@
         pkgs = import nixpkgs { system = "x86_64-linux"; };
         modules = [ 
           ./home.nix
-          ./gui.nix
+          ./modules/gui.nix
           nix-index-database.hmModules.nix-index
         ];
       };

@@ -39,7 +39,7 @@ in
   home.stateVersion = "23.11";
   home.enableDebugInfo = true;
 
-  imports = [ ./nvim.nix ];
+  imports = [ ./modules/nvim.nix ];
 
   xdg.enable = true; # set XDG_ env vars
   xdg.systemDirs.data = ["${config.home.profileDirectory}/share"]; # add nix-profile to XDG_DATA_DIRS
