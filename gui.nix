@@ -1,5 +1,9 @@
 {pkgs, config, lib, ...}:
 {
+  imports = [
+    ./x11.nix
+  ];
+
   home.sessionVariables = {
     NIXOS_XDG_OPEN_USE_PORTAL = 1;
   };
@@ -43,10 +47,4 @@
     xdg-utils
     xsel
   ];
-
-  xsession.windowManager.awesome = {
-    enable = true;
-  };
-
-  services.picom.enable = true;
 }
