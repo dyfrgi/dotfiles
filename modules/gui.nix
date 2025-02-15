@@ -2,6 +2,7 @@
 {
   imports = [
     ./x11.nix
+    ./wayland.nix
   ];
 
   home.sessionVariables = {
@@ -28,12 +29,12 @@
       };
   };
 
-  programs.autorandr.enable = true;
-  services.autorandr.enable = true;
+#  programs.autorandr.enable = true;
+#  services.autorandr.enable = true;
 
   home.packages = with pkgs; [
     brightnessctl
-    discord
+    vesktop
     flameshot
     firefox
     gimp

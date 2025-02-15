@@ -19,10 +19,8 @@ let
     ".screenrc"
     ".tmux/"
     ".tmux.conf"
-    ".XCompose"
     ".xmonad/"
     ".xscreensaver"
-    ".xsession"
     ".zshenv"
     ".zshrc"
   ];
@@ -31,6 +29,7 @@ let
     "compton.conf"
     "nvim/"
     "taffybar/"
+    "niri/"
   ];
 in
 {
