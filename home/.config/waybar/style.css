@@ -1,0 +1,78 @@
+@import "macchiato.css";
+
+* {
+  font-family: "Inter", "Symbols Nerd Font";
+  font-size: 14px;
+}
+
+#waybar {
+  background: transparent;
+  color: @text;
+}
+.modules-right, .modules-center, .modules-left {
+  background-color: @surface0;
+  border-radius: 1em;
+  padding: 0 .5em;
+}
+
+.module {
+  margin: 0 .3em;
+}
+
+button {
+  border: none;
+  box-shadow: none;
+}
+
+button:hover {
+    background: none;
+    box-shadow: none;
+    text-shadow: none;
+    border: none;
+    -gtk-icon-effect: none;
+    -gtk-icon-shadow: none;
+}
+
+#workspaces button {
+  color: @overlay0;
+  padding: 0;
+  margin: 0 .25em;
+}
+
+#workspaces button.active {
+  color: @sapphire;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  background-color: @overlay1;
+}
+
+.modules-right, .modules-center, .modules-left {
+  background-color: @surface0;
+  border-radius: 1em;
+}
+
+#clock {
+  color: @text;
+}
+
+#battery {
+  color: @text;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#pulseaudio {
+  color: @text;
+}

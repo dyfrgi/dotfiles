@@ -1,0 +1,129 @@
+Selected options for my config
+==============================
+Changing positioning
+    consume-or-expel-window-(left|right)
+    move-window-(up|down)
+    move-column-(left|right)
+    move-column-to-workspace-(up|down)
+    move-column-to-monitor-(left|right)
+    move-workspace-(up|down)
+
+Changing focus
+    focus-window-(up|down)
+    focus-column-(left|right)
+    focus-workspace-(up|down)
+    focus-monitor-(left|right)
+
+Changing layout
+    switch-preset-window-width
+    fullscreen-window
+    maximize-column
+        doing both because I'm not sure which I prefer for things like large editors
+
+
+Running stuff
+    spawn terminal
+    spawn launcher (fuzzel)
+    spawn browser window
+    lock screen (spawn swaylock)
+
+Media
+    change volume up/down
+    mute microphone
+    mute audio
+
+Other
+    screenshot(-screen|-window|)
+    close-window
+    quit
+    power-off-monitors
+    power-on-monitors (I wonder if this will grab them to this input?? worth trying)
+    show-hotkey-overlay
+
+All options
+===========
+Changing positioning
+    control of window stacking (multiple windows in a column)
+        consume-or-expel-window-(left|right)
+        consume-window-into-column - eats window to right, useful for stacking up a bunch of windows
+
+        I think that I'll more often have the thing focused that I want to stack with something else
+        This is because I will have just opened it
+
+    control over ordering of windows within a workspace
+        move-column-right
+        move-column-right-or-to-monitor-right (this orders things wrong on the target monitor)
+        consume-or-expel-window-right
+            this basically is half a move-column-right
+        move-column-to-(first|last)
+            seems like this should be a pretty rare operation
+        swap-window-(left|right)
+            halfway between consume-or-expel and move; good for main/secondary layouts
+
+    control over which workspace a window is in
+        move-window-down-or-to-workspace-down
+            pretty weird, this moves within a column and then between workspaces
+            maybe this would be useful if I had stacked monitors?
+        move-window-to-workspace-down
+        move-window-to-workspace (index|name)
+            like my current number-based movement
+            probably more useful with a workspace picker
+        move-column-to-workspace-down
+        move-column-to-workspace (index|name)
+
+    control over which monitor a window is on
+        move-column-left-or-to-monitor-left (orders things wrong on the target monitor)
+        move-window-to-monitor-(left|right|down|up|previous|next)
+        move-column-to-monitor-(left|right|down|up|previous|next)
+        move-workspace-to-monitor-(left|right|down|up|previous|next)
+            I don't think I'll use this one much, usually I just want one or two windows moved
+            Maybe it would be useful for e.g. moving a whole task between monitors?
+            Leaving it unconfigured for now.
+
+    control over order of workspaces
+        move-workspace-(up|down)
+
+Changing focus
+    left/right within a workspace
+        focus-column-(left|right)
+        focus-column-(right-or-first|left-or-last)
+            looping! but it doesn't make the workspace a circle, just jumps
+        focus-column-or-monitor-left
+            seems kind of weird, suffers from the same inconsistency as move-column-left-or-to-monitor-left
+    
+    between windows in a column
+        focus-window-(up|down)
+        focus-window-down-or-column-left
+        focus-window-down-or-column-right
+        focus-window-up-or-column-left
+        focus-window-up-or-column-right
+            linearize windows, ltr or rtl
+        focus-window-or-workspace-(up|down)
+            why tho
+        focus-window-or-monitor-(up|down)
+            change focus based on appearance alone
+
+    between monitors
+        focus-column-or-monitor-left
+            no
+        focus-monitor-(left|right|down|up)
+        focus-monitor-(previous|next)
+            previous/next uses alphabetical order, maybe good if you have a non-linear layout (L, square, etc)
+
+Changing layout
+    width
+        switch-preset-column-width
+        switch-preset-window-width
+            this seems to be the same but maybe more powerful? need to test on floating
+        set-column-width (+/- pixels/percentage)
+            I'm not sure that this is better than just using maximize-column when I want a big window
+    height
+        switch-preset-window-height
+        set-window-height
+        reset-window-height
+            hrm is this actually necessary? I hope not
+
+    other
+        fullscreen-window
+        center-column
+            probably I'd want to set this persistently, if I'm going to use it? idk
