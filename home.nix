@@ -30,6 +30,7 @@ let
     "nvim/"
     "taffybar/"
     "niri/"
+    "waybar/"
   ];
 in
 {

@@ -40,12 +40,15 @@
     gimp
     google-chrome
     logseq
-    nerdfonts
     okular
     pavucontrol
     slack
     via
     xdg-utils
     xsel
+
+    # fonts
+    inter
+    (nerdfonts.override { fonts = [ "FiraCode" "FantasqueSansMono" "NerdFontsSymbolsOnly" ]; })
   ];
 }
