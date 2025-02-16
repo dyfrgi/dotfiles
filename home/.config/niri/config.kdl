@@ -88,7 +88,7 @@ output "ASUSTek COMPUTER INC PA278CV MBLMQS020628" {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 12
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -134,7 +134,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 2
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -142,10 +142,12 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        // catpuccin macchiato sapphire
+        active-color "#7dc4e4"
 
         // Color of the ring on inactive monitors.
-        inactive-color "#505050"
+        // catpuccin macchiato surface1
+        inactive-color "#494d64"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -188,6 +190,12 @@ layout {
         // top 64
         // bottom 64
     }
+}
+
+// Rounded corners on all windows
+window-rule {
+    geometry-corner-radius 6
+    clip-to-geometry true
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -249,13 +257,6 @@ window-rule {
 
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
-}
-
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
 }
 
 binds {
