@@ -277,6 +277,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+I { spawn "alacritty"; }
     Mod+Y { spawn "fuzzel"; }
+    Mod+X { spawn "firefox" "--new-window"; }
     Super+Shift+Apostrophe { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
