@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,13 +14,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-index-database, ... }: {
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nix-index-database, ... }:
+  let
 
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {inherit system;};
+      pkgs-unstable = import nixpkgs-unstable {inherit system;};
+      extraSpecialArgs = { inherit pkgs-unstable; };
+  in
+  {
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
-
     homeConfigurations = {
       "mleuchtenburg" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
+        inherit pkgs extraSpecialArgs;
         modules = [ 
           ./home.nix
           ./modules/gui.nix
@@ -27,7 +34,7 @@
         ];
       };
       "msl" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
+        inherit pkgs extraSpecialArgs;
         modules = [ 
           ./home.nix
           ./modules/gui.nix
@@ -35,7 +42,7 @@
         ];
       };
       "msl@splat" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
+        inherit pkgs extraSpecialArgs;
         modules = [
           ./home.nix
           nix-index-database.hmModules.nix-index
