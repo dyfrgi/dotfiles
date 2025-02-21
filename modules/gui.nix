@@ -1,4 +1,9 @@
-{pkgs, config, lib, ...}:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   imports = [
     ./x11.nix
@@ -17,20 +22,30 @@
   };
 
   programs.alacritty = {
-      enable = true;
-      settings = {
-        terminal = {
-          osc52 = "CopyPaste";
-        };
-        font = {
-          normal.family = "Fira Code Nerdfont";
-          size = 9.0;
-        };
+    enable = true;
+    settings = {
+      terminal = {
+        osc52 = "CopyPaste";
       };
+      font = {
+        normal.family = "Fira Code Nerdfont";
+        size = 9.0;
+      };
+    };
   };
 
-#  programs.autorandr.enable = true;
-#  services.autorandr.enable = true;
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      theme = "Spacedust";
+      font-family = "Fira Code Nerdfont";
+      font-size = 9;
+    };
+  };
+
+  #  programs.autorandr.enable = true;
+  #  services.autorandr.enable = true;
 
   home.packages = with pkgs; [
     brightnessctl
@@ -49,6 +64,12 @@
 
     # fonts
     inter
-    (nerdfonts.override { fonts = [ "FiraCode" "FantasqueSansMono" "NerdFontsSymbolsOnly" ]; })
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "FantasqueSansMono"
+        "NerdFontsSymbolsOnly"
+      ];
+    })
   ];
 }
