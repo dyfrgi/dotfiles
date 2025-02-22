@@ -33,6 +33,7 @@
       nixd
       nixfmt-rfc-style
       rust-analyzer
+      vscode-langservers-extracted
     ];
   };
 }

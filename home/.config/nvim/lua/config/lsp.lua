@@ -8,7 +8,14 @@ require 'lspconfig'.lua_ls.setup {
     }
   }
 }
-require 'lspconfig'.nixd.setup {}
+require 'lspconfig'.jsonls.setup {}
+require 'lspconfig'.nixd.setup {
+  settings = { nixd = { options = {
+    home_manager = {
+      expr = '(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."msl".options',
+    },
+  } } }
+}
 require 'lazydev'.setup(
   {
     library = {
