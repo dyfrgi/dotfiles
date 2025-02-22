@@ -142,11 +142,11 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        // catpuccin macchiato sapphire
+        // catppuccin macchiato sapphire
         active-color "#7dc4e4"
 
         // Color of the ring on inactive monitors.
-        // catpuccin macchiato surface1
+        // catppuccin macchiato surface1
         inactive-color "#494d64"
 
         // You can also use gradients. They take precedence over solid colors.
@@ -257,6 +257,12 @@ window-rule {
 
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
+}
+
+cursor {
+  xcursor-theme "catppuccin-latte-dark-cursors"
+  hide-when-typing
+  hide-after-inactive-ms 1000
 }
 
 binds {
