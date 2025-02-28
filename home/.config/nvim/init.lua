@@ -112,7 +112,7 @@ vim.keymap.set('n', "gy", function() require("telescope.builtin").lsp_type_defin
   { desc = "Goto Type Definition" })
 
 -- search
-vim.keymap.set('n', '<leader><space>', '<cmd>Telescope find_files<cr>', { desc = "Find Files (root dir)" })
+vim.keymap.set('n', '<leader><space>', '<cmd>Telescope find_files hidden=true<cr>', { desc = "Find Files (root dir)" })
 vim.keymap.set('n', '<leader>sg', '<cmd>Telescope live_grep<cr>', { desc = "Grep (cwd)" })
 vim.keymap.set('n', '<leader>sw',
   function() require('telescope.builtin').grep_string({ search = vim.fn.expand("<cword>") }) end,
