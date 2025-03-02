@@ -32,8 +32,6 @@ let
     ".tmux.conf"
     ".xmonad/"
     ".xscreensaver"
-    ".zshenv"
-    ".zshrc"
   ];
   xdgConfigFilesToLink = [
     "awesome/"
@@ -50,7 +48,11 @@ in
   home.stateVersion = "23.11";
   home.enableDebugInfo = true;
 
-  imports = [ ./modules/nvim.nix ];
+  imports = [
+    modules/nvim.nix
+    modules/zsh.nix
+    modules/git.nix
+  ];
 
   xdg.enable = true; # set XDG_ env vars
   xdg.systemDirs.data = [ "${config.home.profileDirectory}/share" ]; # add nix-profile to XDG_DATA_DIRS
@@ -77,23 +79,15 @@ in
     yt-dlp
   ];
 
-  home.file =
+  home.file = foldl' (
+    acc: elem:
     {
-      ".zsh" = {
-        source = home/.zsh;
-        recursive = true;
+      "${elem}" = {
+        source = linkHome elem;
       };
-      ".zsh/rc/S15home-manager-extra".text = config.programs.zsh.initExtra;
     }
-    // foldl' (
-      acc: elem:
-      {
-        "${elem}" = {
-          source = linkHome elem;
-        };
-      }
-      // acc
-    ) { } homeFilesToLink;
+    // acc
+  ) { } homeFilesToLink;
   xdg.configFile = foldl' (
     acc: elem:
     {
