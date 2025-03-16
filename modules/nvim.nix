@@ -6,6 +6,7 @@
 {
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
     plugins = with pkgs.vimPlugins; [
       (pkgs-unstable.vimPlugins.blink-cmp)
       catppuccin-nvim
