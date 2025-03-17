@@ -3,7 +3,8 @@
 }:
 {
   imports = [
-    ../modules/gui.nix
     ../home.nix
+    ../modules/gui.nix
+    ../modules/gaming.nix
   ];
 }
