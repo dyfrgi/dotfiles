@@ -52,6 +52,7 @@ in
     modules/nvim.nix
     modules/zsh.nix
     modules/git.nix
+    modules/nix-index.nix
   ];
 
   xdg.enable = true; # set XDG_ env vars
@@ -62,7 +63,6 @@ in
   programs.pyenv = {
     enable = true;
   };
-  programs.nix-index-database.comma.enable = true;
 
   home.packages = with pkgs; [
     acpi

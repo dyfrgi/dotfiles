@@ -14,23 +14,28 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nix-index-database, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nix-index-database, ... }@inputs:
   let
 
       system = "x86_64-linux";
       pkgs = import nixpkgs {inherit system;};
       pkgs-unstable = import nixpkgs-unstable {inherit system;};
-      extraSpecialArgs = { inherit pkgs-unstable; };
+      extraSpecialArgs = { inherit pkgs-unstable inputs; };
   in
   {
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
     homeConfigurations = {
       "mleuchtenburg" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs extraSpecialArgs;
-        modules = [ 
+        modules = [
           ./home.nix
           ./modules/gui.nix
-          nix-index-database.hmModules.nix-index
+        ];
+      };
+      "msl@snail" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs extraSpecialArgs;
+        modules = [
+          ./hosts/snail.nix
         ];
       };
       "msl" = home-manager.lib.homeManagerConfiguration {
@@ -38,14 +43,12 @@
         modules = [ 
           ./home.nix
           ./modules/gui.nix
-          nix-index-database.hmModules.nix-index
         ];
       };
       "msl@splat" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs extraSpecialArgs;
         modules = [
           ./home.nix
-          nix-index-database.hmModules.nix-index
         ];
       };
     };
