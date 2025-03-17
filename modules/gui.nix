@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  pkgs-unstable,
   ...
 }:
 {
@@ -12,13 +13,6 @@
 
   home.sessionVariables = {
     NIXOS_XDG_OPEN_USE_PORTAL = 1;
-  };
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "electron-27.3.11" # logseq-0.10.9
-    ];
   };
 
   programs.alacritty = {
@@ -55,8 +49,6 @@
     firefox
     gimp
     google-chrome
-    logseq
-    okular
     pavucontrol
     slack
     via
@@ -65,12 +57,8 @@
 
     # fonts
     inter
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "FantasqueSansMono"
-        "NerdFontsSymbolsOnly"
-      ];
-    })
+    pkgs-unstable.nerd-fonts.fantasque-sans-mono
+    pkgs-unstable.nerd-fonts.symbols-only
+    pkgs-unstable.nerd-fonts.fira-code
   ];
 }
