@@ -67,18 +67,28 @@
 
   systemd.user.services.swaybg = {
     Unit = {
-      Description = "sway background service";
-      PartOf = [ "graphical-session.target" ];
+      Description = "swaybg wallpaper setter";
+      WantedBy = [ "niri.service" ];
+      Wants = [ "graphical-session.target" ];
       After = [ "graphical-session.target" ];
     };
-
     Service = {
-      Type = "simple";
       ExecStart = "${pkgs.swaybg}/bin/swaybg -i %h/.wallpapers/306579.jpg -m fill";
       Restart = "on-failure";
     };
+  };
 
-    Install.WantedBy = [ "graphical-session.target" ];
+  systemd.user.services.xwayland-satellite = {
+    Unit = {
+      Description = "xwayland-satellite";
+      WantedBy = [ "niri.service" ];
+      Wants = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${lib.getExe pkgs.xwayland-satellite} :12";
+      Restart = "on-failure";
+    };
   };
 
   home.file.".wallpapers".source = ./wallpapers;

@@ -59,7 +59,11 @@ input {
 }
 
 environment {
+    // enable Ozone Wayland support in Chrome, Electron, etc.
     NIXOS_OZONE_WL "1"
+
+    // xwayland-satellite
+    DISPLAY ":12"
 }
 
 output "BOE 0x0BC9 Unknown" {
