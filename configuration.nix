@@ -20,6 +20,9 @@
   };
 
   hardware.enableAllFirmware = true;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
 
   nix.settings = {
     experimental-features = [
@@ -129,6 +132,7 @@
   environment.systemPackages = with pkgs; [
     gdb
     pciutils
+    usbutils
     xwayland-satellite
   ];
 
