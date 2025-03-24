@@ -42,6 +42,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelModules = [ "nct6687" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ nct6687d ];
+  boot.kernel.sysctl = {
+    "kernel.split_lock_mitigate" = 0;
+  };
 
   boot.initrd.luks.devices = {
     "luks-rpool-nvme-Samsung_SSD_990_PRO_4TB_S7KGNU0XB18547R-part2".device =
