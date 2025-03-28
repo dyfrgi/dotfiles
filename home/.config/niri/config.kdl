@@ -66,25 +66,18 @@ environment {
     DISPLAY ":12"
 }
 
-output "BOE 0x0BC9 Unknown" {
-    mode "2560x1600"
-    scale 1.5
-    transform "normal"
-    position x=0 y=500
-}
-
 output "PNP(AOC) U34G2G4R3 0x0000010B" {
     mode "3440x1440"
     scale 1
     transform "normal"
-    position x=1707 y=500
+    position x=0 y=500
 }
 
 output "ASUSTek COMPUTER INC PA278CV MBLMQS020628" {
     mode "2560x1440"
     scale 1
     transform "270"
-    position x=5148 y=0
+    position x=3440 y=0
 }
 
 // Settings that influence how windows are positioned and sized.
