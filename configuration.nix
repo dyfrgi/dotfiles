@@ -36,7 +36,7 @@
   };
 
   # Use the systemd-boot EFI boot loader.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_13;
   boot.zfs.package = pkgs.zfs_2_3;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
