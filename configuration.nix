@@ -133,6 +133,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    cifs-utils
     gdb
     pciutils
     usbutils
