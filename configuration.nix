@@ -179,4 +179,9 @@
   services.nixseparatedebuginfod.enable = true;
   environment.enableDebugInfo = true;
 
+  # Required for XDG portal definitions from home-manager
+  environment.pathsToLink = [
+    "/share/xdg-desktop-portal"
+    "/share/applications"
+  ];
 }

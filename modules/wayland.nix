@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   lib,
   ...
 }:
@@ -105,4 +104,25 @@
     swaybg
     wl-clipboard
   ];
+
+  # Configure XDG portals. Default to GTK, fall back to Gnome.
+  # This should wind up using Gnome for background, clipboard, input capture, remote desktop, screencast, screenshot, and wallpaper.
+  # Gtk will be used for access, account, app chooser, dynamic launcher, email, file chooser, inhibit, notification, printing, and settings.
+  # Notably, this should make file browsing work without Nautilus installed, using the default Gtk file picker.
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
+    ];
+    config = {
+      common = {
+        default = [
+          "gtk"
+          "gnome"
+        ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+      };
+    };
+  };
 }
