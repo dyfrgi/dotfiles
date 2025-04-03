@@ -135,6 +135,7 @@
   environment.systemPackages = with pkgs; [
     cifs-utils
     gdb
+    nvd
     pciutils
     usbutils
     xwayland-satellite

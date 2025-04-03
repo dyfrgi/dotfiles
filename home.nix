@@ -73,6 +73,8 @@ in
     fzf
     google-cloud-sdk
     lazygit
+    llvmPackages.bintools
+    qalculate-gtk
     ripgrep
     scc
     whois
