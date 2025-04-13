@@ -2,7 +2,7 @@
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "modules-left": ["network", "niri/workspaces"],
-    "modules-center": ["clock", "cpu", "memory"],
+    "modules-center": ["niri/window", "clock", "cpu", "memory"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "backlight", "battery", "tray"],
     "niri/workspaces": {
          "format": " {icon} ",
@@ -10,14 +10,18 @@
              "default": ""
          }
     },
+    "niri/window": {
+        "icon": true,
+        "separate-outputs": true
+    },
     "tray": {
         "icon-size": 21,
         "spacing": 10
     },
     "clock": {
-        "format": " {:%H:%M}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "format-alt": " {:%Y-%m-%d  %H:%M}"
+        "format": " {:%Y-%m-%d   %H:%M}",
+        "format-alt": " {:%H:%M}"
     },
     "backlight": {
         "format": "{icon} {percent}%",
@@ -76,5 +80,5 @@
     },
     "memory": {
         "format": " {}%"
-    },
+    }
 }
