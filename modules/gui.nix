@@ -28,6 +28,8 @@
     };
   };
 
+  services.udiskie.enable = true;
+
   programs.ghostty = {
     enable = true;
     enableZshIntegration = true;

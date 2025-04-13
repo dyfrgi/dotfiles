@@ -179,6 +179,7 @@
   services.flatpak.enable = true;
   services.nixseparatedebuginfod.enable = true;
   environment.enableDebugInfo = true;
+  services.udisks2.enable = true;
 
   # Required for XDG portal definitions from home-manager
   environment.pathsToLink = [
