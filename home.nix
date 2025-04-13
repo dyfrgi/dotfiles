@@ -49,10 +49,11 @@ in
   home.enableDebugInfo = true;
 
   imports = [
-    modules/nvim.nix
-    modules/zsh.nix
     modules/git.nix
     modules/nix-index.nix
+    modules/nvim.nix
+    modules/utilities.nix
+    modules/zsh.nix
   ];
 
   xdg.enable = true; # set XDG_ env vars
@@ -65,20 +66,10 @@ in
   };
 
   home.packages = with pkgs; [
-    acpi
     awscli2
-    bat
     (pkgs-unstable.devenv)
-    fd # used by telescope-nvim
-    fzf
     google-cloud-sdk
-    lazygit
-    llvmPackages.bintools
     qalculate-gtk
-    ripgrep
-    scc
-    whois
-    yt-dlp
   ];
 
   home.file = foldl' (
