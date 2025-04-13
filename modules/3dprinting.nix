@@ -4,6 +4,9 @@
     bambu-studio
     bottles
     freecad-wayland
+    gmsh
+    graphviz
+    kicad
     librecad
   ];
 }

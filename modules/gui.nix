@@ -54,6 +54,7 @@
     via
     xdg-utils
     xsel
+    zoom-us
 
     # fonts
     inter
