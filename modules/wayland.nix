@@ -18,12 +18,12 @@
     ];
     timeouts = [
       {
-        timeout = 600;
+        timeout = 900;
         command = "${pkgs.swaylock}/bin/swaylock -f";
       }
       {
-        timeout = 900;
-        command = "niri msg output * off";
+        timeout = 600;
+        command = "${pkgs.niri}/bin/niri msg output * off";
       }
     ];
   };
