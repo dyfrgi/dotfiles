@@ -101,6 +101,7 @@
   };
 
   home.packages = with pkgs; [
+    niri-select-window-by-name
     swaybg
     wl-clipboard
   ];

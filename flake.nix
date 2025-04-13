@@ -38,6 +38,7 @@
         snail = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            (import ./overlays)
             ./configuration.nix
             ./hardware-configuration.nix
             home-manager-unstable.nixosModules.home-manager
