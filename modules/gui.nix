@@ -28,7 +28,10 @@
     };
   };
 
-  services.udiskie.enable = true;
+  services.udiskie = {
+    enable = true;
+    settings.terminal = "${pkgs.ghostty}/bin/ghostty --working-directory=";
+  };
 
   programs.ghostty = {
     enable = true;
