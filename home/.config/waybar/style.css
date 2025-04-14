@@ -33,6 +33,10 @@ button:hover {
     -gtk-icon-shadow: none;
 }
 
+#window {
+  padding-right: 2em;
+}
+
 #workspaces button {
   color: @overlay0;
   padding: 0;
@@ -55,6 +59,7 @@ button:hover {
 
 #clock {
   color: @text;
+  font-weight: bold;
 }
 
 #battery {
