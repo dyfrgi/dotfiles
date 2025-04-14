@@ -23,7 +23,7 @@
       }
       {
         timeout = 600;
-        command = "${pkgs.niri}/bin/niri msg output * off";
+        command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
       }
     ];
   };
