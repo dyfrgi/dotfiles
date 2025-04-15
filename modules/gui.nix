@@ -48,6 +48,7 @@
   #  services.autorandr.enable = true;
 
   home.packages = with pkgs; [
+    mate.atril
     brightnessctl
     vesktop
     flameshot
