@@ -258,8 +258,8 @@ window-rule {
 
 cursor {
   xcursor-theme "catppuccin-latte-dark-cursors"
-  hide-when-typing
-  hide-after-inactive-ms 10000
+  xcursor-size 48
+  hide-after-inactive-ms 60000
 }
 
 binds {
