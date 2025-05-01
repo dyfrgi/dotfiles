@@ -195,6 +195,11 @@ window-rule {
     clip-to-geometry true
 }
 
+window-rule {
+  match app-id=r#"^steam_app_"#
+  open-on-output "PNP(AOC) U34G2G4R3 0x0000010B"
+}
+
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
