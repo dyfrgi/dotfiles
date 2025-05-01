@@ -13,6 +13,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./modules/nvidia.nix
   ];
 
   nixpkgs.config = {
@@ -73,8 +74,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = true;
   services.displayManager.sddm.enable = true;
   programs.niri.enable = true;
   security.pam.services.swaylock = { };
