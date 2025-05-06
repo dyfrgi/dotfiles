@@ -16,6 +16,7 @@ require 'lspconfig'.nixd.setup {
     },
   } } }
 }
+vim.lsp.enable('pylsp')
 require 'lazydev'.setup(
   {
     library = {
