@@ -103,9 +103,10 @@
     extraGroups = [
       "wheel"
       "audio"
-      "video"
+      "dialout" # ttyUSB
       "networkmanager"
       "plugdev"
+      "video"
     ];
     shell = pkgs.zsh;
   };
