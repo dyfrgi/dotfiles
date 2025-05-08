@@ -33,12 +33,15 @@
       lua-language-server
       nixd
       nixfmt-rfc-style
+      prettierd
       (python3.withPackages (
         p:
         (with p; [
+          isort
           python-lsp-server
         ])
       ))
+      ruff
       rust-analyzer
       vscode-langservers-extracted
     ];

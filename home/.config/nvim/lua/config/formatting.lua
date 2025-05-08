@@ -3,6 +3,10 @@ require 'conform'.setup({
     lsp_format = "fallback"
   },
   notify_no_formatters = true,
+  formatters_by_ft = {
+    markdown = { "prettierd", "prettier" },
+    python = { "isort", "ruff" },
+  },
   format_on_save = function(bufnr)
     if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
       return
