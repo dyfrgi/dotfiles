@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  config,
   ...
 }:
 {
@@ -46,6 +47,12 @@
       vscode-langservers-extracted
     ];
   };
+
+  xdg.configFile."prettierrc.json".text = builtins.toJSON {
+    proseWrap = "always";
+  };
+
+  home.sessionVariables.PRETTIERD_DEFAULT_CONFIG = "~/${config.xdg.configFile."prettierrc.json".target}";
 }
 
 /*
