@@ -33,6 +33,10 @@
       ];
     };
 
+    initExtra = ''
+      setopt no_hup
+    '';
+
     plugins = [
       {
         name = pkgs.zsh-powerlevel10k.pname;
