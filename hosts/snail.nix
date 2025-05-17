@@ -8,5 +8,6 @@
     ../modules/gaming.nix
     ../modules/3dprinting.nix
     ../modules/personal.nix
+    ../modules/vm.nix
   ];
 }
