@@ -60,6 +60,7 @@
     via
     xdg-utils
     xsel
+    vlc
     zoom-us
 
     # fonts
