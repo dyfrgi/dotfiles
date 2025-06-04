@@ -43,6 +43,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelModules = [ "nct6687" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ nct6687d ];
+  boot.kernelParams = [ "split_lock_detect=off" ];
   boot.kernel.sysctl = {
     "kernel.split_lock_mitigate" = 0;
   };
