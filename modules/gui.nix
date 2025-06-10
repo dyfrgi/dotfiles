@@ -55,6 +55,7 @@
     firefox
     gimp
     google-chrome
+    libreoffice
     pavucontrol
     slack
     via
