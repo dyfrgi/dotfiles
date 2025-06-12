@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     en-croissant
+    path-of-building
     protonup
     stockfish
   ];
