@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   config,
   ...
 }:
@@ -9,7 +8,7 @@
     enable = true;
     defaultEditor = true;
     plugins = with pkgs.vimPlugins; [
-      (pkgs-unstable.vimPlugins.blink-cmp)
+      blink-cmp
       catppuccin-nvim
       conform-nvim
       fidget-nvim
@@ -52,7 +51,9 @@
     proseWrap = "always";
   };
 
-  home.sessionVariables.PRETTIERD_DEFAULT_CONFIG = "~/${config.xdg.configFile."prettierrc.json".target}";
+  home.sessionVariables.PRETTIERD_DEFAULT_CONFIG = "~/${
+    config.xdg.configFile."prettierrc.json".target
+  }";
 }
 
 /*

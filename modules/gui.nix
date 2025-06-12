@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  pkgs-unstable,
   ...
 }:
 {
@@ -66,8 +65,8 @@
 
     # fonts
     inter
-    pkgs-unstable.nerd-fonts.fantasque-sans-mono
-    pkgs-unstable.nerd-fonts.symbols-only
-    pkgs-unstable.nerd-fonts.fira-code
+    pkgs.nerd-fonts.fantasque-sans-mono
+    pkgs.nerd-fonts.symbols-only
+    pkgs.nerd-fonts.fira-code
   ];
 }
