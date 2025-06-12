@@ -138,6 +138,7 @@
     nvd
     pciutils
     usbutils
+    xwayland-run
     xwayland-satellite
   ];
 
