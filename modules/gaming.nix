@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     en-croissant
-    path-of-building
+    labwc # used for Path of Exile + Advanced PoE Trade overlay
     protonup
     stockfish
   ];

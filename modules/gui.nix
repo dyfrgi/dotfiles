@@ -47,6 +47,7 @@
   #  services.autorandr.enable = true;
 
   home.packages = with pkgs; [
+    appimage-run
     mate.atril
     brightnessctl
     vesktop
