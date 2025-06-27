@@ -67,7 +67,7 @@ in
 
   home.packages = with pkgs; [
     awscli2
-    devenv
+    # devenv
     google-cloud-sdk
     qalculate-gtk
   ];
