@@ -33,7 +33,7 @@
       ];
     };
 
-    initExtra = ''
+    initContent = ''
       setopt no_hup
     '';
 
