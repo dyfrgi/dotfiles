@@ -49,6 +49,7 @@
         "mleuchtenburg" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs extraSpecialArgs;
           modules = [
+            (./overlays)
             ./home.nix
             ./modules/gui.nix
           ];
