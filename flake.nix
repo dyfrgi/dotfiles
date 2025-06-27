@@ -22,6 +22,7 @@
     let
 
       system = "x86_64-linux";
+      overlays.default = (import ./overlays);
       pkgs = import nixpkgs { inherit system; };
       extraSpecialArgs = { inherit inputs; };
     in
@@ -30,7 +31,7 @@
         snail = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            (import ./overlays)
+            overlays.default
             ./configuration.nix
             ./hardware-configuration.nix
             home-manager.nixosModules.home-manager
@@ -49,7 +50,7 @@
         "mleuchtenburg" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs extraSpecialArgs;
           modules = [
-            (./overlays)
+            overlays.default
             ./home.nix
             ./modules/gui.nix
           ];
