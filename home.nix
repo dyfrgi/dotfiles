@@ -49,11 +49,11 @@ in
   home.enableDebugInfo = true;
 
   imports = [
-    modules/git.nix
-    modules/nix-index.nix
-    modules/nvim.nix
-    modules/utilities.nix
-    modules/zsh.nix
+    modules-hm/git.nix
+    modules-hm/nix-index.nix
+    modules-hm/nvim.nix
+    modules-hm/utilities.nix
+    modules-hm/zsh.nix
   ];
 
   xdg.enable = true; # set XDG_ env vars

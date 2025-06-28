@@ -20,7 +20,6 @@
       ...
     }@inputs:
     let
-
       system = "x86_64-linux";
       overlays.default = (import ./overlays);
       pkgs = import nixpkgs { inherit system; };
@@ -30,19 +29,11 @@
       nixosConfigurations = {
         snail = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             overlays.default
-            ./configuration.nix
-            ./hardware-configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.msl = import ./hosts/snail.nix;
-                inherit extraSpecialArgs;
-              };
-            }
+            ./hosts/snail-configuration.nix
+            ./hosts/snail-hardware.nix
           ];
         };
       };
@@ -53,12 +44,6 @@
             overlays.default
             ./home.nix
             ./modules/gui.nix
-          ];
-        };
-        "msl@snail" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs extraSpecialArgs;
-          modules = [
-            ./hosts/snail.nix
           ];
         };
         "msl" = home-manager.lib.homeManagerConfiguration {
