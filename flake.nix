@@ -22,12 +22,16 @@
     let
       system = "x86_64-linux";
       overlays.default = (import ./overlays);
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
       extraSpecialArgs = { inherit inputs; };
     in
     {
       nixosConfigurations = {
         snail = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -47,7 +51,7 @@
           modules = [
             overlays.default
             ./home.nix
-            ./modules/gui.nix
+            ./modules-hm/gui.nix
           ];
         };
         "msl" = home-manager.lib.homeManagerConfiguration {
@@ -58,7 +62,7 @@
           inherit pkgs;
           modules = [
             ./home.nix
-            ./modules/gui.nix
+            ./modules-hm/gui.nix
           ];
         };
         "msl@splat" = home-manager.lib.homeManagerConfiguration {
