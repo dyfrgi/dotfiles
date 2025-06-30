@@ -39,7 +39,11 @@
       };
       homeConfigurations = {
         "mleuchtenburg" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs extraSpecialArgs;
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit inputs;
+            username = "mleuchtenburg";
+          };
           modules = [
             overlays.default
             ./home.nix
@@ -47,14 +51,22 @@
           ];
         };
         "msl" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs extraSpecialArgs;
+          extraSpecialArgs = {
+            inherit inputs;
+            username = "msl";
+          };
+          inherit pkgs;
           modules = [
             ./home.nix
             ./modules/gui.nix
           ];
         };
         "msl@splat" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs extraSpecialArgs;
+          extraSpecialArgs = {
+            inherit inputs;
+            username = "msl";
+          };
+          inherit pkgs;
           modules = [
             ./home.nix
           ];

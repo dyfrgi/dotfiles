@@ -3,6 +3,7 @@
   config,
   pkgs-unstable,
   lib,
+  username,
   ...
 }:
 let
@@ -43,8 +44,8 @@ let
   ];
 in
 {
-  home.username = "msl";
-  home.homeDirectory = "/home/msl";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
   home.stateVersion = "23.11";
   home.enableDebugInfo = true;
 
