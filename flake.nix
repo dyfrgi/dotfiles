@@ -11,6 +11,9 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+    };
   };
 
   outputs =
@@ -38,6 +41,16 @@
             overlays.default
             ./hosts/snail-configuration.nix
             ./hosts/snail-hardware.nix
+          ];
+        };
+        slab = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            overlays.default
+            ./hosts/slab-configuration.nix
+            ./hosts/slab-hardware.nix
           ];
         };
       };
