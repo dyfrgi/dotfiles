@@ -64,6 +64,7 @@
           modules = [
             overlays.default
             ./home.nix
+            ./modules-hm/non-nixos.nix
             ./modules-hm/gui.nix
           ];
         };
