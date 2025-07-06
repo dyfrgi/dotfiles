@@ -71,6 +71,7 @@ in
     # devenv
     google-cloud-sdk
     qalculate-gtk
+    zk
   ];
 
   home.file = foldl' (

@@ -16,6 +16,7 @@
       gitsigns-nvim
       lazydev-nvim
       lualine-nvim
+      markview-nvim
       mini-nvim
       neo-tree-nvim
       nvim-web-devicons
@@ -27,6 +28,7 @@
       tokyonight-nvim
       vim-startuptime
       which-key-nvim
+      zk-nvim
     ];
     extraPackages = with pkgs; [
       fzf

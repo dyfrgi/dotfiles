@@ -83,6 +83,9 @@ require 'lualine'.setup {}
 require 'gitsigns'.setup {}
 require 'mini.git'.setup {}
 
+require 'zk'.setup { picker = "telescope" }
+require 'markview.extras.checkboxes'.setup {}
+
 -- TODO
 -- * git
 -- * fix blink keymaps
