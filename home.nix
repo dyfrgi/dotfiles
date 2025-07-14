@@ -65,6 +65,7 @@ in
   programs.pyenv = {
     enable = true;
   };
+  programs.uv.enable = true;
 
   home.packages = with pkgs; [
     awscli2
