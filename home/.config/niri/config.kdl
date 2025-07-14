@@ -13,7 +13,7 @@ input {
             // For more information, see xkeyboard-config(7).
 
             // For example:
-            layout "us"
+            layout "us,us(dvorak)"
             options "ctrl:nocaps"
         }
     }
