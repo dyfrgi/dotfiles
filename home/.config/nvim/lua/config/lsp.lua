@@ -27,3 +27,4 @@ require 'lazydev'.setup(
     },
   })
 require 'fidget'.setup {}
+vim.lsp.enable('clangd')
