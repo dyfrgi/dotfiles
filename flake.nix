@@ -14,6 +14,10 @@
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
     };
+    nixGL = {
+      url = "github:dyfrgi/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

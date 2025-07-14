@@ -2,10 +2,16 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }:
 {
-  home.packages = with pkgs; [ niri ];
+  nixGL.packages = inputs.nixGL.packages;
+  home.packages = with pkgs; [ (config.lib.nixGL.wrap niri) ];
+  programs.ghostty.package = with pkgs; (config.lib.nixGL.wrap ghostty);
+  programs.alacritty.package = with pkgs; (config.lib.nixGL.wrap alacritty);
+
+  home.sessionPath = [ "$HOME/.cargo/bin" ];
 
   # generate .bashrc with environment variables to pick up e.g. XDG paths for login scripts
   programs.bash.enable = true;
