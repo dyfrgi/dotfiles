@@ -77,13 +77,13 @@ require("config.lsp")
 require("config.telescope")
 require("config.treesitter")
 require("config.formatting")
+require("config.zk")
 require 'blink.cmp'.setup { fuzzy = { implementation = "lua", prebuilt_binaries = { download = false } } }
 require 'blink.cmp.fuzzy'.set_implementation('rust')
 require 'lualine'.setup {}
 require 'gitsigns'.setup {}
 require 'mini.git'.setup {}
 
-require 'zk'.setup { picker = "telescope" }
 require 'markview.extras.checkboxes'.setup {}
 
 -- TODO
