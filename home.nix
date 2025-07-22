@@ -88,7 +88,7 @@ in
     acc: elem:
     {
       "${elem}" = {
-        source = linkHome ".config/${elem}";
+        source = linkHome "dotconfig/${elem}";
       };
     }
     // acc
