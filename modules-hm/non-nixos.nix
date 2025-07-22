@@ -6,6 +6,7 @@
   ...
 }:
 {
+  my.wayland.swaylock_path = "/usr/bin/swaylock";
   nixGL.packages = inputs.nixGL.packages;
   home.packages = with pkgs; [ (config.lib.nixGL.wrap niri) ];
   programs.ghostty.package = with pkgs; (config.lib.nixGL.wrap ghostty);
