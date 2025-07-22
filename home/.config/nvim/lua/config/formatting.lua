@@ -1,10 +1,11 @@
 require 'conform'.setup({
+  log_level = vim.log.levels.DEBUG,
   default_format_opts = {
     lsp_format = "fallback"
   },
   notify_no_formatters = true,
   formatters_by_ft = {
-    markdown = { "prettierd", "prettier" },
+    markdown = { "prettier" },
     python = { "isort", "ruff" },
   },
   format_on_save = function(bufnr)

@@ -35,6 +35,7 @@
       lua-language-server
       nixd
       nixfmt-rfc-style
+      nodePackages.prettier
       prettierd
       (python3.withPackages (
         p:
