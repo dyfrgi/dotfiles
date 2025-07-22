@@ -163,6 +163,7 @@ require("which-key").setup({
       { "<leader>u",     group = "ui" },
       { "<leader>w",     group = "windows" },
       { "<leader>x",     group = "diagnostics/quickfix" },
+      { "<leader>z",     group = "zk" },
       { "[",             group = "prev" },
       { "]",             group = "next" },
       { "g",             group = "goto" },
