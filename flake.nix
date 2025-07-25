@@ -70,6 +70,7 @@
             ./home.nix
             ./modules-hm/non-nixos.nix
             ./modules-hm/gui.nix
+            ./modules-hm/singlestore.nix
           ];
         };
         "msl" = home-manager.lib.homeManagerConfiguration {
