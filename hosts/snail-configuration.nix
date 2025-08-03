@@ -32,7 +32,7 @@
 
     # Use the systemd-boot EFI boot loader.
     boot = {
-      kernelPackages = pkgs.linuxKernel.packages.linux_6_13;
+      kernelPackages = pkgs.linuxKernel.packages.linux_6_15;
       kernelParams = [ "split_lock_detect=off" ];
       zfs.package = pkgs.zfs_2_3;
       loader.systemd-boot.enable = true;
@@ -119,7 +119,6 @@
 
       man-pages
       man-pages-posix
-      linux-manual
     ];
 
     documentation = {
