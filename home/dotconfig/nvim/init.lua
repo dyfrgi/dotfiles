@@ -71,6 +71,11 @@ opt.fillchars = {
 opt.foldlevel = 99
 opt.foldmethod = "indent" -- TODO: replace with treesitter
 
+require("tokyonight").setup {
+  on_colors = function(colors)
+    colors.border = colors.orange
+  end
+}
 vim.cmd.colorscheme("tokyonight")
 
 require("config.lsp")
