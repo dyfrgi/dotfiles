@@ -74,6 +74,18 @@
       udisks2.enable = true;
       xserver.enable = true;
       openssh.enable = true;
+      printing = {
+        drivers = with pkgs; [
+          cups-filters
+          cups-browsed
+        ];
+        enable = true;
+      };
+      avahi = {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
+      };
     };
 
     environment.enableDebugInfo = true;
