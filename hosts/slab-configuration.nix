@@ -107,6 +107,20 @@
       ];
     };
 
+    users.users.guest = {
+      isNormalUser = true;
+      description = "Guest";
+      extraGroups = [
+        "networkmanager"
+        "audio"
+        "video"
+      ];
+      packages = with pkgs; [
+        google-chrome
+        firefox
+      ];
+    };
+
     # Install Gnome for Maria
     services.xserver.desktopManager.gnome.enable = true;
 
