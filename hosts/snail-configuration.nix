@@ -73,6 +73,7 @@
       };
       udisks2.enable = true;
       xserver.enable = true;
+      openssh.enable = true;
     };
 
     environment.enableDebugInfo = true;
