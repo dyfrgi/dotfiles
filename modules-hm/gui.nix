@@ -38,7 +38,7 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      theme = "Spacedust";
+      theme = "Adwaita Dark";
       font-family = "Fira Code Nerdfont";
       font-size = 9;
       clipboard-read = "allow";
