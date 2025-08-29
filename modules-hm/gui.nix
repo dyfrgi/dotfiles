@@ -32,6 +32,8 @@
     settings.terminal = "${pkgs.ghostty}/bin/ghostty --working-directory=";
   };
 
+  services.network-manager-applet.enable = true;
+
   programs.ghostty = {
     enable = true;
     enableZshIntegration = true;
@@ -49,6 +51,8 @@
   home.packages = with pkgs; [
     appimage-run
     mate.atril
+    blueman
+    overskride
     brightnessctl
     vesktop
     flameshot
