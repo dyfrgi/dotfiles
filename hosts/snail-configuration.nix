@@ -9,6 +9,7 @@
   imports = [
     # Include the results of the hardware scan.
     ../modules/nvidia.nix
+    ../modules/packages.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -124,16 +125,11 @@
     environment.systemPackages = with pkgs; [
       cifs-utils
       gdb
-      nvd
-      pciutils
-      usbutils
       xwayland-run
       xwayland-satellite
 
       man-pages
       man-pages-posix
-
-      config.boot.kernelPackages.perf
     ];
 
     documentation = {
