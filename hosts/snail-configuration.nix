@@ -132,6 +132,8 @@
 
       man-pages
       man-pages-posix
+
+      config.boot.kernelPackages.perf
     ];
 
     documentation = {
