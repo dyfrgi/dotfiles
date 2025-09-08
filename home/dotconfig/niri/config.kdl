@@ -319,15 +319,18 @@ binds {
     Mod+F  { consume-or-expel-window-left; }
     Mod+D  { consume-or-expel-window-right; }
 
+    Mod+Shift+H  { consume-or-expel-window-left; }
+    Mod+Shift+S  { consume-or-expel-window-right; }
+
     // Consume one window from the right to the bottom of the focused column.
     Mod+Ctrl+F  { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
     Mod+Ctrl+D { expel-window-from-column; }
 
-    Mod+Ctrl+C     { move-column-to-workspace-down; }
-    Mod+Ctrl+G     { move-column-to-monitor-left; }
-    Mod+Ctrl+L     { move-column-to-monitor-right; }
-    Mod+Ctrl+R     { move-column-to-workspace-up; }
+    Mod+Ctrl+C     { move-window-to-workspace-down; }
+    Mod+Ctrl+G     { move-window-to-monitor-left; }
+    Mod+Ctrl+L     { move-window-to-monitor-right; }
+    Mod+Ctrl+R     { move-window-to-workspace-up; }
 
     Mod+Shift+C         { move-workspace-down; }
     Mod+Shift+R         { move-workspace-up; }
