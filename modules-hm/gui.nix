@@ -74,4 +74,10 @@
     pkgs.nerd-fonts.symbols-only
     pkgs.nerd-fonts.fira-code
   ];
+
+  xdg.mimeApps = {
+    defaultApplications = {
+      "image/svg+xml" = [ "firefox.desktop" ];
+    };
+  };
 }
