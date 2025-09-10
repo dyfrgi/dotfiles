@@ -35,6 +35,7 @@
 
     initContent = ''
       setopt no_hup
+      typeset -UT XDG_DATA_DIRS xdg_data_dirs
     '';
 
     plugins = [
