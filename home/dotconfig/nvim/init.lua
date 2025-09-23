@@ -149,7 +149,7 @@ require 'close_with_q' -- closes window and delete buffer for some ephemeral buf
 
 -- git
 vim.keymap.set('n', "<leader>gb", "<cmd>Gitsigns blame<cr>", { desc = "Show git blame" })
-vim.keymap.set('n', "<leader>gb", "<cmd>Gitsigns blame_line<cr>", { desc = "Show git blame for current line" })
+vim.keymap.set('n', "<leader>gl", "<cmd>Gitsigns blame_line<cr>", { desc = "Show git blame for current line" })
 vim.keymap.set('n', "<leader>gs", function() MiniGit.show_at_cursor() end, { desc = "Show git history at cursor" })
 
 require("which-key").setup({
