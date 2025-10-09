@@ -75,6 +75,10 @@ in
     zk
   ];
 
+  home.shellAliases = {
+    "hm" = "cd ${dotfilesPath}; $EDITOR";
+  };
+
   home.file = foldl' (
     acc: elem:
     {
