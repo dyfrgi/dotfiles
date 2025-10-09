@@ -55,8 +55,8 @@
   };
 
   home.sessionVariables = {
-    PRETTIERD_DEFAULT_CONFIG = "~/${config.xdg.configFile."prettierrc.json".target}";
-    ZK_NOTEBOOK_DIR = "~/zk/";
+    PRETTIERD_DEFAULT_CONFIG = "$HOME/${config.xdg.configFile."prettierrc.json".target}";
+    ZK_NOTEBOOK_DIR = "$HOME/zk/";
   };
 }
 
