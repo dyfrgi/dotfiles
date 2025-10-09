@@ -278,7 +278,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+I { spawn "ghostty"; }
+    Mod+I { spawn "ghostty" "--gtk-single-instance=true"; }
     Mod+Y { spawn "fuzzel"; }
     Mod+Shift+Y { spawn "niri-select-window-by-name"; }
     Mod+X { spawn "firefox" "--new-window"; }
