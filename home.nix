@@ -66,6 +66,7 @@ in
     enable = true;
   };
   programs.uv.enable = true;
+  programs.poetry.enable = true;
 
   home.packages = with pkgs; [
     awscli2
