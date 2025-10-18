@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    butler
     en-croissant
+    itch
     labwc # used for Path of Exile + Advanced PoE Trade overlay
     protonup
     stockfish
