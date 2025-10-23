@@ -12,7 +12,10 @@
   programs.ghostty.package = with pkgs; (config.lib.nixGL.wrap ghostty);
   programs.alacritty.package = with pkgs; (config.lib.nixGL.wrap alacritty);
 
-  home.sessionPath = [ "$HOME/.cargo/bin" ];
+  home.sessionPath = [
+    "$HOME/.local/bin"
+    "$HOME/.cargo/bin"
+  ];
 
   # generate .bashrc with environment variables to pick up e.g. XDG paths for login scripts
   programs.bash.enable = true;
