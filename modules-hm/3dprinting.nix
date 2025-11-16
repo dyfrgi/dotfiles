@@ -8,5 +8,6 @@
     graphviz
     kicad
     librecad
+    plasticity
   ];
 }
