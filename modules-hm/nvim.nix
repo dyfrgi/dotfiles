@@ -3,6 +3,12 @@
   config,
   ...
 }:
+let
+  norg-grammars = with pkgs.tree-sitter-grammars; [
+    tree-sitter-norg
+    tree-sitter-norg-meta
+  ];
+in
 {
   programs.neovim = {
     enable = true;
@@ -19,8 +25,9 @@
       markview-nvim
       mini-nvim
       neo-tree-nvim
+      neorg
       nvim-web-devicons
-      nvim-treesitter.withAllGrammars
+      (nvim-treesitter.withPlugins (_: nvim-treesitter.allGrammars ++ norg-grammars))
       nvim-treesitter-context
       nvim-lspconfig
       telescope-nvim
