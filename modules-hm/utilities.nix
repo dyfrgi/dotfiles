@@ -11,6 +11,7 @@
     fzf
     jq
     lazygit
+    lftp
     llvmPackages.bintools
     ripgrep
     scc
