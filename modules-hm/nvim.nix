@@ -24,6 +24,7 @@ in
       lualine-nvim
       markview-nvim
       mini-nvim
+      neorg
       neo-tree-nvim
       neorg
       nvim-web-devicons
@@ -53,6 +54,7 @@ in
       ))
       ruff
       rust-analyzer
+      sleek
       vscode-langservers-extracted
     ];
   };

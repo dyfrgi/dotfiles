@@ -111,6 +111,8 @@ vim.keymap.set('n', "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" 
 
 -- ui (<leader>u)
 vim.keymap.set('n', "<leader>ur", "<cmd>nohl<cr>", { desc = "Clear Highlights" })
+vim.keymap.set('n', "<leader>uf", "<cmd>FormatToggle<cr>", { desc = "Toggle autoformat (global)" })
+vim.keymap.set('n', "<leader>uF", "<cmd>FormatToggle!<cr>", { desc = "Toggle autoformat (buffer)" })
 
 -- goto (g)
 vim.keymap.set('n', "gd", function() require("telescope.builtin").lsp_definitions() end, { desc = "Goto Definition" })
