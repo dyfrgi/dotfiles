@@ -17,6 +17,7 @@ in
       blink-cmp
       catppuccin-nvim
       conform-nvim
+      cyberdream-nvim
       fidget-nvim
       flash-nvim
       gitsigns-nvim
@@ -27,6 +28,7 @@ in
       neorg
       neo-tree-nvim
       neorg
+      nightfox-nvim
       nvim-web-devicons
       (nvim-treesitter.withPlugins (_: nvim-treesitter.allGrammars ++ norg-grammars))
       nvim-treesitter-context
