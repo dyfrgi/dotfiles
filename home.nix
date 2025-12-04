@@ -21,7 +21,6 @@ let
   homeFilesToLink = [
     ".dircolors"
     ".etc/"
-    ".gitconfig"
     ".gitignore_global"
     ".gitk"
     ".gtkrc-2.0"
