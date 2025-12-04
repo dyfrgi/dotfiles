@@ -7,6 +7,8 @@
     nixpkgs.overlays = [
       (self: super: {
         niri-select-window-by-name = super.callPackage ../packages/niri-select-window-by-name { };
+
+        # TODO: Drop this when moving to nixpkgs 25.11
         fuzzel = super.fuzzel.overrideAttrs (oldAttrs: {
           version = "117dc1f6d134a7fe5c90de67fb7f695c139f354c";
           src = super.fetchFromGitea {
