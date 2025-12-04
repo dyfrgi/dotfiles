@@ -16,7 +16,7 @@ vim.g.maplocalleader = " "
 vim.opt.clipboard = "unnamedplus" -- use the '+' register by default
 
 local opt = vim.opt
-opt.completeopt = "menu,menuone,noselect"
+opt.completeopt = "menuone,noselect,fuzzy,popup"
 opt.conceallevel = 3  -- Hide * markup for bold and italic
 opt.confirm = true    -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
@@ -98,7 +98,6 @@ require 'markview.extras.checkboxes'.setup {}
 -- * windows?
 -- * vim-illuminate?
 -- * indent-blankline
--- * conform autoformatting
 
 -- Keybindings
 -- code action (<leader>c)
