@@ -21,6 +21,8 @@ in
       fidget-nvim
       flash-nvim
       gitsigns-nvim
+      gruvbox-material
+      kanagawa-nvim
       lazydev-nvim
       lualine-nvim
       markview-nvim
