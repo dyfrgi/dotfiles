@@ -6,6 +6,7 @@
   config = {
     nixpkgs.overlays = [
       (self: super: {
+        iosvmata = super.callPackage ../packages/iosvmata.nix { };
         niri-select-window-by-name = super.callPackage ../packages/niri-select-window-by-name { };
 
         # TODO: Drop this when moving to nixpkgs 25.11
@@ -23,7 +24,7 @@
           ];
           nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ self.pixman-046 ];
         });
-        pixman-046 = super.pixman.overrideAttrs (_: rec {
+        pixman-046 = super.pixman.overrideAttrs (_: {
           version = "0.46.4";
           src = super.fetchurl {
             urls = [

@@ -39,14 +39,16 @@
     enableZshIntegration = true;
     settings = {
       theme = "GruvboxDarkHard";
-      font-family = "Fira Code Nerdfont";
-      font-size = 9;
+      font-family = "Iosvmata";
+      font-size = 11;
       clipboard-read = "allow";
     };
   };
 
   #  programs.autorandr.enable = true;
   #  services.autorandr.enable = true;
+
+  fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     appimage-run
@@ -73,6 +75,7 @@
     pkgs.nerd-fonts.fantasque-sans-mono
     pkgs.nerd-fonts.symbols-only
     pkgs.nerd-fonts.fira-code
+    pkgs.iosvmata
   ];
 
   xdg.mimeApps = {
