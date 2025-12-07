@@ -1,5 +1,5 @@
-require 'lspconfig'.rust_analyzer.setup {}
-require 'lspconfig'.lua_ls.setup {
+vim.lsp.enable('rust_analyzer')
+vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
       diagnostics = {
@@ -7,15 +7,21 @@ require 'lspconfig'.lua_ls.setup {
       }
     }
   }
-}
-require 'lspconfig'.jsonls.setup {}
-require 'lspconfig'.nixd.setup {
-  settings = { nixd = { options = {
-    home_manager = {
-      expr = '(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."msl".options',
-    },
-  } } }
-}
+})
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('jsonls')
+vim.lsp.config('nixd', {
+  settings = {
+    nixd = {
+      options = {
+        home_manager = {
+          expr = '(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."msl".options',
+        },
+      }
+    }
+  }
+})
+vim.lsp.enable('nixd')
 vim.lsp.enable('pylsp')
 require 'lazydev'.setup(
   {
