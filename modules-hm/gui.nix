@@ -38,7 +38,7 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      theme = "GruvboxDarkHard";
+      theme = "Gruvbox Dark Hard";
       font-family = "Iosvmata";
       font-size = 11;
       clipboard-read = "allow";
