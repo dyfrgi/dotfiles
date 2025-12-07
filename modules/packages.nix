@@ -1,11 +1,10 @@
 {
-  config,
   pkgs,
   ...
 }:
 {
   config.environment.systemPackages = with pkgs; [
-    config.boot.kernelPackages.perf
+    perf
     lsof
     nvd
     pciutils

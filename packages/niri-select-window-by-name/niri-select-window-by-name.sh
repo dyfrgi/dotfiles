@@ -11,6 +11,6 @@ done <<< "$niri_windows_json"
 
 result=$(printf "%b\n" "${window_titles[@]}" | fuzzel -w100 --counter --dmenu --index)
 
-if [ "x$result" != "x" ] && [ "$result" != -1 ]; then
+if [ "$result" != "" ] && [ "$result" != -1 ]; then
   niri msg action focus-window --id "${window_ids[result]}"
 fi

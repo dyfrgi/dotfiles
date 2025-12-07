@@ -2,10 +2,11 @@
 {
   home.packages = with pkgs; [
     butler
-    en-croissant
+    # broken: should be trivial to upgrade to webkitgtk_4_1
+    # en-croissant
     itch
     labwc # used for Path of Exile + Advanced PoE Trade overlay
-    protonup
+    protonup-ng
     stockfish
   ];
   home.sessionVariables = {

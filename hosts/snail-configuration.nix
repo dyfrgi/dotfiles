@@ -67,7 +67,7 @@
       displayManager.sddm.enable = true;
       flatpak.enable = true;
       fwupd.enable = true;
-      nixseparatedebuginfod.enable = true;
+      nixseparatedebuginfod2.enable = true;
       pipewire = {
         enable = true;
         pulse.enable = true;

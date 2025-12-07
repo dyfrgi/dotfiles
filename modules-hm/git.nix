@@ -8,16 +8,19 @@
     gcam = "git commit -a -m";
     gs = "git status";
   };
+  programs.delta = {
+    enableGitIntegration = true;
+    enable = true;
+  };
   programs.git = {
     enable = true;
-    delta.enable = true;
-    userName = "Michael Leuchtenburg";
-    userEmail = "michael@slashhome.org";
     ignores = [
       "*~"
       "*.swp"
     ];
-    extraConfig = {
+    settings = {
+      user.name = "Michael Leuchtenburg";
+      user.email = "michael@slashhome.org";
       branch.sort = "-committerdate";
       column.ui = "auto";
       commit.verbose = true;
