@@ -9,7 +9,10 @@
     enable = true;
     enableZshIntegration = true;
   };
-  programs.fzf.enableZshIntegration = true;
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   programs.zsh = {
     enable = true;
 
@@ -34,7 +37,7 @@
       ];
     };
 
-    initContent = ''
+    initContent = lib.mkOrder 500 ''
       setopt no_hup
       typeset -UT XDG_DATA_DIRS xdg_data_dirs
     '';
