@@ -18,7 +18,7 @@ in
     programs.fuzzel.enable = true;
     programs.waybar.enable = true;
     programs.waybar.systemd.enable = true;
-    services.mako.enable = true;
+    services.swaync.enable = true;
     services.swayidle = {
       enable = true;
       events = [
