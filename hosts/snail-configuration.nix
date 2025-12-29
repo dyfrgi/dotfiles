@@ -33,9 +33,9 @@
 
     # Use the systemd-boot EFI boot loader.
     boot = {
-      #      kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
+      kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
       kernelParams = [ "split_lock_detect=off" ];
-      zfs.package = pkgs.zfs_2_3;
+      zfs.package = pkgs.zfs_2_4;
       loader.systemd-boot.enable = true;
       loader.efi.canTouchEfiVariables = true;
       kernelModules = [ "nct6687" ];
