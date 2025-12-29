@@ -4,10 +4,18 @@
 }:
 {
   config.environment.systemPackages = with pkgs; [
-    perf
+    dmidecode
+    file
+    htop
+    hwinfo
+    lshw
     lsof
+    mtr
     nvd
     pciutils
+    perf
+    unzip
     usbutils
+    smartmontools
   ];
 }

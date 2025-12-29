@@ -52,22 +52,24 @@
 
   home.packages = with pkgs; [
     appimage-run
-    mate.atril
     blueman
-    overskride
     brightnessctl
-    vesktop
-    flameshot
     firefox
+    flameshot
     gimp
     google-chrome
     libreoffice
+    mate.atril
+    mpv
+    oculante
+    overskride
     pavucontrol
     slack
+    vesktop
     via
+    vlc
     xdg-utils
     xsel
-    vlc
     zoom-us
 
     # fonts
