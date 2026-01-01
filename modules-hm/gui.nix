@@ -45,6 +45,20 @@
     };
   };
 
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode.fhsWithPackages (
+      ps: with ps; ([
+        python3
+      ])
+    );
+    # profiles.default.extensions = with pkgs.vscode-extensions; [
+    #   platformio.platformio-vscode-ide
+    #   ms-vscode.cpptools
+    #   ms-python.python
+    # ];
+  };
+
   #  programs.autorandr.enable = true;
   #  services.autorandr.enable = true;
 
@@ -64,6 +78,7 @@
     oculante
     overskride
     pavucontrol
+    python3
     slack
     vesktop
     via
