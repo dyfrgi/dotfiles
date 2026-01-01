@@ -43,6 +43,7 @@ in
       zk-nvim
     ];
     extraPackages = with pkgs; [
+      clang-tools
       fzf
       lua-language-server
       nixd
