@@ -12,6 +12,8 @@ let
     url = "https://github.com/bambulab/BambuStudio/releases/download/v${version}/Bambu_Studio_ubuntu-${ubuntu_version}.AppImage";
     sha256 = "sha256:26bc07dccb04df2e462b1e03a3766509201c46e27312a15844f6f5d7fdf1debd";
   };
+
+  appimageContents = appimageTools.extract { inherit pname version src; };
 in
 appimageTools.wrapType2 {
   inherit
@@ -36,4 +38,12 @@ appimageTools.wrapType2 {
       gst_all_1.gst-plugins-good
       webkitgtk_4_1
     ];
+
+  extraInstallCommands = ''
+    install -m 444 -D ${appimageContents}/BambuStudio.desktop $out/share/applications/${pname}.desktop
+    install -m 444 -D ${appimageContents}/usr/share/icons/hicolor/128x128/apps/BambuStudio.png \
+                      $out/share/icons/hicolor/128x128/apps/BambuStudio.png
+    substituteInPlace $out/share/applications/${pname}.desktop \
+      --replace-fail 'Exec=AppRun' 'Exec=${pname}'
+  '';
 }
