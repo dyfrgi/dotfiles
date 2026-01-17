@@ -124,7 +124,7 @@
     };
 
     # Install Gnome for Maria
-    services.xserver.desktopManager.gnome.enable = true;
+    services.desktopManager.gnome.enable = true;
 
     programs.dconf.enable = true;
     programs.git.enable = true;
@@ -133,7 +133,7 @@
     programs.command-not-found.enable = false;
 
     environment.systemPackages = with pkgs; [
-      amd-debug-tools
+      # amd-debug-tools
       pamixer
       pciutils
       pstree
