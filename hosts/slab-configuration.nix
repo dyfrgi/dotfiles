@@ -48,6 +48,8 @@
       networkmanager.enable = true;
     };
 
+    services.tailscale.enable = true;
+
     # Work around wpa_supplicant bug spamming CTRL-EVENT-SIGNAL-CHANGE
     systemd.services.wpa_supplicant.serviceConfig = {
       LogLevelMax = "warning";
@@ -131,6 +133,7 @@
     programs.command-not-found.enable = false;
 
     environment.systemPackages = with pkgs; [
+      amd-debug-tools
       pamixer
       pciutils
       pstree
