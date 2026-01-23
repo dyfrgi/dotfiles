@@ -14,6 +14,7 @@
     nvd
     pciutils
     perf
+    pstree
     unzip
     usbutils
     smartmontools
