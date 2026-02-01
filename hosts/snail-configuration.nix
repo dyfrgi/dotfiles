@@ -10,6 +10,7 @@
     # Include the results of the hardware scan.
     ../modules/nvidia.nix
     ../modules/packages.nix
+    ../modules/embedded-dev.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
