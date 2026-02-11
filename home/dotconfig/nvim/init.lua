@@ -82,6 +82,7 @@ require 'blink.cmp.fuzzy'.set_implementation('rust')
 require 'lualine'.setup {}
 require 'gitsigns'.setup {}
 require 'mini.git'.setup {}
+require 'meow.yarn'.setup {}
 
 require 'markview.extras.checkboxes'.setup {}
 

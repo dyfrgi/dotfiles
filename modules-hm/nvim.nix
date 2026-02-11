@@ -8,6 +8,17 @@ let
     tree-sitter-norg
     tree-sitter-norg-meta
   ];
+  meow-yarn-nvim = pkgs.vimUtils.buildVimPlugin {
+    pname = "meow.yarn.nvim";
+    version = "v0.1.1";
+    src = pkgs.fetchFromGitHub {
+      owner = "retran";
+      repo = "meow.yarn.nvim";
+      rev = "v0.1.1";
+      sha256 = "sha256-SQ+glfwwJ2H5HG5WW2R3nDaxuHTUzJDCOJy7a73JaxA=";
+    };
+    dependencies = [ pkgs.vimPlugins.nui-nvim ];
+  };
 in
 {
   programs.neovim = {
@@ -26,6 +37,7 @@ in
       lazydev-nvim
       lualine-nvim
       markview-nvim
+      meow-yarn-nvim
       mini-nvim
       neorg
       neo-tree-nvim
