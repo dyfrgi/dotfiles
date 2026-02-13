@@ -4,18 +4,21 @@
   ...
 }:
 {
+  programs = {
+    bat.enable = true;
+    eza.enable = true;
+    fd.enable = true;
+    fzf.enable = true;
+    jq.enable = true;
+    lazygit.enable = true;
+    ripgrep.enable = true;
+    yt-dlp.enable = true;
+  };
   home.packages = with pkgs; [
     acpi
-    bat
-    fd # used by telescope-nvim
-    fzf
-    jq
-    lazygit
     lftp
     llvmPackages.bintools
-    ripgrep
     scc
     whois
-    yt-dlp
   ];
 }
