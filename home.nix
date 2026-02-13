@@ -76,6 +76,7 @@ in
 
   home.shellAliases = {
     "hm" = "cd ${dotfilesPath}; $EDITOR";
+    "ls" = "ls --color=auto";
   };
 
   home.file = foldl' (
