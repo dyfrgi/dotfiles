@@ -7,6 +7,7 @@
     gimp
     photoprism
     rapid-photo-downloader
+    rapidraw
     rawtherapee
   ];
 }
