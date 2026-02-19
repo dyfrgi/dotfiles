@@ -154,6 +154,7 @@
         ../modules-hm/3dprinting.nix
         ../modules-hm/personal.nix
         ../modules-hm/vm.nix
+        ../modules-hm/photography.nix
       ];
       useGlobalPkgs = true;
       useUserPackages = true;
