@@ -8,6 +8,7 @@
     file
     htop
     hwinfo
+    i2c-tools
     lshw
     lsof
     mtr

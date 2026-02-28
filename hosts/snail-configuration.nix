@@ -18,6 +18,7 @@
     hardware = {
       enableAllFirmware = true;
       bluetooth.enable = true;
+      i2c.enable = true;
     };
     services.blueman.enable = true;
 
@@ -97,26 +98,33 @@
 
     # Enable sound.
     security.rtkit.enable = true;
-    users.users.msl = {
-      isNormalUser = true;
-      description = "Michael Leuchtenburg";
-      extraGroups = [
-        "audio"
-        "dialout" # ttyUSB
-        "networkmanager"
-        "plugdev"
-        "video"
-        "wheel"
-      ];
-      shell = pkgs.zsh;
+    users = {
+      groups.hardinfo2 = { }; # hardcoded group name from hardinfo2 package
+      users.msl = {
+        isNormalUser = true;
+        description = "Michael Leuchtenburg";
+        extraGroups = [
+          "audio"
+          "dialout" # ttyUSB
+          "hardinfo2"
+          "networkmanager"
+          "plugdev"
+          "video"
+          "wheel"
+        ];
+        shell = pkgs.zsh;
+      };
     };
 
     programs.firefox.enable = true;
     programs.zsh.enable = true;
 
     programs.git.enable = true;
-    programs.steam.enable = true;
-    programs.steam.gamescopeSession.enable = true;
+    programs.steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+      extraCompatPackages = [ pkgs.proton-ge-bin ];
+    };
     programs.gamemode.enable = true;
     programs.gamescope = {
       enable = true;
@@ -126,6 +134,7 @@
     environment.systemPackages = with pkgs; [
       cifs-utils
       gdb
+      hardinfo2
       xwayland-run
       xwayland-satellite
 
