@@ -16,6 +16,7 @@
   };
   home.packages = with pkgs; [
     acpi
+    duckdb
     lftp
     llvmPackages.bintools
     scc
