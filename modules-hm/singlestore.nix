@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.shellAliases = {
     memsql = "mysql -h 127.0.0.1 -u root --prompt='memsql> '";
@@ -18,4 +18,8 @@
     coder
     flamegraph
   ];
+
+  programs.git.settings.user = {
+    email = lib.mkForce "mleuchtenburg@singlestore.com";
+  };
 }
