@@ -73,6 +73,20 @@
             ./modules-hm/singlestore.nix
           ];
         };
+        "mleuchtenburg@msl" = home-manager.lib.homeManagerConfiguration {
+          # work coder instance
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit inputs;
+            username = "mleuchtenburg";
+          };
+          modules = [
+            overlays.default
+            ./home.nix
+            ./modules-hm/non-nixos.nix
+            ./modules-hm/singlestore.nix
+          ];
+        };
         "msl" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {
             inherit inputs;
