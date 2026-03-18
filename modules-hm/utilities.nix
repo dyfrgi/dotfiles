@@ -24,6 +24,7 @@
     mouse = true;
     historyLimit = 50000;
     clock24 = true;
+    terminal = "tmux-256color";
   };
 
   home.packages = with pkgs; [
