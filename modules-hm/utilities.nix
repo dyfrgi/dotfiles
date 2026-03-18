@@ -14,6 +14,18 @@
     ripgrep.enable = true;
     yt-dlp.enable = true;
   };
+
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    customPaneNavigationAndResize = true; # vi-mode pane navigation hjkl
+    escapeTime = 0;
+    keyMode = "vi";
+    mouse = true;
+    historyLimit = 50000;
+    clock24 = true;
+  };
+
   home.packages = with pkgs; [
     acpi
     duckdb
