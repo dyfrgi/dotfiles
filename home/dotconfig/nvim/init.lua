@@ -14,6 +14,7 @@ vim.g.maplocalleader = " "
 --   },
 -- }
 vim.opt.clipboard = "unnamedplus" -- use the '+' register by default
+vim.g.clipboard = "osc52"
 
 local opt = vim.opt
 opt.completeopt = "menuone,noselect,fuzzy,popup"

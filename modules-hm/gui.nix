@@ -42,6 +42,7 @@
       font-family = "Iosvmata";
       font-size = 11;
       clipboard-read = "allow";
+      clipboard-write = "allow";
     };
   };
 
