@@ -34,3 +34,4 @@ require 'lazydev'.setup(
   })
 require 'fidget'.setup {}
 vim.lsp.enable('clangd')
+vim.lsp.enable('marksman')

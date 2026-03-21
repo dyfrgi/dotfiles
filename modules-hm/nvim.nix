@@ -47,6 +47,7 @@ in
       (nvim-treesitter.withPlugins (_: nvim-treesitter.allGrammars ++ norg-grammars))
       nvim-treesitter-context
       nvim-lspconfig
+      oil-nvim
       telescope-nvim
       telescope-fzf-native-nvim
       tokyonight-nvim
@@ -58,6 +59,7 @@ in
       clang-tools
       fzf
       lua-language-server
+      marksman
       nixd
       nixfmt-rfc-style
       nodePackages.prettier
