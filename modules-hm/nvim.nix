@@ -43,6 +43,7 @@ in
       neo-tree-nvim
       neorg
       nightfox-nvim
+      nvim-origami
       nvim-web-devicons
       (nvim-treesitter.withPlugins (_: nvim-treesitter.allGrammars ++ norg-grammars))
       nvim-treesitter-context

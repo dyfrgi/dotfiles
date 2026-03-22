@@ -59,18 +59,9 @@ opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5                -- Minimum window width
 opt.wrap = false                   -- Disable line wrap
 opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  -- fold = "⸱",
-  fold = " ",
-  foldsep = " ",
   diff = "╱",
   eob = " ",
 }
-
--- Folding
-opt.foldlevel = 99
-opt.foldmethod = "indent" -- TODO: replace with treesitter
 
 require("config.colors")
 require("config.lsp")
@@ -79,6 +70,7 @@ require("config.treesitter")
 require("config.formatting")
 require("config.zk")
 require("config.oil")
+require("config.folding")
 require 'blink.cmp'.setup { fuzzy = { implementation = "lua", prebuilt_binaries = { download = false } } }
 require 'blink.cmp.fuzzy'.set_implementation('rust')
 require 'lualine'.setup {}
