@@ -1,10 +1,8 @@
-require'nvim-treesitter.configs'.setup {
-  modules = {
-    highlight = {
-      enable = true
-    }
-  }
+require 'nvim-treesitter.configs'.setup {
+  highlight = { enable = true },
+  indent = { enable = true },
+  incremental_selection = { enable = true }
 }
-require'treesitter-context'.setup{
+require 'treesitter-context'.setup {
   max_lines = 5
 }
