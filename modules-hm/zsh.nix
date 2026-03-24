@@ -31,10 +31,16 @@
       ];
     };
 
-    initContent = lib.mkOrder 500 ''
-      setopt no_hup
-      typeset -UT XDG_DATA_DIRS xdg_data_dirs
-    '';
+    initContent = lib.mkMerge [
+      (lib.mkOrder 500 ''
+        setopt no_hup
+        typeset -UT XDG_DATA_DIRS xdg_data_dirs
+      '')
+      # 550 is the new "before compinit"
+      (lib.mkOrder 550 ''
+        fpath+=~/.local/share/zsh/site-functions/
+      '')
+    ];
 
     plugins = [
       {
