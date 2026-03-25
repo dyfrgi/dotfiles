@@ -71,6 +71,7 @@ require("config.formatting")
 require("config.zk")
 require("config.oil")
 require("config.folding")
+require("config.markdown")
 require 'blink.cmp'.setup { fuzzy = { implementation = "lua", prebuilt_binaries = { download = false } } }
 require 'blink.cmp.fuzzy'.set_implementation('rust')
 require 'lualine'.setup {}

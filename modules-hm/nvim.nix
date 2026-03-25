@@ -29,11 +29,13 @@ in
       catppuccin-nvim
       conform-nvim
       cyberdream-nvim
+      diagram-nvim
       fidget-nvim
       flash-nvim
       gitsigns-nvim
       gruvbox-material
       kanagawa-nvim
+      image-nvim
       lazydev-nvim
       lualine-nvim
       markview-nvim
@@ -59,8 +61,10 @@ in
     extraPackages = with pkgs; [
       clang-tools
       fzf
+      imagemagick
       lua-language-server
       marksman
+      mermaid-cli
       nixd
       nixfmt-rfc-style
       nodePackages.prettier
