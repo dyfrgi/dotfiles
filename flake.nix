@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +34,11 @@
         inherit system;
         config.allowUnfree = true;
       };
-      extraSpecialArgs = { inherit inputs; };
+      pkgs-unstable = import inputs.nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      extraSpecialArgs = { inherit inputs pkgs-unstable; };
     in
     {
       nixosConfigurations = {
@@ -61,10 +66,7 @@
       homeConfigurations = {
         "mleuchtenburg" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = {
-            inherit inputs;
-            username = "mleuchtenburg";
-          };
+          extraSpecialArgs = extraSpecialArgs // { username = "mleuchtenburg"; };
           modules = [
             overlays.default
             ./home.nix
@@ -77,10 +79,7 @@
         "mleuchtenburg@msl" = home-manager.lib.homeManagerConfiguration {
           # work coder instance
           inherit pkgs;
-          extraSpecialArgs = {
-            inherit inputs;
-            username = "mleuchtenburg";
-          };
+          extraSpecialArgs = extraSpecialArgs // { username = "mleuchtenburg"; };
           modules = [
             overlays.default
             ./home.nix
@@ -89,10 +88,7 @@
           ];
         };
         "msl" = home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = {
-            inherit inputs;
-            username = "msl";
-          };
+          extraSpecialArgs = extraSpecialArgs // { username = "msl"; };
           inherit pkgs;
           modules = [
             ./home.nix
@@ -100,10 +96,7 @@
           ];
         };
         "msl@splat" = home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = {
-            inherit inputs;
-            username = "msl";
-          };
+          extraSpecialArgs = extraSpecialArgs // { username = "msl"; };
           inherit pkgs;
           modules = [
             ./home.nix

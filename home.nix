@@ -68,7 +68,7 @@ in
   programs.poetry.enable = true;
 
   home.packages = with pkgs; [
-    awscli2
+    pkgs-unstable.awscli2
     google-cloud-sdk
     qalculate-gtk
     zk
