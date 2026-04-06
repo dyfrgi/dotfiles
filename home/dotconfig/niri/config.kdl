@@ -332,8 +332,10 @@ binds {
     Mod+Ctrl+L     { move-window-to-monitor-right; }
     Mod+Ctrl+R     { move-window-to-workspace-up; }
 
-    Mod+Shift+C         { move-workspace-down; }
-    Mod+Shift+R         { move-workspace-up; }
+    Mod+Shift+C     { move-workspace-down; }
+    Mod+Shift+G     { move-workspace-to-monitor-left; }
+    Mod+Shift+L     { move-workspace-to-monitor-right; }
+    Mod+Shift+R     { move-workspace-up; }
 
     // Mouse stuff
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
