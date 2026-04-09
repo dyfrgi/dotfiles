@@ -56,6 +56,7 @@ in
       tokyonight-nvim
       vim-startuptime
       which-key-nvim
+      wrapping-nvim
       zk-nvim
     ];
     extraPackages = with pkgs; [

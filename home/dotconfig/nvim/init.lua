@@ -78,8 +78,7 @@ require 'lualine'.setup {}
 require 'gitsigns'.setup {}
 require 'mini.git'.setup {}
 require 'meow.yarn'.setup {}
-
-require 'markview.extras.checkboxes'.setup {}
+require 'wrapping'.setup {}
 
 -- TODO
 -- * git
