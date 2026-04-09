@@ -36,6 +36,7 @@ in
       gruvbox-material
       kanagawa-nvim
       image-nvim
+      incline-nvim
       lazydev-nvim
       lualine-nvim
       markview-nvim
