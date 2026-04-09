@@ -2,7 +2,10 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 
 require("origami").setup {
-  useLspFoldsWithTreesitterFallback = { enable = false }
+  useLspFoldsWithTreesitterFallback = { enable = false },
+  autoFold = {
+    enabled = false,
+  },
 }
 vim.api.nvim_create_autocmd("FileType", {
   desc = "Folding: use Treesitter as folding provider if available",
