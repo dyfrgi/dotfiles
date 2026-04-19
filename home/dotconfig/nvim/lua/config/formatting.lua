@@ -8,6 +8,8 @@ require 'conform'.setup({
     markdown = { "prettier" },
     python = { "isort", "ruff" },
     sql = { "sleek" },
+    html = { "prettier" },
+    javascript = { "prettier" },
   },
   format_on_save = function(bufnr)
     if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
