@@ -79,6 +79,7 @@ require 'gitsigns'.setup {}
 require 'mini.git'.setup {}
 require 'meow.yarn'.setup {}
 require 'wrapping'.setup {}
+require 'guess-indent'.setup {}
 
 -- TODO
 -- * git

@@ -33,6 +33,7 @@ in
       fidget-nvim
       flash-nvim
       gitsigns-nvim
+      guess-indent-nvim
       gruvbox-material
       kanagawa-nvim
       image-nvim
