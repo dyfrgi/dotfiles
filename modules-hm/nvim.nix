@@ -71,6 +71,7 @@ in
       nixd
       nixfmt-rfc-style
       nodePackages.prettier
+      plantuml
       prettierd
       (python3.withPackages (
         p:
