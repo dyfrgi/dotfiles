@@ -66,7 +66,9 @@
       homeConfigurations = {
         "mleuchtenburg" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = extraSpecialArgs // { username = "mleuchtenburg"; };
+          extraSpecialArgs = extraSpecialArgs // {
+            username = "mleuchtenburg";
+          };
           modules = [
             overlays.default
             ./home.nix
@@ -79,7 +81,9 @@
         "mleuchtenburg@msl" = home-manager.lib.homeManagerConfiguration {
           # work coder instance
           inherit pkgs;
-          extraSpecialArgs = extraSpecialArgs // { username = "mleuchtenburg"; };
+          extraSpecialArgs = extraSpecialArgs // {
+            username = "mleuchtenburg";
+          };
           modules = [
             overlays.default
             ./home.nix
@@ -88,7 +92,9 @@
           ];
         };
         "msl" = home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = extraSpecialArgs // { username = "msl"; };
+          extraSpecialArgs = extraSpecialArgs // {
+            username = "msl";
+          };
           inherit pkgs;
           modules = [
             ./home.nix
@@ -96,7 +102,9 @@
           ];
         };
         "msl@splat" = home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = extraSpecialArgs // { username = "msl"; };
+          extraSpecialArgs = extraSpecialArgs // {
+            username = "msl";
+          };
           inherit pkgs;
           modules = [
             ./home.nix
