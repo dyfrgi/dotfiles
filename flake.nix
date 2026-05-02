@@ -19,12 +19,23 @@
       url = "github:dyfrgi/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
+      self,
       nixpkgs,
       home-manager,
+      agenix,
+      agenix-rekey,
       ...
     }@inputs:
     let
@@ -39,27 +50,34 @@
         config.allowUnfree = true;
       };
       extraSpecialArgs = { inherit inputs pkgs-unstable; };
+      secretsConfig = {
+        masterIdentities = [ ./secrets/desktop-age-yubikey.pub ];
+      };
     in
     {
       nixosConfigurations = {
         snail = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs pkgs-unstable secretsConfig; };
           modules = [
             overlays.default
             ./hosts/snail-configuration.nix
             ./hosts/snail-hardware.nix
+            agenix.nixosModules.default
+            agenix-rekey.nixosModules.default
           ];
         };
         slab = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs secretsConfig; };
           modules = [
             overlays.default
             ./hosts/slab-configuration.nix
             ./hosts/slab-hardware.nix
+            agenix.nixosModules.default
+            agenix-rekey.nixosModules.default
           ];
         };
       };
@@ -110,6 +128,18 @@
             ./home.nix
           ];
         };
+      };
+      agenix-rekey = agenix-rekey.configure {
+        userFlake = self;
+        nixosConfigurations = self.nixosConfigurations;
+      };
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [
+          agenix-rekey.packages.${system}.default
+          pkgs.age-plugin-yubikey
+          pkgs.rage
+          pkgs.age
+        ];
       };
     };
 }

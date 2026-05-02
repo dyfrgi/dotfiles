@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  secretsConfig,
   ...
 }:
 
@@ -12,6 +13,11 @@
   ];
 
   config = {
+    age.rekey = {
+      inherit (secretsConfig) masterIdentities;
+      storageMode = "local";
+      localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
+    };
     hardware = {
       rtl-sdr.enable = true;
       enableAllFirmware = true;

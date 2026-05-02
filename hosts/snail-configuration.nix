@@ -2,6 +2,8 @@
   config,
   pkgs,
   inputs,
+  pkgs-unstable,
+  secretsConfig,
   ...
 }:
 
@@ -15,6 +17,13 @@
   ];
 
   config = {
+    age.rekey = {
+      inherit (secretsConfig) masterIdentities;
+      hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF67M0d0GAV+hOS4pylSKYcSuu9ypRbpria0wq07gS4t";
+      storageMode = "local";
+      localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
+    };
+    services.pcscd.enable = true;
     hardware = {
       enableAllFirmware = true;
       bluetooth.enable = true;
@@ -137,6 +146,8 @@
       hardinfo2
       xwayland-run
       xwayland-satellite
+      yubikey-manager
+      yubioath-flutter
 
       man-pages
       man-pages-posix
@@ -144,7 +155,6 @@
 
     documentation = {
       dev.enable = true;
-      nixos.includeAllModules = true;
     };
 
     system.stateVersion = "25.05";
@@ -168,12 +178,8 @@
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = {
-        inherit inputs;
+        inherit inputs pkgs-unstable;
         username = "msl";
-        pkgs-unstable = import inputs.nixpkgs-unstable {
-          inherit (pkgs) system;
-          config.allowUnfree = true;
-        };
       };
     };
   };
