@@ -32,6 +32,7 @@ in
       diagram-nvim
       fidget-nvim
       flash-nvim
+      fugitive
       gitsigns-nvim
       guess-indent-nvim
       gruvbox-material
@@ -52,6 +53,7 @@ in
       (nvim-treesitter.withPlugins (_: nvim-treesitter.allGrammars ++ norg-grammars))
       nvim-treesitter-context
       nvim-lspconfig
+      oil-git-status-nvim
       oil-nvim
       telescope-nvim
       telescope-fzf-native-nvim

@@ -31,6 +31,7 @@ opt.laststatus = 3     -- always global statusline
 opt.list = true        -- shows some invisible characters like tabs and trailing spaces
 opt.mouse = "a"        -- enable mouse always
 opt.number = true      -- print line numbers
+opt.numberwidth = 2    -- only reserve 2 digits for line numbers, enables narrower gutter in short files
 opt.pumblend = 10      -- enable pseudo-transparency for the popup-menu
 opt.pumheight = 10     -- show at most 10 items in the popup menu
 opt.scrolloff = 4      -- lines of context
@@ -71,18 +72,14 @@ require("config.zk")
 require("config.oil")
 require("config.folding")
 require("config.markdown")
+require("config.statuslines")
 require 'blink.cmp'.setup { fuzzy = { implementation = "lua", prebuilt_binaries = { download = false } } }
 require 'blink.cmp.fuzzy'.set_implementation('rust')
-require 'lualine'.setup {}
-require 'incline'.setup {}
-require 'gitsigns'.setup {}
-require 'mini.git'.setup {}
 require 'meow.yarn'.setup {}
 require 'wrapping'.setup {}
 require 'guess-indent'.setup {}
 
 -- TODO
--- * git
 -- * fix blink keymaps
 -- * tabs!
 -- * windows?
