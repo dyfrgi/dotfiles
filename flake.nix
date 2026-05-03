@@ -80,11 +80,13 @@
         splat = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs pkgs-unstable; };
           modules = [
             overlays.default
             ./hosts/splat/configuration.nix
             ./hosts/splat/hardware.nix
+            agenix.nixosModules.default
+            agenix-rekey.nixosModules.default
           ];
         };
       };

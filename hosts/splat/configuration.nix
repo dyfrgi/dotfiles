@@ -2,6 +2,8 @@
   config,
   pkgs,
   lib,
+  inputs,
+  pkgs-unstable,
   ...
 }:
 
@@ -26,11 +28,18 @@ in
     "flakes"
   ];
 
+  age.rekey = {
+    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMqH61/t2HVr8OnELFdL6pGzmsjlCu3HN6aPidte9VEt";
+  };
+
   imports = [
     # Include the results of the hardware scan.
     ./hardware.nix
     ./virtualization.nix
     ./services/home-assistant.nix
+    ../../modules/packages.nix
+    ../../modules/agenix-rekey.nix
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   fileSystems = {
@@ -137,6 +146,18 @@ in
       "wheel"
     ];
     shell = pkgs.zsh;
+  };
+
+  home-manager = {
+    users.msl.imports = [
+      ../../home.nix
+    ];
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = {
+      inherit inputs pkgs-unstable;
+      username = "msl";
+    };
   };
 
   users.groups.media = {
