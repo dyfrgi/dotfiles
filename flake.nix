@@ -59,8 +59,8 @@
           specialArgs = { inherit inputs pkgs-unstable; };
           modules = [
             overlays.default
-            ./hosts/snail-configuration.nix
-            ./hosts/snail-hardware.nix
+            ./hosts/snail/configuration.nix
+            ./hosts/snail/hardware.nix
             agenix.nixosModules.default
             agenix-rekey.nixosModules.default
           ];
@@ -71,8 +71,8 @@
           specialArgs = { inherit inputs; };
           modules = [
             overlays.default
-            ./hosts/slab-configuration.nix
-            ./hosts/slab-hardware.nix
+            ./hosts/slab/configuration.nix
+            ./hosts/slab/hardware.nix
             agenix.nixosModules.default
             agenix-rekey.nixosModules.default
           ];

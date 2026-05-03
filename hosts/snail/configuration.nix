@@ -9,10 +9,10 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ../modules/nvidia.nix
-    ../modules/packages.nix
-    ../modules/embedded-dev.nix
-    ../modules/agenix-rekey.nix
+    ../../modules/nvidia.nix
+    ../../modules/packages.nix
+    ../../modules/embedded-dev.nix
+    ../../modules/agenix-rekey.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -164,13 +164,13 @@
 
     home-manager = {
       users.msl.imports = [
-        ../home.nix
-        ../modules-hm/gui.nix
-        ../modules-hm/gaming.nix
-        ../modules-hm/3dprinting.nix
-        ../modules-hm/personal.nix
-        ../modules-hm/vm.nix
-        ../modules-hm/photography.nix
+        ../../home.nix
+        ../../modules-hm/gui.nix
+        ../../modules-hm/gaming.nix
+        ../../modules-hm/3dprinting.nix
+        ../../modules-hm/personal.nix
+        ../../modules-hm/vm.nix
+        ../../modules-hm/photography.nix
       ];
       useGlobalPkgs = true;
       useUserPackages = true;

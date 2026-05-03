@@ -9,7 +9,7 @@
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
     inputs.home-manager.nixosModules.home-manager
-    ../modules/agenix-rekey.nix
+    ../../modules/agenix-rekey.nix
   ];
 
   config = {
@@ -141,7 +141,7 @@
       pamixer
       pciutils
       pstree
-      (callPackage ../packages/rtlamr.nix { })
+      (callPackage ../../packages/rtlamr.nix { })
       rtl-sdr
       swaylock
       usbutils
@@ -161,12 +161,12 @@
 
     home-manager = {
       users.msl.imports = [
-        ../home.nix
-        ../modules-hm/gui.nix
-        ../modules-hm/gaming.nix
-        ../modules-hm/3dprinting.nix
-        ../modules-hm/personal.nix
-        ../modules-hm/vm.nix
+        ../../home.nix
+        ../../modules-hm/gui.nix
+        ../../modules-hm/gaming.nix
+        ../../modules-hm/3dprinting.nix
+        ../../modules-hm/personal.nix
+        ../../modules-hm/vm.nix
       ];
       useGlobalPkgs = true;
       useUserPackages = true;
