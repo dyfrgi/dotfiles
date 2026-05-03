@@ -50,16 +50,13 @@
         config.allowUnfree = true;
       };
       extraSpecialArgs = { inherit inputs pkgs-unstable; };
-      secretsConfig = {
-        masterIdentities = [ ./secrets/desktop-age-yubikey.pub ];
-      };
     in
     {
       nixosConfigurations = {
         snail = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           system = "x86_64-linux";
-          specialArgs = { inherit inputs pkgs-unstable secretsConfig; };
+          specialArgs = { inherit inputs pkgs-unstable; };
           modules = [
             overlays.default
             ./hosts/snail-configuration.nix
@@ -71,7 +68,7 @@
         slab = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           system = "x86_64-linux";
-          specialArgs = { inherit inputs secretsConfig; };
+          specialArgs = { inherit inputs; };
           modules = [
             overlays.default
             ./hosts/slab-configuration.nix
@@ -140,6 +137,7 @@
           pkgs.rage
           pkgs.age
         ];
+        env.AGENIX_REKEY_ADD_TO_GIT = "true";
       };
     };
 }

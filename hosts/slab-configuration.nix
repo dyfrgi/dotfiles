@@ -2,7 +2,6 @@
   config,
   pkgs,
   inputs,
-  secretsConfig,
   ...
 }:
 
@@ -10,13 +9,12 @@
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
     inputs.home-manager.nixosModules.home-manager
+    ../modules/agenix-rekey.nix
   ];
 
   config = {
     age.rekey = {
-      inherit (secretsConfig) masterIdentities;
-      storageMode = "local";
-      localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
+      # TODO add hostPubKey
     };
     hardware = {
       rtl-sdr.enable = true;

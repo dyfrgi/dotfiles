@@ -3,7 +3,6 @@
   pkgs,
   inputs,
   pkgs-unstable,
-  secretsConfig,
   ...
 }:
 
@@ -13,15 +12,13 @@
     ../modules/nvidia.nix
     ../modules/packages.nix
     ../modules/embedded-dev.nix
+    ../modules/agenix-rekey.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
   config = {
     age.rekey = {
-      inherit (secretsConfig) masterIdentities;
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF67M0d0GAV+hOS4pylSKYcSuu9ypRbpria0wq07gS4t";
-      storageMode = "local";
-      localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
     };
     services.pcscd.enable = true;
     hardware = {
