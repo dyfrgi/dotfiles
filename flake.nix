@@ -77,6 +77,16 @@
             agenix-rekey.nixosModules.default
           ];
         };
+        splat = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            overlays.default
+            ./hosts/splat/configuration.nix
+            ./hosts/splat/hardware.nix
+          ];
+        };
       };
       homeConfigurations = {
         "mleuchtenburg" = home-manager.lib.homeManagerConfiguration {
