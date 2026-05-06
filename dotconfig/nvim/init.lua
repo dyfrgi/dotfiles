@@ -140,6 +140,16 @@ vim.keymap.set('n', "<leader>gb", "<cmd>Gitsigns blame<cr>", { desc = "Show git 
 vim.keymap.set('n', "<leader>gl", "<cmd>Gitsigns blame_line<cr>", { desc = "Show git blame for current line" })
 vim.keymap.set('n', "<leader>gs", function() MiniGit.show_at_cursor() end, { desc = "Show git history at cursor" })
 
+-- meowyarn
+vim.keymap.set("n", "<leader>yt", function() require("meow.yarn").open_tree("type_hierarchy", "supertypes") end,
+  { desc = "Yarn: Type Hierarchy (Super)" })
+vim.keymap.set("n", "<leader>yT", function() require("meow.yarn").open_tree("type_hierarchy", "subtypes") end,
+  { desc = "Yarn: Type Hierarchy (Sub)" })
+vim.keymap.set("n", "<leader>yc", function() require("meow.yarn").open_tree("call_hierarchy", "callers") end,
+  { desc = "Yarn: Call Hierarchy (Callers)" })
+vim.keymap.set("n", "<leader>yC", function() require("meow.yarn").open_tree("call_hierarchy", "callees") end,
+  { desc = "Yarn: Call Hierarchy (Callees)" })
+
 require("which-key").setup({
   plugins = { spelling = true },
   spec = {
@@ -157,6 +167,7 @@ require("which-key").setup({
       { "<leader>w",     group = "windows" },
       { "<leader>x",     group = "diagnostics/quickfix" },
       { "<leader>z",     group = "zk" },
+      { "<leader>y",     group = "yarn" },
       { "[",             group = "prev" },
       { "]",             group = "next" },
       { "g",             group = "goto" },
