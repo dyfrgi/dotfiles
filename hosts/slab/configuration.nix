@@ -7,6 +7,7 @@
 
 {
   imports = [
+    ./hardware.nix
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
     inputs.home-manager.nixosModules.home-manager
     ../../modules/agenix-rekey.nix

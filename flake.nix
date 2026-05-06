@@ -50,44 +50,32 @@
         config.allowUnfree = true;
       };
       extraSpecialArgs = { inherit inputs pkgs-unstable; };
+      mkNixos =
+        name: prev:
+        nixpkgs.lib.nixosSystem (
+          {
+            inherit pkgs;
+            specialArgs = { inherit inputs pkgs-unstable; };
+            modules = [
+              overlays.default
+              ./hosts/${name}/configuration.nix
+              agenix.nixosModules.default
+              agenix-rekey.nixosModules.default
+            ];
+          }
+          // prev
+        );
     in
     {
       nixosConfigurations = {
-        snail = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
+        snail = mkNixos "snail" {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs pkgs-unstable; };
-          modules = [
-            overlays.default
-            ./hosts/snail/configuration.nix
-            ./hosts/snail/hardware.nix
-            agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
-          ];
         };
-        slab = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
+        slab = mkNixos "slab" {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            overlays.default
-            ./hosts/slab/configuration.nix
-            ./hosts/slab/hardware.nix
-            agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
-          ];
         };
-        splat = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
+        splat = mkNixos {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs pkgs-unstable; };
-          modules = [
-            overlays.default
-            ./hosts/splat/configuration.nix
-            ./hosts/splat/hardware.nix
-            agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
-          ];
         };
       };
       homeConfigurations = {
