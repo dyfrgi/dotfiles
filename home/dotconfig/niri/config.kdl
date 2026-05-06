@@ -224,6 +224,15 @@ animations {
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
+
+    // default stiffness is 800
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=1200 epsilon=0.0001
+    }
+    // default stiffness is 1000, higher than horizontal. not sure why but I'm going with it.
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1500 epsilon=0.0001
+    }
 }
 
 // Window rules let you adjust behavior for individual windows.
