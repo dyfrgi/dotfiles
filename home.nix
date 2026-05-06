@@ -17,22 +17,6 @@ let
     })
   );
   dotfilesPath = "${config.home.homeDirectory}/.config/home-manager/";
-  linkHome = path: config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/home/${path}";
-  homeFilesToLink = [
-    ".dircolors"
-    ".etc/"
-    ".gitignore_global"
-    ".gitk"
-    ".gtkrc-2.0"
-    ".inputrc"
-    ".mplayer/"
-    ".reportbugrc"
-    ".screenrc"
-    ".tmux/"
-    ".tmux.conf"
-    ".xmonad/"
-    ".xscreensaver"
-  ];
   xdgConfigFilesToLink = [
     "awesome/"
     "compton.conf"
@@ -79,26 +63,25 @@ in
     "ls" = "ls --color=auto";
   };
 
-  home.file = foldl' (
-    acc: elem:
-    {
-      "${elem}" = {
-        source = linkHome elem;
-      };
-    }
-    // acc
-  ) { } homeFilesToLink;
   xdg.configFile = foldl' (
     acc: elem:
     {
       "${elem}" = {
-        source = linkHome "dotconfig/${elem}";
+        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/dotconfig/${elem}";
       };
     }
     // acc
   ) { } xdgConfigFilesToLink;
 
   programs.gpg.scdaemonSettings.disable-ccid = true;
+
+  programs.readline = {
+    enable = true;
+    includeSystemConfig = true;
+    variables = {
+      "completion-ignore-care" = "On";
+    };
+  };
 
   services.gpg-agent = {
     enable = true;
