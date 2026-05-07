@@ -50,13 +50,15 @@
         config.allowUnfree = true;
       };
       extraSpecialArgs = { inherit inputs pkgs-unstable; };
+      defaultHomeModules = [ ./home ];
       mkNixos =
         name: prev:
         nixpkgs.lib.nixosSystem (
           {
             inherit pkgs;
-            specialArgs = { inherit inputs pkgs-unstable; };
+            specialArgs = { inherit inputs pkgs-unstable defaultHomeModules; };
             modules = [
+              ./nixos
               overlays.default
               ./hosts/${name}/configuration.nix
               agenix.nixosModules.default
@@ -85,6 +87,7 @@
             username = "mleuchtenburg";
           };
           modules = [
+            ./home
             overlays.default
             ./home.nix
             ./modules-hm/non-nixos.nix
@@ -101,6 +104,7 @@
           };
           modules = [
             overlays.default
+            ./home
             ./home.nix
             ./modules-hm/non-nixos.nix
             ./modules-hm/singlestore.nix
@@ -112,6 +116,7 @@
           };
           inherit pkgs;
           modules = [
+            ./home
             ./home.nix
             ./modules-hm/gui.nix
           ];
@@ -122,6 +127,7 @@
           };
           inherit pkgs;
           modules = [
+            ./home
             ./home.nix
           ];
         };

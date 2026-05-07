@@ -3,13 +3,13 @@
   pkgs,
   inputs,
   pkgs-unstable,
+  defaultHomeModules,
   ...
 }:
 
 {
   imports = [
     ./hardware.nix
-    # Include the results of the hardware scan.
     ../../modules/nvidia.nix
     ../../modules/packages.nix
     ../../modules/embedded-dev.nix
@@ -164,7 +164,7 @@
     ];
 
     home-manager = {
-      users.msl.imports = [
+      users.msl.imports = defaultHomeModules ++ [
         ../../home.nix
         ../../modules-hm/gui.nix
         ../../modules-hm/gaming.nix

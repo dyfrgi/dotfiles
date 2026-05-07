@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  defaultHomeModules,
   ...
 }:
 
@@ -161,7 +162,7 @@
     system.stateVersion = "23.11";
 
     home-manager = {
-      users.msl.imports = [
+      users.msl.imports = defaultHomeModules ++ [
         ../../home.nix
         ../../modules-hm/gui.nix
         ../../modules-hm/gaming.nix
