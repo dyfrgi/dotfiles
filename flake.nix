@@ -51,6 +51,8 @@
       };
       extraSpecialArgs = { inherit inputs pkgs-unstable; };
       defaultHomeModules = [ ./home ];
+
+      # maybe add primamryUser to mkNixos?
       mkNixos =
         name: prev:
         nixpkgs.lib.nixosSystem (
@@ -86,10 +88,8 @@
           extraSpecialArgs = extraSpecialArgs // {
             username = "mleuchtenburg";
           };
-          modules = [
-            ./home
+          modules = defaultHomeModules // [
             overlays.default
-            ./home.nix
             ./modules-hm/non-nixos.nix
             ./modules-hm/non-nixos-gui.nix
             ./modules-hm/gui.nix
@@ -102,10 +102,8 @@
           extraSpecialArgs = extraSpecialArgs // {
             username = "mleuchtenburg";
           };
-          modules = [
+          modules = defaultHomeModules // [
             overlays.default
-            ./home
-            ./home.nix
             ./modules-hm/non-nixos.nix
             ./modules-hm/singlestore.nix
           ];
@@ -115,9 +113,7 @@
             username = "msl";
           };
           inherit pkgs;
-          modules = [
-            ./home
-            ./home.nix
+          modules = defaultHomeModules // [
             ./modules-hm/gui.nix
           ];
         };
@@ -126,9 +122,7 @@
             username = "msl";
           };
           inherit pkgs;
-          modules = [
-            ./home
-            ./home.nix
+          modules = defaultHomeModules // [
           ];
         };
       };

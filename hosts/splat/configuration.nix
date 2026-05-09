@@ -150,7 +150,6 @@ in
 
   home-manager = {
     users.msl.imports = [
-      ../../home.nix
     ];
     useGlobalPkgs = true;
     useUserPackages = true;

@@ -165,7 +165,6 @@
 
     home-manager = {
       users.msl.imports = defaultHomeModules ++ [
-        ../../home.nix
         ../../modules-hm/gui.nix
         ../../modules-hm/gaming.nix
         ../../modules-hm/3dprinting.nix
