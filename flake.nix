@@ -88,7 +88,7 @@
           extraSpecialArgs = extraSpecialArgs // {
             username = "mleuchtenburg";
           };
-          modules = defaultHomeModules // [
+          modules = defaultHomeModules ++ [
             overlays.default
             ./modules-hm/non-nixos.nix
             ./modules-hm/non-nixos-gui.nix
@@ -102,7 +102,7 @@
           extraSpecialArgs = extraSpecialArgs // {
             username = "mleuchtenburg";
           };
-          modules = defaultHomeModules // [
+          modules = defaultHomeModules ++ [
             overlays.default
             ./modules-hm/non-nixos.nix
             ./modules-hm/singlestore.nix
@@ -113,7 +113,7 @@
             username = "msl";
           };
           inherit pkgs;
-          modules = defaultHomeModules // [
+          modules = defaultHomeModules ++ [
             ./modules-hm/gui.nix
           ];
         };
@@ -122,7 +122,7 @@
             username = "msl";
           };
           inherit pkgs;
-          modules = defaultHomeModules // [
+          modules = defaultHomeModules ++ [
           ];
         };
       };
