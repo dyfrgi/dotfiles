@@ -42,6 +42,7 @@
 
     # Use the systemd-boot EFI boot loader.
     boot = {
+      tmp.useTmpfs = true;
       kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
       kernelParams = [ "split_lock_detect=off" ];
       zfs.package = pkgs.zfs_2_4;
