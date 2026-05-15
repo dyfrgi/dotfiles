@@ -24,6 +24,8 @@ in
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    withPython3 = false;
+    withRuby = false;
     plugins = with pkgs.vimPlugins; [
       blink-cmp
       catppuccin-nvim
@@ -32,7 +34,7 @@ in
       diagram-nvim
       fidget-nvim
       flash-nvim
-      fugitive
+      vim-fugitive
       gitsigns-nvim
       guess-indent-nvim
       gruvbox-material
@@ -73,8 +75,8 @@ in
       marksman
       mermaid-cli
       nixd
-      nixfmt-rfc-style
-      nodePackages.prettier
+      nixfmt
+      prettier
       plantuml
       prettierd
       (python3.withPackages (

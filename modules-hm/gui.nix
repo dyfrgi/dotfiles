@@ -74,7 +74,7 @@
     gimp
     google-chrome
     libreoffice
-    mate.atril
+    atril
     mpv
     oculante
     overskride

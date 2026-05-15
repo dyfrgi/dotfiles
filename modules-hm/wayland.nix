@@ -21,12 +21,9 @@ in
     services.swaync.enable = true;
     services.swayidle = {
       enable = true;
-      events = [
-        {
-          event = "before-sleep";
-          command = "${cfg.swaylock_path} -f";
-        }
-      ];
+      events = {
+        "before-sleep" = "${cfg.swaylock_path} -f";
+      };
       timeouts = [
         {
           timeout = 900;

@@ -2,10 +2,10 @@
   description = "Home manager flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
@@ -52,20 +52,24 @@
       extraSpecialArgs = { inherit inputs pkgs-unstable; };
       defaultHomeModules = [ ./home ];
 
+      nixosArgs = name: {
+        specialArgs = { inherit inputs pkgs-unstable defaultHomeModules; };
+        modules = [
+          ./hosts/${name}/configuration.nix
+          ./nixos
+          overlays.default
+          agenix.nixosModules.default
+          agenix-rekey.nixosModules.default
+        ];
+      };
+
       # maybe add primamryUser to mkNixos?
       mkNixos =
         name: prev:
         nixpkgs.lib.nixosSystem (
-          {
+          (nixosArgs name)
+          // {
             inherit pkgs;
-            specialArgs = { inherit inputs pkgs-unstable defaultHomeModules; };
-            modules = [
-              ./nixos
-              overlays.default
-              ./hosts/${name}/configuration.nix
-              agenix.nixosModules.default
-              agenix-rekey.nixosModules.default
-            ];
           }
           // prev
         );

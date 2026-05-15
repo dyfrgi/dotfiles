@@ -45,7 +45,10 @@
       tmp.useTmpfs = true;
       kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
       kernelParams = [ "split_lock_detect=off" ];
-      zfs.package = pkgs.zfs_2_4;
+      zfs = {
+        package = pkgs.zfs_2_4;
+        forceImportRoot = false;
+      };
       loader.systemd-boot.enable = true;
       loader.efi.canTouchEfiVariables = true;
       kernelModules = [ "nct6687" ];
