@@ -22,6 +22,7 @@ let
 in
 {
   programs.neovim = {
+    sideloadInitLua = true;
     enable = true;
     defaultEditor = true;
     withPython3 = false;
@@ -53,7 +54,7 @@ in
       nightfox-nvim
       nvim-origami
       nvim-web-devicons
-      (nvim-treesitter.withPlugins (_: nvim-treesitter.allGrammars ++ norg-grammars))
+      (nvim-treesitter-legacy.withPlugins (_: nvim-treesitter-legacy.allGrammars ++ norg-grammars))
       nvim-treesitter-context
       nvim-lspconfig
       oil-git-status-nvim
