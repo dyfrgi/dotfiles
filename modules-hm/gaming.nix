@@ -7,6 +7,7 @@
     itch
     labwc # used for Path of Exile + Advanced PoE Trade overlay
     protonup-ng
+    protonup-qt
     stockfish
   ];
   home.sessionVariables = {
