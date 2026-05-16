@@ -18,11 +18,15 @@
         # Thus, we will wrap the appimage instead.
         bambu-studio = prev.callPackage ../packages/bambu-studio/package.nix { };
 
-        # disable openldap tests
+        # disable openldap tests for i686 build used by bottles, etc
         # TODO: re-enable this after the build is fixed in nixpkgs, probably with the release of 26.05
-        openldap = prev.openldap.overrideAttrs (_: {
-          doCheck = false;
-        });
+        openldap =
+          if prev.stdenv.hostPlatform.system == "i686-linux" then
+            prev.openldap.overrideAttrs (oldAttrs: {
+              doCheck = false;
+            })
+          else
+            prev.openldap;
       })
     ];
   };
