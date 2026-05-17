@@ -139,7 +139,6 @@
     programs.gamemode.enable = true;
     programs.gamescope = {
       enable = true;
-      package = with pkgs; enableDebugging gamescope;
     };
 
     environment.systemPackages = with pkgs; [

@@ -22,11 +22,14 @@
         # TODO: re-enable this after the build is fixed in nixpkgs, probably with the release of 26.05
         openldap =
           if prev.stdenv.hostPlatform.system == "i686-linux" then
-            prev.openldap.overrideAttrs (oldAttrs: {
+            prev.openldap.overrideAttrs (_: {
               doCheck = false;
             })
           else
             prev.openldap;
+        gamescope = prev.gamescope.overrideAttrs (oldAttrs: {
+          NIX_CFLAGS_COMPILE = (oldAttrs.NIX_CFLAGS_COMPILE or [ ]) ++ [ "-fno-fast-math" ];
+        });
       })
     ];
   };
