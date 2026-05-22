@@ -43,6 +43,7 @@ in
       lualine-nvim
       markview-nvim
       meow-yarn-nvim
+      mkdnflow-nvim
       mini-nvim
       neorg
       neo-tree-nvim
@@ -55,6 +56,7 @@ in
       nvim-lspconfig
       oil-git-status-nvim
       oil-nvim
+      snacks-nvim
       telescope-nvim
       telescope-fzf-native-nvim
       tokyonight-nvim

@@ -158,6 +158,7 @@ require("which-key").setup({
       { "<leader><tab>", group = "tabs" },
       { "<leader>b",     group = "buffer" },
       { "<leader>c",     group = "code" },
+      { "<leader>d",     group = "daily" }, -- see config/markdown.lua
       { "<leader>f",     group = "file/find" },
       { "<leader>g",     group = "git" },
       { "<leader>gh",    group = "hunks" },
