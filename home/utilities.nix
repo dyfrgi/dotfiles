@@ -33,6 +33,7 @@
     lftp
     llvmPackages.bintools
     scc
+    smem
     whois
   ];
 }
