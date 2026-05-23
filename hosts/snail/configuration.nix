@@ -44,7 +44,10 @@
     boot = {
       tmp.useTmpfs = true;
       kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
-      kernelParams = [ "split_lock_detect=off" ];
+      kernelParams = [
+        "split_lock_detect=off"
+        "zfs.zfs_arc_max=17179869184" # 25% of 64GiB = 16GiB. no min, default is 1 GiB (1/64 of RAM)
+      ];
       zfs = {
         package = pkgs.zfs_2_4;
         forceImportRoot = false;
