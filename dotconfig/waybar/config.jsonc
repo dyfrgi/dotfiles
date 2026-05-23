@@ -3,20 +3,21 @@
   "position": "top", // Waybar position (top|bottom|left|right)
   "modules-left": [
     "network",
+    "clock",
     "niri/workspaces"
   ],
   "modules-center": [
-    "niri/window",
-    "clock",
-    "cpu",
-    "memory"
+    "niri/window"
   ],
   "modules-right": [
-    "idle_inhibitor",
-    "pulseaudio",
     "backlight",
+    "cpu",
+    "memory",
+    "load",
     "battery",
     "tray",
+    "pulseaudio",
+    "idle_inhibitor",
     "custom/notification"
   ],
   "niri/workspaces": {
@@ -114,7 +115,10 @@
     "tooltip": false
   },
   "memory": {
-    "format": " {}%"
+    "format": " {percentage}% ⇆ {swapPercentage}%"
+  },
+  "load": {
+    "format": "ℒ {load1} {load5} {load15}"
   },
   "custom/notification": {
     "tooltip": true,
