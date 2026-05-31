@@ -197,12 +197,12 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"^steam_app_"#
+//    match app-id=r#"^steam_app_"#
     match app-id=r#"^gamescope"#
-    match title=r#"^Forza Horizon 6$"#
+ //   match title=r#"^Forza Horizon 6$"#
     exclude app-id=r#"^steam$"#
     open-on-output "PNP(AOC) U34G2G4R3 0x0000010B"
-//    variable-refresh-rate true
+    variable-refresh-rate true
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
