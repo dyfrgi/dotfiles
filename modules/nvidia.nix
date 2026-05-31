@@ -1,7 +1,9 @@
-{ config, lib, ... }:
+{ pkgs, ... }:
 {
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true;
+
+  environment.systemPackages = with pkgs; [ nvtopPackages.nvidia ];
 
   # Set the key GLVidHeapReuseRatio for Niri to reduce how much VRAM it uses.
   # There's some sort of bad buffer handling in the NVidia drivers and this is supposed to help.
@@ -26,7 +28,7 @@
             settings = [
               {
                 key = "GLVidHeapReuseRatio";
-                value = 0;
+                value = 1;
               }
             ];
           }
