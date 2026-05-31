@@ -6,6 +6,7 @@
     # en-croissant
     itch
     labwc # used for Path of Exile + Advanced PoE Trade overlay
+    mangohud
     protonup-ng
     protonup-qt
     stockfish
