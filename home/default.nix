@@ -43,8 +43,8 @@ in
   programs.poetry.enable = true;
 
   home.packages = with pkgs; [
-    pkgs-unstable.awscli2
-    pkgs-unstable.ssm-session-manager-plugin
+    awscli2
+    ssm-session-manager-plugin
     google-cloud-sdk
     qalculate-gtk
     zk
