@@ -44,6 +44,7 @@ in
 
   home.packages = with pkgs; [
     pkgs-unstable.awscli2
+    pkgs-unstable.ssm-session-manager-plugin
     google-cloud-sdk
     qalculate-gtk
     zk
