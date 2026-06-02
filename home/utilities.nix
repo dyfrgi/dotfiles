@@ -17,6 +17,7 @@
 
   programs.tmux = {
     enable = true;
+    focusEvents = true;
     baseIndex = 1;
     customPaneNavigationAndResize = true; # vi-mode pane navigation hjkl
     escapeTime = 0;
