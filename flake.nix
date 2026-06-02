@@ -15,10 +15,6 @@
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
     };
-    nixGL = {
-      url = "github:dyfrgi/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     agenix-rekey = {
       url = "github:oddlama/agenix-rekey";
       inputs.nixpkgs.follows = "nixpkgs";
