@@ -30,6 +30,10 @@
     services.blueman.enable = true;
 
     nix.settings = {
+      # This limits build speed when the work is easy, but should prevent
+      # (or at least substantially reduce) OOMs for heavy builds.
+      max-jobs = 2;
+      cores = 8;
       experimental-features = [
         "flakes"
         "nix-command"
