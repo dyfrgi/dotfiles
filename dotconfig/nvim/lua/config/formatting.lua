@@ -6,6 +6,7 @@ require 'conform'.setup({
   notify_no_formatters = true,
   formatters_by_ft = {
     css = { "prettier" },
+    gitcommit = { "commitmsgfmt" },
     markdown = { "prettier" },
     python = { "isort", "ruff" },
     sql = { "sleek" },

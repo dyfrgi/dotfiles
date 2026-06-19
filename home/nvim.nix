@@ -70,6 +70,7 @@ in
     ];
     extraPackages = with pkgs; [
       clang-tools
+      commitmsgfmt
       fzf
       imagemagick
       lua-language-server
