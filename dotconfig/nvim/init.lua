@@ -49,7 +49,6 @@ opt.splitkeep = "screen"
 opt.splitright = true    -- Put new windows right of current
 opt.tabstop = 2          -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
-opt.timeoutlen = 300
 opt.title = true         -- Set terminal window title
 opt.undofile = true
 opt.undolevels = 10000
@@ -159,20 +158,19 @@ require("which-key").setup({
       { "<leader>b",     group = "buffer" },
       { "<leader>c",     group = "code" },
       { "<leader>d",     group = "daily" }, -- see config/markdown.lua
-      { "<leader>f",     group = "file/find" },
       { "<leader>g",     group = "git" },
-      { "<leader>gh",    group = "hunks" },
       { "<leader>q",     group = "quit/session" },
       { "<leader>s",     group = "search" },
       { "<leader>u",     group = "ui" },
       { "<leader>w",     group = "windows" },
-      { "<leader>x",     group = "diagnostics/quickfix" },
       { "<leader>z",     group = "zk" },
       { "<leader>y",     group = "yarn" },
       { "[",             group = "prev" },
       { "]",             group = "next" },
       { "g",             group = "goto" },
       { "gs",            group = "surround" },
+      { "<leader>i",     group = "mkdnflow table" },
+      { "<leader>n",     group = "mkdnflow numbering" },
     },
   },
 })
