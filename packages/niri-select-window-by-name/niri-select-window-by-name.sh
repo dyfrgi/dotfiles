@@ -1,15 +1,15 @@
 window_ids=()
-window_titles=()
+menu_args=()
 
-niri_windows_json=$(niri msg --json windows | jq -r '.[] | [ .id, .app_id, .title] | "\""+join ("\" \"")+"\""')
+# @tsv emits one tab-separated line per window with any tabs/newlines inside
+# fields escaped, so titles are parsed as data rather than re-evaluated as shell.
+while IFS=$'\t' read -r id app_id title; do
+  window_ids+=("$id")
+  # fuzzel dmenu entry: "<label>\0icon\x1f<icon-name>"
+  menu_args+=("$app_id" "$title" "$app_id")
+done < <(niri msg --json windows | jq -r '.[] | [.id, .app_id, .title] | @tsv')
 
-while read -r i; do
-  declare -a line_array="($i)"
-  window_ids+=("${line_array[0]}")
-  window_titles+=("${line_array[1]} - ${line_array[2]} \0icon\x1f${line_array[1]}")
-done <<< "$niri_windows_json"
-
-result=$(printf "%b\n" "${window_titles[@]}" | fuzzel -w100 --counter --dmenu --index)
+result=$(printf '%s - %s\0icon\x1f%s\n' "${menu_args[@]}" | fuzzel -w100 --counter --dmenu --index)
 
 if [ "$result" != "" ] && [ "$result" != -1 ]; then
   niri msg action focus-window --id "${window_ids[result]}"
