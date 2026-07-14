@@ -30,6 +30,15 @@
         gamescope = prev.gamescope.overrideAttrs (oldAttrs: {
           NIX_CFLAGS_COMPILE = (oldAttrs.NIX_CFLAGS_COMPILE or [ ]) ++ [ "-fno-fast-math" ];
         });
+        coder = prev.coder.overrideAttrs (
+          newAttrs: oldAttrs: {
+            version = "2.34.5";
+            src = prev.fetchurl {
+              hash = "sha256-B0roCJqTu6o89nHbVA3b9eHKj/VmJ9i1j4blF1I76yU=";
+              url = builtins.replaceStrings [ oldAttrs.version ] [ newAttrs.version ] oldAttrs.src.url;
+            };
+          }
+        );
       })
     ];
   };
