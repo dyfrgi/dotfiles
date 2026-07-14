@@ -17,6 +17,13 @@
   home.packages = with pkgs; [
     coder
     flamegraph
+    kubectl
+    kubectx
+    krew
+  ];
+
+  home.sessionPath = [
+    "$HOME/.krew/bin"
   ];
 
   programs.git.settings.user = {
