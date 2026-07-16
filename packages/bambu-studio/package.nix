@@ -6,11 +6,12 @@
 let
   name = "BambuStudio";
   pname = "bambu-studio";
-  version = "02.04.00.70";
-  ubuntu_version = "24.04_PR-8834";
+  version = "02.07.01.62";
+  ubuntu_version = "24.04";
+  build_timestamp = "20260616195227";
   src = fetchurl {
-    url = "https://github.com/bambulab/BambuStudio/releases/download/v${version}/Bambu_Studio_ubuntu-${ubuntu_version}.AppImage";
-    sha256 = "sha256:26bc07dccb04df2e462b1e03a3766509201c46e27312a15844f6f5d7fdf1debd";
+    url = "https://github.com/bambulab/BambuStudio/releases/download/v${version}/BambuStudio_ubuntu${ubuntu_version}-v${version}-${build_timestamp}.AppImage";
+    sha256 = "sha256-+pi2CFMt+7uysJMUg6rEHlf7GcF1osx719Uo1eD7soc=";
   };
 
   appimageContents = appimageTools.extract { inherit pname version src; };

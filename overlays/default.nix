@@ -16,7 +16,7 @@
         # The second one can be worked around by setting some environment variables to use
         # the zink renderer from Mesa and Gallium, but the first one has no known workaround.
         # Thus, we will wrap the appimage instead.
-        #        bambu-studio = prev.callPackage ../packages/bambu-studio/package.nix { };
+        bambu-studio = prev.callPackage ../packages/bambu-studio/package.nix { };
 
         # disable openldap tests for i686 build used by bottles, etc
         # TODO: re-enable this after the build is fixed in nixpkgs, probably with the release of 26.05

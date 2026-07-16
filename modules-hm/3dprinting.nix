@@ -13,7 +13,7 @@ let
 in
 {
   home.packages = with pkgs; [
-    (bambu-studio.override { withNvidiaGLWorkaround = true; })
+    bambu-studio
     bottles
     freecad-fixed
     gmsh
