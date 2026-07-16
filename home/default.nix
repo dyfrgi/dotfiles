@@ -46,7 +46,6 @@ in
     awscli2
     ssm-session-manager-plugin
     google-cloud-sdk
-    qalculate-gtk
     zk
   ];
 

@@ -80,6 +80,7 @@
     overskride
     pavucontrol
     python3
+    qalculate-gtk
     slack
     vesktop
     via
