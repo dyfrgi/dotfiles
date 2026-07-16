@@ -182,6 +182,7 @@
         ../../modules-hm/personal.nix
         ../../modules-hm/vm.nix
         ../../modules-hm/photography.nix
+        ../../modules-hm/gis.nix
       ];
       useGlobalPkgs = true;
       useUserPackages = true;
