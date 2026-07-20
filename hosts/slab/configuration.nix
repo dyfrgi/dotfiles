@@ -10,14 +10,14 @@
   imports = [
     ./hardware.nix
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
+    # ../../modules/agenix-rekey.nix
     inputs.home-manager.nixosModules.home-manager
-    ../../modules/agenix-rekey.nix
   ];
 
   config = {
-    age.rekey = {
-      # TODO add hostPubKey
-    };
+    # age.rekey = {
+    #   hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMvb4RHV8knotYWCZrzpQZcCWqL1RmTkl7jUITUUjk2n";
+    # };
     hardware = {
       rtl-sdr.enable = true;
       enableAllFirmware = true;
@@ -55,6 +55,7 @@
     };
 
     services.tailscale.enable = true;
+    services.openssh.enable = true;
 
     # Work around wpa_supplicant bug spamming CTRL-EVENT-SIGNAL-CHANGE
     systemd.services.wpa_supplicant.serviceConfig = {

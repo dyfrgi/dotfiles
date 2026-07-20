@@ -54,12 +54,10 @@
           ./hosts/${name}/configuration.nix
           ./nixos
           overlays.default
-          agenix.nixosModules.default
-          agenix-rekey.nixosModules.default
         ];
       };
 
-      # maybe add primamryUser to mkNixos?
+      # maybe add primamryUser to mjNixos?
       mkNixos =
         name: prev:
         nixpkgs.lib.nixosSystem (
@@ -74,6 +72,10 @@
       nixosConfigurations = {
         snail = mkNixos "snail" {
           system = "x86_64-linux";
+	  modules = [ 
+          agenix.nixosModules.default
+          agenix-rekey.nixosModules.default
+	  ];
         };
         slab = mkNixos "slab" {
           system = "x86_64-linux";
