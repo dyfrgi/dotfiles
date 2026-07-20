@@ -19,6 +19,7 @@
 
   config = {
     my.keyboards.enable = true;
+    my.gaming.enable = true;
     age.rekey = {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF67M0d0GAV+hOS4pylSKYcSuu9ypRbpria0wq07gS4t";
     };
@@ -139,15 +140,6 @@
     programs.zsh.enable = true;
 
     programs.git.enable = true;
-    programs.steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-      extraCompatPackages = [ pkgs.proton-ge-bin ];
-    };
-    programs.gamemode.enable = true;
-    programs.gamescope = {
-      enable = true;
-    };
 
     environment.systemPackages = with pkgs; [
       cifs-utils

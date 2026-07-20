@@ -1,4 +1,7 @@
 { ... }:
 {
-  imports = [ ./keyboards.nix ];
+  imports = [
+    ./keyboards.nix
+    ./gaming.nix
+  ];
 }

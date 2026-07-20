@@ -9,12 +9,14 @@
 {
   imports = [
     ./hardware.nix
+    ../../modules/packages.nix
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
     # ../../modules/agenix-rekey.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
   config = {
+    my.gaming.enable = true;
     # age.rekey = {
     #   hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMvb4RHV8knotYWCZrzpQZcCWqL1RmTkl7jUITUUjk2n";
     # };
@@ -168,6 +170,7 @@
         ../../modules-hm/gaming.nix
         ../../modules-hm/3dprinting.nix
         ../../modules-hm/personal.nix
+        ../../modules-hm/photography.nix
         ../../modules-hm/vm.nix
       ];
       useGlobalPkgs = true;
