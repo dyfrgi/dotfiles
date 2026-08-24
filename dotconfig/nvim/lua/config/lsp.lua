@@ -32,5 +32,10 @@ vim.lsp.enable('pylsp')
 require 'lazydev'.setup {}
 vim.lsp.enable('lua_ls')
 require 'fidget'.setup {}
+vim.lsp.config('clangd', {
+  cmd = { 'clangd',
+    '--background-index'
+  },
+})
 vim.lsp.enable('clangd')
 vim.lsp.enable('marksman')
