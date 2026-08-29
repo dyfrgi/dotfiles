@@ -20,6 +20,7 @@ in
     graphviz
     kicad
     librecad
+    openscad-unstable
     plasticity
   ];
 }
