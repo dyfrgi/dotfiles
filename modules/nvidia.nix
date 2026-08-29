@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = true;
+  hardware.nvidia = {
+    open = true;
+    powerManagement.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [ nvtopPackages.nvidia ];
 
