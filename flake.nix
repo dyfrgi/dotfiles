@@ -80,8 +80,12 @@
         slab = mkNixos "slab" {
           system = "x86_64-linux";
         };
-        splat = mkNixos {
+        splat = mkNixos "splat" {
           system = "x86_64-linux";
+          modules = [
+            agenix.nixosModules.default
+            agenix-rekey.nixosModules.default
+          ];
         };
       };
       homeConfigurations = {
