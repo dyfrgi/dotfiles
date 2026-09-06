@@ -72,10 +72,10 @@
       nixosConfigurations = {
         snail = mkNixos "snail" {
           system = "x86_64-linux";
-	  modules = [ 
-          agenix.nixosModules.default
-          agenix-rekey.nixosModules.default
-	  ];
+          modules = [
+            agenix.nixosModules.default
+            agenix-rekey.nixosModules.default
+          ];
         };
         slab = mkNixos "slab" {
           system = "x86_64-linux";
