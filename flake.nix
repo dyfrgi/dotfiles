@@ -49,43 +49,30 @@
       defaultHomeModules = [ ./home ];
 
       nixosArgs = name: {
+        inherit pkgs;
         specialArgs = { inherit inputs pkgs-unstable defaultHomeModules; };
         modules = [
           ./hosts/${name}/configuration.nix
           ./nixos
           overlays.default
+          agenix.nixosModules.default
+          agenix-rekey.nixosModules.default
         ];
       };
 
-      # maybe add primamryUser to mjNixos?
-      mkNixos =
-        name: prev:
-        nixpkgs.lib.nixosSystem (
-          (nixosArgs name)
-          // {
-            inherit pkgs;
-          }
-          // prev
-        );
+      # maybe add primaryUser to mkNixos?
+      mkNixos = host: cfg: nixpkgs.lib.nixosSystem ((nixosArgs host) // cfg);
     in
     {
       nixosConfigurations = {
         snail = mkNixos "snail" {
           system = "x86_64-linux";
-          modules = [
-            agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
-          ];
         };
         slab = mkNixos "slab" {
           system = "x86_64-linux";
         };
         splat = mkNixos "splat" {
           system = "x86_64-linux";
-          modules = [
-            agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
-          ];
         };
       };
       homeConfigurations = {
