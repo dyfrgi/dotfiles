@@ -1,0 +1,15 @@
+# This is used with incus and the HAOS image. Download the qcow2 image and tar
+# this file. Then it can be imported into incus (or LXD).
+#
+# tar czvf metadata.tar.gz metadata.yaml
+# sudo incus image import metadata.tar.gz haos_ova-18.2.qcow2 --alias haos
+# sudo incus create haos ha --vm -c security.secureboot=false -d root,size=40GiB -c limits.cpu=4 -c limits.memory=8GiB
+#
+# Assign profiles as desired.
+
+architecture: x86_64
+creation_date: 1788720343
+properties:
+  description: Home Assistant Image
+  os: HAOS
+  release: 18.2

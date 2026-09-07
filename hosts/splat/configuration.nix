@@ -4,6 +4,7 @@
   lib,
   inputs,
   pkgs-unstable,
+  defaultHomeModules,
   ...
 }:
 
@@ -36,7 +37,7 @@ in
     # Include the results of the hardware scan.
     ./hardware.nix
     ./virtualization.nix
-    ./services/home-assistant.nix
+    # ./services/home-assistant.nix
     ../../modules/packages.nix
     ../../modules/agenix-rekey.nix
     inputs.home-manager.nixosModules.home-manager
@@ -112,20 +113,21 @@ in
     };
   };
 
-  systemd.network = {
-    enable = true;
-    wait-online.enable = false;
-  };
+  # systemd.network = {
+  #   enable = true;
+  #   wait-online.enable = false;
+  # };
 
   networking = {
     useDHCP = false;
+    nftables.enable = true;
+    firewall.enable = false;
     hostId = "0d6c8487";
     hostName = "splat";
     interfaces.enp39s0.useDHCP = true;
     nat.enable = true;
     nat.internalInterfaces = [ "ve-+" ];
     nat.externalInterface = "enp39s0";
-    firewall.enable = false;
   };
 
   # networking.hostName = "nixos"; # Define your hostname.
@@ -149,7 +151,7 @@ in
   };
 
   home-manager = {
-    users.msl.imports = [
+    users.msl.imports = defaultHomeModules ++ [
     ];
     useGlobalPkgs = true;
     useUserPackages = true;

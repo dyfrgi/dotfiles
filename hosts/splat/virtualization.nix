@@ -1,23 +1,65 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   virtualisation = {
-    containers.storage.settings = {
-      storage = {
-	driver = "zfs";
-	graphroot = "/var/lib/containers/storage";
-	runroot = "/run/containers/storage";
+    incus = {
+      enable = true;
+      ui.enable = true;
+      preseed = {
+        storage_pools = [
+          {
+            name = "zfs-incus";
+            driver = "zfs";
+            config = {
+              source = "rpool/safe/incus";
+            };
+          }
+        ];
+        profiles = [
+          {
+            name = "default";
+            devices = {
+              eth0 = {
+                name = "eth0";
+                network = "incusbr0";
+                type = "nic";
+              };
+              root = {
+                path = "/";
+                pool = "zfs-incus";
+                type = "disk";
+              };
+            };
+          }
+          {
+            name = "bridged";
+            devices = {
+              eth0 = {
+                name = "eth0";
+                type = "nic";
+                network = "incusbr1";
+              };
+            };
+          }
+        ];
+        networks = [
+          {
+            name = "incusbr0";
+            type = "bridge";
+            config = {
+              "ipv4.address" = "10.0.100.1/24";
+              "ipv4.nat" = "true";
+            };
+          }
+          {
+            name = "incusbr1";
+            type = "macvlan";
+            config = {
+              parent = "enp39s0";
+            };
+          }
+        ];
       };
     };
-    podman = {
-      enable = true;
-
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
-      dockerCompat = true;
-
-      # Required for containers under podman-compose to be able to talk to each other.
-      defaultNetwork.settings.dns_enabled = true;
-
-      extraPackages = [ pkgs.zfs ];
-    };
+    libvirtd.enable = true;
   };
 }
