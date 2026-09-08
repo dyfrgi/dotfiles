@@ -15,6 +15,8 @@
     ../../modules/embedded-dev.nix
     ../../modules/agenix-rekey.nix
     inputs.home-manager.nixosModules.home-manager
+    inputs.agenix.nixosModules.default
+    inputs.agenix-rekey.nixosModules.default
   ];
 
   config = {
@@ -22,6 +24,7 @@
     my.gaming.enable = true;
     age.rekey = {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF67M0d0GAV+hOS4pylSKYcSuu9ypRbpria0wq07gS4t";
+      storageMode = "local";
     };
     services.pcscd.enable = true;
     hardware = {

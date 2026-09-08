@@ -23,6 +23,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixflix = {
+      url = "github:kiriwalawren/nixflix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -55,8 +59,6 @@
           ./hosts/${name}/configuration.nix
           ./nixos
           overlays.default
-          agenix.nixosModules.default
-          agenix-rekey.nixosModules.default
         ];
       };
 
@@ -121,7 +123,7 @@
       };
       agenix-rekey = agenix-rekey.configure {
         userFlake = self;
-        nixosConfigurations = self.nixosConfigurations;
+        nixosConfigurations = (nixpkgs.lib.filterAttrs (name: _: name != "slab") self.nixosConfigurations);
       };
       devShells.${system}.default = pkgs.mkShell {
         packages = [

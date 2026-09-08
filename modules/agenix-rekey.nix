@@ -3,6 +3,7 @@
   ...
 }:
 {
+  imports = [ ../secrets/secrets.nix ];
   age.rekey = {
     masterIdentities = [ ../secrets/desktop-age-yubikey.pub ];
     storageMode = "local";

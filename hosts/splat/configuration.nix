@@ -39,8 +39,12 @@ in
     ./virtualization.nix
     # ./services/home-assistant.nix
     ../../modules/packages.nix
+    inputs.agenix.nixosModules.default
+    inputs.agenix-rekey.nixosModules.default
     ../../modules/agenix-rekey.nix
     inputs.home-manager.nixosModules.home-manager
+    inputs.nixflix.nixosModules.default
+    ./services/nixflix
   ];
 
   fileSystems = {
@@ -199,7 +203,6 @@ in
     nftables
     ngrep
     ripgrep
-    rtorrent
     silver-searcher
     smartmontools
     stylua
