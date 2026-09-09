@@ -20,6 +20,13 @@
       domain = "uncri.me";
     };
 
+    # Recyclarr - quality profiles
+    recyclarr = {
+      enable = true;
+      cleanupUnmanagedProfiles.enable = true;
+      sonarrQuality = "4K";
+    };
+
     # Sonarr - TV
     sonarr = {
       enable = true;
@@ -37,6 +44,7 @@
             usenetDelay = 0;
             torrentDelay = 0;
             bypassIfHighestQuality = true;
+            id = 1;
           }
         ];
       };
