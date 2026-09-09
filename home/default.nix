@@ -64,8 +64,6 @@ in
     // acc
   ) { } xdgConfigFilesToLink;
 
-  programs.gpg.scdaemonSettings.disable-ccid = true;
-
   programs.readline = {
     enable = true;
     includeSystemConfig = true;
@@ -74,10 +72,7 @@ in
     };
   };
 
-  services.gpg-agent = {
+  services.ssh-agent = {
     enable = true;
-    enableSshSupport = true;
-    enableZshIntegration = true;
-    pinentry.package = pkgs.pinentry-gtk2;
   };
 }
