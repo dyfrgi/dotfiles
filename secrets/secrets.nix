@@ -4,6 +4,10 @@
     rekeyFile = ./sonarr_api_key.age;
     generator.script = "base64";
   };
+  age.secrets.radarr_api_key = {
+    rekeyFile = ./radarr_api_key.age;
+    generator.script = "base64";
+  };
   age.secrets.prowlarr_api_key = {
     rekeyFile = ./prowlarr_api_key.age;
     generator.script = "base64";

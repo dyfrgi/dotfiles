@@ -1,5 +1,6 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [ recyclarr ];
   nixflix = {
     enable = true;
     mediaDir = "/data/media";
@@ -25,6 +26,7 @@
       enable = true;
       cleanupUnmanagedProfiles.enable = true;
       sonarrQuality = "4K";
+      radarrQuality = "4K";
     };
 
     # Sonarr - TV
@@ -32,6 +34,29 @@
       enable = true;
       config = {
         apiKey._secret = config.age.secrets.sonarr_api_key.path;
+        hostConfig = {
+          username._secret = config.age.secrets.arr_username.path;
+          password._secret = config.age.secrets.arr_password.path;
+        };
+        delayProfiles = [
+          {
+            enableUsenet = true;
+            enableTorrent = true;
+            preferredProtocol = "usenet";
+            usenetDelay = 0;
+            torrentDelay = 0;
+            bypassIfHighestQuality = true;
+            id = 1;
+          }
+        ];
+      };
+    };
+
+    # Radarr - Movies
+    radarr = {
+      enable = true;
+      config = {
+        apiKey._secret = config.age.secrets.radarr_api_key.path;
         hostConfig = {
           username._secret = config.age.secrets.arr_username.path;
           password._secret = config.age.secrets.arr_password.path;
