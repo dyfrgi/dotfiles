@@ -2,15 +2,19 @@
 {
   environment.systemPackages = with pkgs; [ recyclarr ];
 
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "michael+acme@slashhome.org";
-    certs."uncri.me" = {
-      dnsProvider = "porkbun";
-      environmentFile = config.age.secrets.porkbun_api.path;
-    };
-  };
-
+  # security.acme = {
+  #   acceptTerms = true;
+  #   defaults.email = "michael+acme@slashhome.org";
+  #   defaults.server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+  #   certs."uncri.me" = {
+  #     dnsProvider = "porkbun";
+  #     environmentFile = config.age.secrets.porkbun_api.path;
+  #     group = "nginx";
+  #   };
+  # };
+  #
+  # services.nginx.virtualHosts."uncri.me".acmeRoot = null;
+  #
   nixflix = {
     enable = true;
     mediaDir = "/data/media";
@@ -29,8 +33,8 @@
     nginx = {
       enable = true;
       domain = "uncri.me";
-      enableACME = true;
-      forceSSL = true;
+      # enableACME = true;
+      # forceSSL = true;
     };
 
     # Recyclarr - quality profiles
