@@ -32,4 +32,5 @@
   age.secrets.nzbgeek_apikey.rekeyFile = ./nzbgeek/api_key.age;
   age.secrets.arr_username.rekeyFile = ./arr/username.age;
   age.secrets.arr_password.rekeyFile = ./arr/password.age;
+  age.secrets.porkbun_api.rekeyFile = ./porkbun_api.age;
 }

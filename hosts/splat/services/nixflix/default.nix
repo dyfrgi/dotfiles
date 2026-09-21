@@ -1,6 +1,16 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [ recyclarr ];
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "michael+acme@slashhome.org";
+    certs."uncri.me" = {
+      dnsProvider = "porkbun";
+      environmentFile = config.age.secrets.porkbun_api.path;
+    };
+  };
+
   nixflix = {
     enable = true;
     mediaDir = "/data/media";
@@ -19,6 +29,8 @@
     nginx = {
       enable = true;
       domain = "uncri.me";
+      enableACME = true;
+      forceSSL = true;
     };
 
     # Recyclarr - quality profiles
