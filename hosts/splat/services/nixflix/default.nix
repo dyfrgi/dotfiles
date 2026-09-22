@@ -167,5 +167,18 @@
         ];
       };
     };
+
+    # Jellyfin - media server/playback
+    jellyfin = {
+      enable = true;
+      apiKey._secret = config.age.secrets.jellyfin_api_key.path;
+      users = {
+        smolwaffle = {
+          mutable = false;
+          password._secret = config.age.secrets.arr_password.path;
+          policy.isAdministrator = true;
+        };
+      };
+    };
   };
 }

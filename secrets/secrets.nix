@@ -24,6 +24,10 @@
     rekeyFile = ./sabnzbd/nzb_key.age;
     generator.script = "alnum";
   };
+  age.secrets.jellyfin_api_key = {
+    rekeyFile = ./jellyfin/api_key.age;
+    generator.script = "alnum";
+  };
 
   # Manual
   age.secrets.airvpn_config_splat.rekeyFile = ./airvpn_config_splat.conf.age;

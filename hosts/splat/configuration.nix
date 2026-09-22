@@ -283,10 +283,6 @@ in
     guiAddress = "0.0.0.0:8384";
   };
 
-  services.jellyfin = {
-    enable = true;
-  };
-
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
