@@ -20,7 +20,6 @@
   #
   # services.nginx.virtualHosts."uncri.me".acmeRoot = null;
   #
-  services.nginx.virtualHosts."radarr.uncri.me".locations."/".proxyWebsockets = lib.mkForce true;
   nixflix = {
     enable = true;
     mediaDir = "/data/media";
