@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   environment.systemPackages = with pkgs; [ recyclarr ];
 
@@ -15,6 +20,7 @@
   #
   # services.nginx.virtualHosts."uncri.me".acmeRoot = null;
   #
+  services.nginx.virtualHosts."radarr.uncri.me".locations."/".proxyWebsockets = lib.mkForce true;
   nixflix = {
     enable = true;
     mediaDir = "/data/media";
@@ -40,9 +46,67 @@
     # Recyclarr - quality profiles
     recyclarr = {
       enable = true;
-      cleanupUnmanagedProfiles.enable = true;
+      cleanupUnmanagedProfiles = {
+        enable = true;
+        managedProfiles = [
+          "movies"
+          "Remux 2160p (Combined)"
+          "Remux 2160p (Alternative)"
+        ];
+      };
       sonarrQuality = "4K";
-      radarrQuality = "4K";
+      config.radarr.radarr = {
+        quality_definition = {
+          type = "movie";
+        };
+        quality_profiles = lib.mkForce [
+          {
+            upgrade = {
+              allowed = true;
+              until_quality = "Bluray-2160p";
+            };
+            name = "movies";
+            qualities = [
+              { name = "Bluray-2160p"; }
+              {
+                name = "WEB 2160p";
+                qualities = [
+                  "WEBRip-2160p"
+                  "WEBDL-2160p"
+                ];
+              }
+              { name = "Bluray-1080p"; }
+              {
+                name = "WEB 1080p";
+                qualities = [
+                  "WEBRip-1080p"
+                  "WEBDL-1080p"
+                ];
+              }
+              { name = "HDTV-1080p"; }
+              { name = "Bluray-720p"; }
+              {
+                name = "WEB 720p";
+                qualities = [
+                  "WEBRip-720p"
+                  "WEBDL-720p"
+                ];
+              }
+            ];
+          }
+          {
+            # Remux 2160p (Combined)
+            trash_id = "d1d310673359205736b4b84acd5ea8c8";
+          }
+          {
+            # Remux 2160p (Alternative)
+            trash_id = "dd3cd75deb9645bae838d1c5da6388d5";
+          }
+          # { # SQP-1
+          #   trash_id = "5128baeb2b081b72126bc8482b2a86a0";
+          # }
+        ];
+      };
     };
 
     # Sonarr - TV
