@@ -169,6 +169,7 @@ in
     members = [
       "msl"
       "jellyfin"
+      "pelican-kodi"
     ];
   };
 
@@ -189,6 +190,10 @@ in
   };
 
   users.users.hpm477 = {
+    isNormalUser = true;
+  };
+
+  users.users.pelican-kodi = {
     isNormalUser = true;
   };
 
@@ -228,6 +233,11 @@ in
         browseable = "no";
         "guest ok" = "no";
         "read only" = "no";
+      };
+      media = {
+        path = "/data/media";
+        browseable = "yes";
+        "guest ok" = "yes";
       };
       music = {
         path = "/data/music";
