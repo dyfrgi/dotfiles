@@ -68,7 +68,7 @@ in
     enable = true;
     includeSystemConfig = true;
     variables = {
-      "completion-ignore-care" = "On";
+      "completion-ignore-case" = "On";
     };
   };
 
