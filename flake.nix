@@ -64,6 +64,28 @@
 
       # maybe add primaryUser to mkNixos?
       mkNixos = host: cfg: nixpkgs.lib.nixosSystem ((nixosArgs host) // cfg);
+
+      homeArgs = username: host: {
+        inherit pkgs;
+        extraSpecialArgs = extraSpecialArgs // {
+          inherit username;
+        };
+        modules = defaultHomeModules ++ [
+          overlays.default
+          ./hosts/${host}/home.nix
+        ];
+      };
+
+      # Profile names are "<username>@<host>": the host picks hosts/<host>/home.nix,
+      # the username is threaded through extraSpecialArgs.
+      mkHome =
+        name:
+        let
+          parts = nixpkgs.lib.splitString "@" name;
+        in
+        home-manager.lib.homeManagerConfiguration (
+          homeArgs (builtins.elemAt parts 0) (builtins.elemAt parts 1)
+        );
     in
     {
       nixosConfigurations = {
@@ -77,33 +99,10 @@
           system = "x86_64-linux";
         };
       };
-      homeConfigurations = {
-        "mleuchtenburg" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = extraSpecialArgs // {
-            username = "mleuchtenburg";
-          };
-          modules = defaultHomeModules ++ [
-            overlays.default
-            ./modules-hm/non-nixos.nix
-            ./modules-hm/non-nixos-gui.nix
-            ./modules-hm/gui.nix
-            ./modules-hm/singlestore.nix
-          ];
-        };
-        "mleuchtenburg@msl" = home-manager.lib.homeManagerConfiguration {
-          # work coder instance
-          inherit pkgs;
-          extraSpecialArgs = extraSpecialArgs // {
-            username = "mleuchtenburg";
-          };
-          modules = defaultHomeModules ++ [
-            overlays.default
-            ./modules-hm/non-nixos.nix
-            ./modules-hm/singlestore.nix
-          ];
-        };
-      };
+      homeConfigurations = nixpkgs.lib.genAttrs [
+        "mleuchtenburg@mleuchtenburg"
+        "mleuchtenburg@msl"
+      ] mkHome;
       agenix-rekey = agenix-rekey.configure {
         userFlake = self;
         nixosConfigurations = (nixpkgs.lib.filterAttrs (name: _: name != "slab") self.nixosConfigurations);
