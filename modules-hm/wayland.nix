@@ -15,6 +15,11 @@ in
     };
   };
   config = {
+    my.xdgConfigFilesToLink = [
+      "niri/config.kdl"
+      "waybar/"
+    ];
+
     programs.fuzzel.enable = true;
     programs.waybar.enable = true;
     programs.waybar.systemd.enable = true;
