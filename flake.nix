@@ -103,23 +103,6 @@
             ./modules-hm/singlestore.nix
           ];
         };
-        "msl" = home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = extraSpecialArgs // {
-            username = "msl";
-          };
-          inherit pkgs;
-          modules = defaultHomeModules ++ [
-            ./modules-hm/gui.nix
-          ];
-        };
-        "msl@splat" = home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = extraSpecialArgs // {
-            username = "msl";
-          };
-          inherit pkgs;
-          modules = defaultHomeModules ++ [
-          ];
-        };
       };
       agenix-rekey = agenix-rekey.configure {
         userFlake = self;
