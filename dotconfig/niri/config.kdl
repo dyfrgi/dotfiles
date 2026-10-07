@@ -66,20 +66,8 @@ environment {
     DISPLAY ":12"
 }
 
-output "PNP(AOC) U34G2G4R3 0x0000010B" {
-    mode "3440x1440"
-    scale 1
-    transform "normal"
-    position x=0 y=500
-    variable-refresh-rate on-demand=true
-}
-
-output "ASUSTek COMPUTER INC PA278CV MBLMQS020628" {
-    mode "2560x1440"
-    scale 1
-    transform "270"
-    position x=3440 y=0
-}
+// monitors config is per-host so it's an include; optional for hosts which use the default
+include optional=true "outputs.kdl"
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:

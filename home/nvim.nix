@@ -21,7 +21,7 @@ let
   };
 in
 {
-  my.xdgConfigFilesToLink = [ "nvim/" ];
+  my.xdgConfigFiles."nvim/" = null;
 
   programs.neovim = {
     sideloadInitLua = true;

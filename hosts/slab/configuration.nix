@@ -178,6 +178,7 @@
       extraSpecialArgs = {
         inherit inputs;
         username = "msl";
+        hostname = config.networking.hostName;
         pkgs-unstable = import inputs.nixpkgs-unstable {
           inherit (pkgs) system;
           config.allowUnfree = true;

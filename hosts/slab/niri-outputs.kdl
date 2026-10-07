@@ -1,0 +1,9 @@
+include "outputs-desk.kdl"
+
+output "BOE 0x0BC9 Unknown" {
+    mode "2560x1600"
+    scale 1.5
+    transform "normal"
+    // 2560 / 1.5 = 1707
+    position x=-1707 y=500
+}

@@ -65,19 +65,19 @@
       # maybe add primaryUser to mkNixos?
       mkNixos = host: cfg: nixpkgs.lib.nixosSystem ((nixosArgs host) // cfg);
 
-      homeArgs = username: host: {
+      homeArgs = username: hostname: {
         inherit pkgs;
         extraSpecialArgs = extraSpecialArgs // {
-          inherit username;
+          inherit username hostname;
         };
         modules = defaultHomeModules ++ [
           overlays.default
-          ./hosts/${host}/home.nix
+          ./hosts/${hostname}/home.nix
         ];
       };
 
       # Profile names are "<username>@<host>": the host picks hosts/<host>/home.nix,
-      # the username is threaded through extraSpecialArgs.
+      # and both halves are threaded through extraSpecialArgs as username/hostname.
       mkHome =
         name:
         let

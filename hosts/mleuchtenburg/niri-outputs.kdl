@@ -1,0 +1,24 @@
+// Work laptop, home desk. It has limited bandwidth and niri picks the wrong
+// modes, thus manually specified here.
+output "PNP(AOC) U34G2G4R3 0x0000010B" {
+    mode "3440x1440@59.973"
+    scale 1
+    transform "normal"
+    position x=0 y=500
+    variable-refresh-rate on-demand=true
+}
+
+output "ASUSTek COMPUTER INC PA278CV MBLMQS020628" {
+    mode "2560x1440@59.951"
+    scale 1
+    transform "270"
+    position x=3440 y=0
+}
+
+output "Lenovo Group Limited 0x403D Unknown" {
+    mode "1920x1200@60.026"
+    scale 1.25
+    transform "normal"
+    // 1536 = 1920 / 1.25
+    position x=-1536 y=500
+}

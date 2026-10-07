@@ -2,10 +2,12 @@
   pkgs,
   lib,
   config,
+  hostname,
   ...
 }:
 let
   cfg = config.my.wayland;
+  niriOutputs = "hosts/${hostname}/niri-outputs.kdl";
 in
 {
   options = {
@@ -15,10 +17,14 @@ in
     };
   };
   config = {
-    my.xdgConfigFilesToLink = [
-      "niri/config.kdl"
-      "waybar/"
-    ];
+    my.xdgConfigFiles = {
+      "niri/config.kdl" = null;
+      "niri/outputs-desk.kdl" = null;
+      "waybar/" = null;
+    }
+    // lib.optionalAttrs (builtins.pathExists (../. + "/${niriOutputs}")) {
+      "niri/outputs.kdl" = niriOutputs; # monitor config
+    };
 
     programs.fuzzel.enable = true;
     programs.waybar.enable = true;

@@ -185,6 +185,7 @@
       extraSpecialArgs = {
         inherit inputs pkgs-unstable;
         username = "msl";
+        hostname = config.networking.hostName;
       };
     };
   };

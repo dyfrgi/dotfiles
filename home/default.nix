@@ -7,8 +7,12 @@
   ...
 }:
 let
-  inherit (builtins) foldl';
+  inherit (builtins) mapAttrs;
   dotfilesPath = "${config.home.homeDirectory}/.config/home-manager/";
+  # Symlink pointing at the live repo rather than a copy in the nix store.
+  xdgLink = path: {
+    source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/${path}";
+  };
 in
 {
   imports = [
@@ -19,15 +23,16 @@ in
     ./zsh.nix
   ];
 
+  # TODO: Make this work with /etc/nixos/ on NixOS systems, or automate
+  # linking .config/home-manager/ to /etc/nixos.
   options = {
-    my.xdgConfigFilesToLink = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
-      default = [ ];
+    my.xdgConfigFiles = lib.mkOption {
+      type = with lib.types; attrsOf (nullOr str);
+      default = { };
       description = ''
-        Paths under `dotconfig/` to symlink into `$XDG_CONFIG_HOME`, pointing at
-        the live repo instead of the nix store. A trailing `/` links a whole
-        directory. Modules add the dotfiles they own, so a config is only linked
-        on profiles importing that module.
+        Dotfiles to symlink into `$XDG_CONFIG_HOME`. A `null` target
+        means `dotconfig/<target>`. Otherwise, the target should be the
+        path to the file to link, relative to the root of this repo.
       '';
     };
   };
@@ -61,21 +66,15 @@ in
       "ls" = "ls --color=auto";
     };
 
-    my.xdgConfigFilesToLink = [
-      "awesome/"
-      "compton.conf"
-      "taffybar/"
-    ];
+    my.xdgConfigFiles = {
+      "awesome/" = null;
+      "compton.conf" = null;
+      "taffybar/" = null;
+    };
 
-    xdg.configFile = foldl' (
-      acc: elem:
-      {
-        "${elem}" = {
-          source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/dotconfig/${elem}";
-        };
-      }
-      // acc
-    ) { } config.my.xdgConfigFilesToLink;
+    xdg.configFile = mapAttrs (
+      target: src: xdgLink (if src == null then "dotconfig/${target}" else src)
+    ) config.my.xdgConfigFiles;
 
     programs.readline = {
       enable = true;
