@@ -8,6 +8,7 @@
       (final: prev: {
         iosvmata = prev.callPackage ../packages/iosvmata.nix { };
         niri-select-window-by-name = prev.callPackage ../packages/niri-select-window-by-name { };
+        arduino-ide-with-python = prev.callPackage ../packages/arduino-with-python.nix { };
 
         # bambu-studio when using the nixpkgs version has two bugs:
         # 1. It crashes on exit with a bad free in std::locale
