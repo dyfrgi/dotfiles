@@ -28,9 +28,6 @@
             })
           else
             prev.openldap;
-        gamescope = prev.gamescope.overrideAttrs (oldAttrs: {
-          NIX_CFLAGS_COMPILE = (oldAttrs.NIX_CFLAGS_COMPILE or [ ]) ++ [ "-fno-fast-math" ];
-        });
         coder = prev.coder.overrideAttrs (
           newAttrs: oldAttrs: {
             version = "2.34.5";
