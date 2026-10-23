@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     open = true;
     powerManagement.enable = true;
+    package = pkgs-unstable.linuxPackages.nvidiaPackages.stable;
   };
 
   environment.systemPackages = with pkgs; [ nvtopPackages.nvidia ];
