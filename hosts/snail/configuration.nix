@@ -47,6 +47,7 @@
         "root"
         "msl"
       ];
+      builders-use-substitutes = true;
     };
 
     # Use the systemd-boot EFI boot loader.
