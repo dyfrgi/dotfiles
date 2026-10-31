@@ -28,7 +28,7 @@ appimageTools.wrapType2 {
     export SSL_CERT_FILE="${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
     export GIO_MODULE_DIR="${pkgs.glib-networking}/lib/gio/modules/"
     export __GLX_VENDOR_LIBRARY_NAME="mesa"
-    export __EGL_VENDOR_LIBRARY_FILENAMES="${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json"
+    export __EGL_VENDOR_LIBRARY_FILENAMES="${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json"
     export MESA_LOADER_DRIVER_OVERRIDE="zink"
     export GALLIUM_DRIVER="zink"
     export WEBKIT_DISABLE_COMPOSITING_MODE=1
